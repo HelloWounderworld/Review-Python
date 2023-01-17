@@ -39,3 +39,54 @@ Para desativar o ambiente virtual seria:
 Uma outra coisa que podemos testar, ativando novamente o nosso ambiente virtual, entrando no diretório teste criado, e, fora do diretório teste-inicial, criar um arquivo main.py e dentro desse arquivo, na primeira linha, apenas colocar print(1+1). Assim, acessado o ambiente virtual ativo, jogamos o comando "python main.py". Se retornar um 2, significa que deu certo.
 
 No caso, agora, vc aprendeu em como configurar um ambiente virtual em que iremos trabalhar. Podemos desativar o ambiente virtual e excluir o diretório teste.
+
+No VSCode vamos instalar as seguintes extensões:
+
+- Python - Essa extensão vai te permitir rodar o arquivo python clicando no play do VSCode, visto que vc está dentro do ambiente virtual do python, em vez de ficar toda hora jogando no terminal o comando "python (nome do arquivo).py" dentro do ambiente virtual.
+
+- Code Runner - Uma outra extensão que permite fazer o mesmo que a extensão acima, mas para várias linguagens.
+
+Além disso, no próprio VSCode tem um desenho de uma engrenagem donde vc pode encontrar a opção Settings e, clicando nela, será encaminhado para um arquivo Settings e bastaria clicar, ao lado do play do VSCode, em um desenho de um arquivo que será produzido um arquivo settings.json. Visto que será executado dentro do ambiente virtual.
+
+    {
+        "window.zoomLevel": 2,
+        "workbench.startupEditor": "none",
+        "explorer.compactFolders": false,
+        "workbench.iconTheme": "material-icon-theme",
+        "editor.fontSize": 18,
+        "workbench.colorTheme": "OM Theme (Default Dracula Italic)",
+        "code-runner.executorMap": {
+            "python": "clear ; python -u",
+        },
+        "code-runner.runInTerminal": true,
+        "code-runner.ignoreSelection": true
+    }
+
+Nela, vc poderia configurar o formato como está no json acima.
+ 
+Temos, também, essa configuração
+
+{
+    "window.zoomLevel": 0,
+    "workbench.startupEditor": "none",
+    "explorer.compactFolders": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontSize": 12,
+    "workbench.colorTheme": "OM Theme (Default Dracula Italic)",
+    "code-runner.executorMap": {
+        "python": "clear ; python3 -u",
+    },
+    "code-runner.runInTerminal": true,
+    "code-runner.ignoreSelection": true,
+    "python.defaultInterpreterPath": "python"
+}
+
+Caso, vc queira executar fora do ambiente virtual.
+
+Agora, temos o tema (opcional) e os ícones, donde vc pode escolher a extensão:
+
+    - Om Theme
+
+    - Material Icon Theme
+
+Agora, temos tudo o que precisamos para começarmos a revisar.
