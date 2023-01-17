@@ -66,20 +66,20 @@ Nela, vc poderia configurar o formato como está no json acima.
  
 Temos, também, essa configuração.
 
-{
-    "window.zoomLevel": 0,
-    "workbench.startupEditor": "none",
-    "explorer.compactFolders": false,
-    "workbench.iconTheme": "material-icon-theme",
-    "editor.fontSize": 12,
-    "workbench.colorTheme": "OM Theme (Default Dracula Italic)",
-    "code-runner.executorMap": {
-        "python": "clear ; python3 -u",
-    },
-    "code-runner.runInTerminal": true,
-    "code-runner.ignoreSelection": true,
-    "python.defaultInterpreterPath": "python"
-}
+    {
+        "window.zoomLevel": 0,
+        "workbench.startupEditor": "none",
+        "explorer.compactFolders": false,
+        "workbench.iconTheme": "material-icon-theme",
+        "editor.fontSize": 12,
+        "workbench.colorTheme": "OM Theme (Default Dracula Italic)",
+        "code-runner.executorMap": {
+            "python": "clear ; python3 -u",
+        },
+        "code-runner.runInTerminal": true,
+        "code-runner.ignoreSelection": true,
+        "python.defaultInterpreterPath": "python"
+    }
 
 Caso, vc queira executar fora do ambiente virtual.
 
