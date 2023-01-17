@@ -64,7 +64,7 @@ Além disso, no próprio VSCode tem um desenho de uma engrenagem donde vc pode e
 
 Nela, vc poderia configurar o formato como está no json acima.
  
-Temos, também, essa configuração
+Temos, também, essa configuração.
 
 {
     "window.zoomLevel": 0,
