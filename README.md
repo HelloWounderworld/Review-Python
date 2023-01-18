@@ -90,3 +90,10 @@ Agora, temos o tema (opcional) e os ícones, donde vc pode escolher a extensão:
     - Material Icon Theme
 
 Agora, temos tudo o que precisamos para começarmos a revisar.
+
+### Aviso:
+Se caso o python3.11 não for a versão em que está instalado na sua máquina, sempre que vc terminar de trabalhar com a versão desejada, volte para a versão padrão da sua máquina com o comando:
+
+sudo update-alternatives --config python3
+
+Se não, vc poderá ter problemas de atualizações na sua máquina ou nem mesmo o comando padrão para abrir o terminal não rode.
