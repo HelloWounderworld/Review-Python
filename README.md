@@ -16,7 +16,7 @@ Usarei as seguintes referências:
 
 Tais referências, em livros, citados acima serão lidos, em paralelo, conforme o conceito revisado pelo curso da Udemy na expectativa de me aprofundar mais ainda no conceito.
 
-Outras referências complementares que irei lendo, mas não sendo obrigatório para somente nos estudos da linguagem de programação Python serão:
+Outras referências complementares que irei lendo por fora, independente de qual linguagem de programação que eu esteja estudando, mas que são bons serem citados para o desencargo de consciência:
 
 - Introduction to Algorithms, Fouths Edition. Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
 
