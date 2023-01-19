@@ -6,7 +6,7 @@ Conforme o meu progresso na revisão, irei reviver os meus códigos que eu criei
 ## Refrência:
 Usarei as seguintes referências:
 
-- Curso Udemy, Curso de Python 3 do Básico Ao Avançado (com projetos reais),
+- Curso Udemy, Curso de Python 3 do Básico Ao Avançado (com projetos reais), Luiz Otávio Miranda.
 
 - Problem Solving with Algorithms and Data Structures using Python - Second Edition, Bradley N. Miller e David L. Ranum.
 
