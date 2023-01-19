@@ -26,7 +26,7 @@ data structures algorithms, Cory Althoff.
 - Clean Code, A Handbook of Agile Software Craftsmanship, Robert C. Martin.
 
 
-### Recursos para revisar a linguagem de programação Python:
+## Recursos para revisar a linguagem de programação Python:
 Utilizei o editor de código VSCode (Visual Studio Code), da Microsoft, e usei a linguagem Git, para o controle de versionamento ao meu repositório GitHub.
 
 A versão do python que foi usado para essa revisão é o python3. Precisaria instalar ela pelo terminal, visto que o meu sistema operacional é Linux Ubuntu versão 20.04, caso não tenha sido instalado ainda, https://www.itsupportwale.com/blog/how-to-upgrade-to-python-3-10-on-ubuntu-18-04-and-20-04-lts/. Mas vamos tbm precisar de mais alguns pacotes python para ser instalado:
