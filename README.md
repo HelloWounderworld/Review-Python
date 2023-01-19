@@ -3,6 +3,29 @@ Esse repositório será uma revisão minha da linguagem python que aprendi na fa
 
 Conforme o meu progresso na revisão, irei reviver os meus códigos que eu criei no passado, no intuito de exercer as minhas skills sobre essa linguagem de programação.
 
+## Refrência:
+Usarei as seguintes referências:
+
+- Curso Udemy, Curso de Python 3 do Básico Ao Avançado (com projetos reais),
+
+- Problem Solving with Algorithms and Data Structures using Python - Second Edition, Bradley N. Miller e David L. Ranum.
+
+- Introdução à Programação com Python Algoritmos e lógica de programação para iniciantes, Nilo Ney Coutinho Menezes.
+
+- Fluent Python - Luciano Ramalho. 
+
+Tais referências, em livros, citados acima serão lidos, em paralelo, conforme o conceito revisado pelo curso da Udemy na expectativa de me aprofundar mais ainda no conceito.
+
+Outras referências complementares que irei lendo, mas não sendo obrigatório para somente nos estudos da linguagem de programação Python serão:
+
+- Introduction to Algorithms, Fouths Edition. Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
+
+- The Self-Taught Computer Scientist - The beginner’s guide to
+data structures algorithms, Cory Althoff.
+
+- Clean Code, A Handbook of Agile Software Craftsmanship, Robert C. Martin.
+
+
 ### Recursos para revisar a linguagem de programação Python:
 Utilizei o editor de código VSCode (Visual Studio Code), da Microsoft, e usei a linguagem Git, para o controle de versionamento ao meu repositório GitHub.
 
