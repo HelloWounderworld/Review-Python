@@ -8,6 +8,8 @@ Usarei as seguintes referências:
 
 - Curso Udemy, Curso de Python 3 do Básico Ao Avançado (com projetos reais), Luiz Otávio Miranda.
 
+- Lógica de Programação: A construção de algoritmos e estruturas de dados, ANDRÉ WIZ VILLAR FORBELLONE e HENRI FREDERICO EBERSPACHER.
+
 - Problem Solving with Algorithms and Data Structures using Python - Second Edition, Bradley N. Miller e David L. Ranum.
 
 - Introdução à Programação com Python Algoritmos e lógica de programação para iniciantes, Nilo Ney Coutinho Menezes.
