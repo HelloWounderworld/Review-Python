@@ -1,0 +1,2 @@
+NQUESTOES = 36
+LIMIAR    = 22

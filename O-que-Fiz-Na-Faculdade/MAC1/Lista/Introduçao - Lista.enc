@@ -1,0 +1,225 @@
+''' aula 28-09-2017
+
+pós prova
+
+refazendo a questão 2 da prova - números perfeitos, mas para uma função que retorne todos os nümeros perfeitos até n'''
+
+def perfeito(n):
+    soma=0
+    divisor=1
+    while divisor < n:
+        if n % divisor==0:
+            soma+=divisor
+        divisor+=1
+    return soma==n
+
+def main1():
+    n=int(input("Entre com o limite superior para n natural: "))
+    while n>0:
+        if perfeito(n):
+            print(" {} é um número perfeito".format(n))
+        n-=1
+#main1()
+
+''' 
+
+a parte do .format(n) é uma coisa diferenciada de uma função, é um tipo de método 
+que se aplica a uma classe de objeto, no caso espec[ifico de .format é uma string
+
+outro exemplo é o métodos __str()__ que é um método que transforma o objeto descrito antes em uma string
+
+ex:
+
+x=2
+x.__str__()
+
+essa última linha iria retornar 2 como string `2`
+
+---------
+	
+	definiçao formal de função:
+	
+	def func(arg1,arg2,...,argn):  # SENDO OS ARGUMENTOS ALGO OPCIONAL
+	    .
+	    .
+	    .
+	    .
+	    .
+	    returna valor1,valor2,...,valorm  # SENDO A QUANTIDADE DE VALORES ALGO QUE PODE VARIAR
+
+agora procurando uma solução para um problema que é retornar uma quantidade de valores não preeviamente
+determinados, vamos ver o conceito de listas
+
+a lista vai ter o seguinte formato:
+
+x=[1,"Marcel",0.25,True]
+
+perceba que os valores podem ser de diferentes classes, str, float, int, e booleano
+
+para referenciar cada item de uma lista usamos por exemplo:
+print(x[2])  # o índice da lista começa com zero
+>>> 0.25
+
+posso criar uma lista vazia:
+y=[]
+
+se fizer:
+print(y[0])
+
+isso retorna que não é possivel retornar o tal índice
+
+se eu colocar:
+    type(x)
+    >>> < class list>
+    type(x[3])
+    >>> <class bool>
+outro comando importante é o len(x)
+len vem de lenght, comprimento em inglês
+fazendo:
+    len(x)
+    >>> 4
+
+listas são diferentes de tuplas, declaradas de forma diferente, e no caso da tupla, os valores são do mesmo tipo e
+são imutáveis
+
+para listas podemos usar os índices com um valor diferente
+para o nosso exemplo
+    print(x[-1])
+    >>> True
+
+os índices negativos pegam a lista na ordem de trás pra frente, começando por -1
+
+método para `povoar` uma lista fazia:
+
+sendo:
+y=[]  #lista vazia
+
+faço:
+
+y.append(-5)
+ então fazendo:
+     print(y)
+     >>> [-5]
+avançando com:
+
+y.append("olá")
+print(y)
+>>> [-5,"olá")
+
+a função append é uma função que só faz sentido para o objeto do tipo lista
+
+'''
+
+def main2():
+    lista = []  # alternativa para declarar lista vazia: y=list()
+    fim = False
+    while not fim:
+        cmd = input("Entre com n ou 'fim': ")
+        fim = cmd == 'fim'
+        if not fim:
+            lista.append(int(cmd))
+    print(lista)
+#main2()
+
+
+def main3():
+    lista = []  # alternativa para declarar lista vazia: y=list()
+    fim = False
+    while not fim:
+        cmd = input("Entre com n ou 'fim': ")
+        
+        if cmd!='fim':
+            lista.append(int(cmd))
+        else:
+            fim=True
+    print(lista)
+#main3()
+
+def main4():
+    lista = []  # alternativa para declarar lista vazia: y=list()
+    fim = False
+    while not fim:
+        cmd = input("Entre com n ou 'fim': ")
+        fim = cmd == 'fim'
+        if not fim:
+            lista.append(int(cmd))
+    indice = 0
+    while indice < len(lista):
+        print(lista[indice])
+        indice+=1
+#main4()
+
+def main5():
+    lista = []  # alternativa para declarar lista vazia: y=list()
+    fim = False
+    while not fim:
+        cmd = input("Entre com n ou 'fim': ")
+        fim = cmd == 'fim'
+        if not fim:
+            lista.append(int(cmd))
+    indice = 0
+    while indice < len(lista):
+        print(lista[indice],lista[len(lista)-1-indice])
+        indice+=1
+#main5()
+
+''' vamos introduzir agora o comando for
+em príncipio qualquer for pode ser traduzido em um while, mas o uso do for pode 
+deixar as coisas mais simples. A forma para usar o for é a seguinte:
+
+    for variável in sequencia:
+
+exemplo:
+
+''' 
+def main6(): # retomando o programa main5() e fazendo uma alteraçao no fim para uso do for
+    lista = []  # alternativa para declarar lista vazia: y=list()
+    fim = False
+    while not fim:
+        cmd = input("Entre com n ou 'fim': ")
+        fim = cmd == 'fim'
+        if not fim:
+            lista.append(int(cmd))
+    indice = 0
+# parte abaixo será substituída pelo uso do for 
+#    while indice < len(lista):
+#        print(lista[indice],lista[len(lista)-1-indice])
+#        indice+=1
+# começo da alteração:   
+    for indice in range(len(lista)):
+        print(lista[indice],lista[len(lista)-1-indice])
+#main6()    
+
+''' 
+fazendo:
+    list(range(-1,5))
+    >>> [-1,0,1,2,3,4,5]
+    list(range(-1,5,passo))
+    >>> próxima aula irá dar a resposta para o resultado desse 'passo'
+
+um uso interessante para o in:
+
+a=1
+if a in [1,0,"pedra",5)
+    print("achei")
+
+'''
+
+
+print('''
+
+programas feitos na aula: - rodando a aula é só chamar o programa que ele vai iniciar:
+
+main1()  -  números perfeitos
+
+main2() - imprimir uma lista com os valores que o usuário entrou
+
+main3() - igual ao main2 com um final alternativo para deixar mais claro
+
+main4() - imprime cada valor de uma lista em uma linha diferente
+
+main5() - imprime o primeiro e o último, e na linha de baixo o segundo e o penúltimo, e assim por diante
+
+main6() - igual ou main5() mas com o uso do for ao invés do while - não dá pra notar se for apenas rodar a aula
+
+''')

@@ -1,0 +1,168 @@
+'''
+Algoritmo de busca
+
+as vezes usar x in seq, para x float e seq lista, não é suficiente, pra isso precisamos do algoritmo de busca
+
+comecemos com:
+
+1) Algoritmo de busca linear (sequencial)
+
+Vamos criar uma função que recebe 1 float e um a lista, e restorna true ou false se o float est está ou não na lista:
+
+'''
+
+def busca_seq(x,seq):
+    ''' (float,list)-> bool
+    retorna True se x ocorre na seq e False se não
+    '''
+    i=0
+    while i <len(seq):
+        if x==seq[i]:
+            return True #isso torna mais rápido pois sai do programa assim que encontra x
+        i=i+1
+    return False
+    '''
+    equivalente fazer (porém não tão eficiente):
+    i=0
+    resp=False
+    while i < len(seq): #adicionando: 'and not resp:' também vai interromper assim que encontrar x
+        if x==seq[i]:
+            resp=True
+        i=i+1
+    return resp
+
+    '''
+'''
+Exerício 1:
+escreva um programa que leia 1 sequencia com n números reais e imprima a sequencia eliminando os elementos repetidos
+    parte a:    faça uma função 'acha' que recebe um número real e uma lista de números reais, retorna 
+                a posição deste número ou nada se esse número não ocorre na lista  
+    parte b: usando a parte a, resolve o exercício
+'''
+#parte a
+def acha(x,lista):
+    ''' (float,list)-> int
+    '''
+    i=0
+    while i <len(seq):
+        if x==seq[i]:
+            return i #isso torna mais rápido pois sai do programa assim que encontra x
+        i=i+1
+    return None
+#fim parte a
+
+def removeduplicada(lista):
+    duplicadas=[]
+    for i in range(len(lista)):
+        if acha(lista[i],duplicadas)!=None:
+            print(lista[i])
+            duplicadas.append(lista[i])
+    '''
+    solucão do Prof Kunio
+    apenas parte essencial:
+    print(lista[0])
+    i=0
+    while i < len(lista):
+        if acha(lista[i],lista[0:i])==None: #ou seja, x não foi achado na subsequencia da lista anterior ao elemento
+            print(lista[1]) # nesse caso imprimi o x
+        i=i+1
+    '''
+'''
+
+Busca com sentinela (apenas curiosidade):
+
+Nesse caso a proposta é adicionar o x ao final da lista, o que garante que x será encotrado, 
+mas para antes se encontrar antes. Nunca vai dar resultado inválido
+
+'''
+
+def busca_com_sentinela(x,seq):
+    seq=seq+[x]
+    i=0
+    while (x != seq[i]):
+        i=i+1
+    if i==len(seq)-1:
+        return False
+    else:
+        return True
+        
+
+'''
+Busca na lista ordenada
+
+1) busca sequencial na lista ordenada
+
+    busca seq na lista ñ ordenada
+        termina repetição quando    ( achou x == seq[i]
+        	                          ( achou lista x!=seq[len(seq)-1]  
+    busca seq na lista ordenada:
+        termina quando  (achou: x== seq[i]
+                        (já passou: seq[i]=x+4
+                        (acabou a lista:seq[len(seq)-1]=x-2
+       cria 2 var bool: fim: fim de busca
+                        achou: x achado
+   	    
+'''
+def busca_seq2(x,seq):
+    '''(float,list)-> bool
+    seq já ordenado
+    '''
+    i=0
+    fim=False
+    achou=True
+    whlile(i<len(seq)) and (not fim):
+        if x == seq[i]:
+            achou=True
+            fim=True
+        elif x > seq[i]:
+            fim=True
+        else:
+            i=i+1
+    return achou
+
+'''
+Busca Binária
+agora vamos fazer uma função que busca sempre na metade do caminho, se achou, ok, 
+se ñ achou, pelo menos elimina metade das buscas (aproveitando o fato de estar ordenado)
+a cada vez que não acha, elimina metade do caminho.
+
+em 1024 elementos, garante que acha na 10 busca (2ˆ10)
+'''
+def busca_binaria(x,seq):
+    inic=0
+    fim=len(seq)-1
+    achou=False
+    while (not achou)  and (inic<=fim):
+        meio=(inic+fim)//2
+        if x == seq[meio]:
+            achou=True
+        elif x < seq[meio]:
+            fim=meio-1
+        else:
+            inic=meio+1
+    return achou
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

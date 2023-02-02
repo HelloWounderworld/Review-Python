@@ -1,0 +1,13 @@
+class Complexo:
+    def __init--(self,real,imaginario):
+        self.real = real
+        self.imaginario = imaginario
+
+    def __str__(self):
+        return "{}{:+}i".format(self.real,self.imaginario)
+
+    def soma(sel,outro):
+        return Complexo(self.real+outro.real,self.imagem+outro.imagem)
+
+#Exercicio: Crie uma classe que de vetores e dentro dessa classe crie as funçoes que sera as operaçoes aritmeticas usuais de um espaço vetorial inclusive o produto escalar
+        
