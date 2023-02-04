@@ -308,11 +308,13 @@ Bom, a ideia de variáveis aqui é o mesmo para JavaScript, no sentido de funcio
 Uma boa prática para definir uma variável é definir o nome dela que seja descritivo para um dado que será colocado nessa variável.
 
 ## Aula 12 - Exercício com variáveis e tipos de dados:
-
+Vamos aprender a manipular as variaveis.
 
 ## Aula 13 - Solução - exercício com variáveis e tipos de dados:
+A solução o exercício basta conferir no arquivo aula12-13.py.
 
 ## Aula 14 - Introdução aos operadores aritméticos (matemática):
+
 
 ## Aula 15 - Concatenação (+) e repetição (*) com operadores aritméticos:
 
