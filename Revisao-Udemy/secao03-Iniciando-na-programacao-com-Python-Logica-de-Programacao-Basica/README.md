@@ -314,17 +314,66 @@ Vamos aprender a manipular as variaveis.
 A solução o exercício basta conferir no arquivo aula12-13.py.
 
 ## Aula 14 - Introdução aos operadores aritméticos (matemática):
+Vamos aprender sobre os operadores aritiméticos em Python.
 
+Basicamente, os operadores, são os mesmos do que foi visto em JavaScript.
+
+O único operador que não temos em JavaScript, mas temos em Python é a divisão por inteiro.
+
+São elas
+
+- Adição/concatenação: +
+
+- Subtração: -
+
+- Multiplicação: *
+
+- Divisão: /
+
+- Divisao Inteira: //
+
+- Exponenciação: **
+
+- Modulo / Resto da divisão: %
+
+Bom, aqui não tem tanto segredo, as funcionalidades são os mesmos que tem em JavaScript.
+
+Obs: Toma muito cuidado de usar o operador da exponenciação. Pois se ele explodir muito rápido, isso pode dar um erro, pois o Python não consegue suportar a computação de um número muito grande.
 
 ## Aula 15 - Concatenação (+) e repetição (*) com operadores aritméticos:
+Vamos entender um pouco mais dos operadores "+" e "*", as suas peculiaridades.
+
+No caso, o operador "+", ele serve para concatenação, além da adição usual com números. Além disso, em Python, quando usamos esse operador para uma string com um número, diferentemente de Python, isso irá gerar um erro, devido à linguagem de programação Python ser de tipagem dinâmica forte.
+
+Agora, temos um outro operador que tem as suas peculiaridades, que é o "*". Podemos usar esse operador tanto para multiplicar números quanto para pedirmos que um dado string ele se repita.
+
+    a_dez_vezes = 'A' * 10
+    tres_vezes_leonardo = 3 * 'Leonardo'
+    print(a_dez_vezes)
+    print(tres_vezes_leonardo)
 
 ## Aula 16 - Precedência entre os operadores aritméticos:
+Vamos ver sobre as precedência entre os operadores aritméticos.
+
+No caso, a ordem de precedência é o seguinte
+
+    # 1. () - Entre parênteses
+    # 2. ** - Exponenciação
+    # 3. * / // % - Multiplicação, divisão, divisão por inteiro, módulo
+    # 4. + - - Soma e subtração.
+
+Bom, no caso, se tivermos dois ou três operadores que tenha a mesma precedência? Como seria a ordem de execução? 
+
+Nesse sentido é o mesmo que no JavaScript, de direita para esquerda.
 
 ## Aula 17 - Exercício de programação - Cálculo do IMC (Índice de Massa Corpórea) + Ellipsis:
+Vamos praticar os operadore aritméticos que revisamos até agora para fixarmos o conceito.
 
 ## Aula 18 - Solução exercício de programação - Cálculo do IMC:
+Basta veriricar o arquivo aula17-18.py.
 
 ## Aula 19 - Uma introdução às f-strings (formatação de strings):
+Vamos aprender o básico sobre a formatação de strings.
 
 ## Aula 20 - Formatação de strings com o método format:
 
