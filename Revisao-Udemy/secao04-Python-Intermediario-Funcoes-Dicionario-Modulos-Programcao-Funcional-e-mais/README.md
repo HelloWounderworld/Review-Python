@@ -1,0 +1,1 @@
+# Seção 4 - Python Intermediário - Funções, Dicionários, Módulos, Programação Funcional e +
