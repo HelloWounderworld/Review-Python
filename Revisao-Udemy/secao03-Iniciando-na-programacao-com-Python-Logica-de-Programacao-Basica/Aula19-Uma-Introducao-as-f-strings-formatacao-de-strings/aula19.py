@@ -1,9 +1,11 @@
-nome = 'Luiz Otávio'
-altura = 1.80
-peso = 95
+nome = 'Leonardo Takashi Teramatsu'
+altura = 1.83
+peso = 78
 imc = peso / altura ** 2
 
-"f-strings"
+# f-strings
+# O ":.2f" vc configura a quantidade de casas decimais que vc quer para um float.
+# No caso acima está sendo até duas casas decimais. Se for três seria ":.3f".
 linha_1 = f'{nome} tem {altura:.2f} de altura,'
 linha_2 = f'pesa {peso} quilos e seu imc é'
 linha_3 = f'{imc:.2f}'
@@ -12,6 +14,10 @@ print(linha_1)
 print(linha_2)
 print(linha_3)
 
-# Luiz Otávio tem 1.80 de altura,
-# pesa 95 quilos e seu IMC é
-# 29.320987654320987
+# Existem casos em que queremos realizar as separações dos números inteiros por vírgula
+numero = 100050.4
+
+numero_personaliza = f'{numero:,.2f}'
+
+print(numero_personaliza)
+# Retorna: 100,050.40
