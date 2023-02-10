@@ -509,9 +509,31 @@ Obs: Como uma boa prática, recomendamos que o programador não faça a seguinte
 Pode parecer que de fato é um corta caminho, mas o problema é que isso pode gerar uma confusão de quando seria necessário procurar onde está dando erro no código. Pois muitas vezes dificulta o que o usuário colocou dentro do input para checar a validade ou não.
 
 ## Aula 22 - Introdução aos blocos de código + if / elif / else (condicionais):
+Vamos ver sobre bloco de código começando com as condicionais if, elif e else.
 
+No caso, bloco em python, por hora, vc poderia entender como uma espécie de instrução para uma determinada ação. Ou seja, ela é uma lista de sequências de passos que será executado avaliando um determinado valor de entrada.
+
+Geralmente, a criação de tal instrução em outras linguagens orientada à objetos, como JavaScript, são feitas usando-se uma chave "{}". Já o Python, ele não precisa de chave.
+
+   entrada = input('Você quer "entrar" ou "sair"? ')
+
+    if entrada == 'entrar':
+        print('Você entrou no sistema')
+    elif entrada == 'sair':
+        print('Você saiu do sistema')
+    else:
+        print('Você não digitou nem entrar e nem sair.')
+
+    print('Fora dos blocos')
+
+Note que, o bloco como está acima, vc digitando algo e, consequentemente, mesmo devolvendo algo, note que, as linhas de código fora do bloco posteriores continuam em funcionamento?
+
+Bom, aqui a analogia é a mesma que no JavaScript, donde vc poderia usar o return caso vc queira que naquele escopo, seja finalizada até alí.
 
 ## Aula 23 - if, elif e else: entendendo o fluxo do interpretador em condicionais:
+Vamos entender mais ainda sobre blocos.
+
+
 
 ## Aula 24 - O Debugger do VS Code e o interpretador do Python lendo os códigos:
 
