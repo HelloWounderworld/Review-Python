@@ -478,6 +478,7 @@ Agora, podemos, também, definir cada parâmetro dentro do format como uma vari�
 No caso, se vc quiser, por exemplo, mudar o valor do nome1, sem necessidade de alterar a posição da chamada dela dentro da string, não será necessário.
 
 ## Aula 21 - Usando a função input para coletar dados do usuário:
+Vamos ver um pouco mais sobre a função input.
 
 ## Aula 22 - Introdução aos blocos de código + if / elif / else (condicionais):
 
