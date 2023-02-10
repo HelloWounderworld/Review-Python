@@ -579,7 +579,11 @@ Existe casos em que mesmo que entre na condição vc não pensou em algum códig
 Basicamente, o bloco de condicionais, a forma como ela funciona, é o mesmo que a do JavaScript. Em um único bloco, vc poderia ter muita, mas muita, condicionais para ser avaliado. Mas bastou que uma delas seja satisfeita, então irá sair do bloco inteiro em seguida.
 
 ## Aula 24 - O Debugger do VS Code e o interpretador do Python lendo os códigos:
+Vamos aprender a usar o Debugger do VSCode que permite vc conseguir conferir que tipo de erro está acontecendo.
 
+No VSCode temos um recurso chamado Run and Debbug, na aba onde está exibindo os recursos é o desenho com um play e um inseto colado nela. No caso, podemos usar esse Run and Debugger para podermos corrigir os erros de códigos que vc tem.
+
+Podemos, também, usar um recurso chamado BreakPoint para conseguirmos ver exatamente no ponto onde vc queria que parasse durante a compilação do código.
 
 ## Aula 25 - Operadores relacionais (de comparação) em Python:
 
