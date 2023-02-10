@@ -530,12 +530,56 @@ Note que, o bloco como está acima, vc digitando algo e, consequentemente, mesmo
 
 Bom, aqui a analogia é a mesma que no JavaScript, donde vc poderia usar o return caso vc queira que naquele escopo, seja finalizada até alí.
 
+Bom, vismo que a ideia principal de montar um bloco em python é que ele seja feita via identação. Ou seja, quando vc cria uma instrução, tudo o que vem depois dele que esteja espaçado por um tab estará sendo executado dentro dele.
+
 ## Aula 23 - if, elif e else: entendendo o fluxo do interpretador em condicionais:
 Vamos entender mais ainda sobre blocos.
 
+Lembra quando foi dito sobre a identação?
 
+Pois bem, no caso, como podemos ver 
+
+    condicao = True
+
+    if condicao:
+        print('Este é o codigo do if')
+        
+    print('Fora do if')
+
+Vemos que quando rodamos o código acima, o print('Fora do if'), será exibido, pois ele está no mesmo nível de alinhamento com a condicional if em que foi utilizado.
+
+    condicao = True
+
+    if condicao:
+        print('Este é o codigo do if')
+    else:
+        print('Este é o codigo do else')
+    if 10 == 10:
+        print('Outro if')
+        
+    print('Fora do if')
+
+Aqui estamos deixando claro que se quisermos usar o else ou elif, necessariamente precisa da existência do if e mesmo criando um bloco com as condicionais, nada impede de criar um outro if depois delas tbm.
+
+Existe casos em que mesmo que entre na condição vc não pensou em algum código nela ainda. No caso, vc poderia usar o pass
+
+    condicao = False
+
+    if condicao:
+        print('Este é o codigo do if')
+    elif 3 == 3:
+        pass
+    else:
+        print('Este é o codigo do else')
+    if 10 == 10:
+        print('Outro if')
+        
+    print('Fora do if')
+
+Basicamente, o bloco de condicionais, a forma como ela funciona, é o mesmo que a do JavaScript. Em um único bloco, vc poderia ter muita, mas muita, condicionais para ser avaliado. Mas bastou que uma delas seja satisfeita, então irá sair do bloco inteiro em seguida.
 
 ## Aula 24 - O Debugger do VS Code e o interpretador do Python lendo os códigos:
+
 
 ## Aula 25 - Operadores relacionais (de comparação) em Python:
 
