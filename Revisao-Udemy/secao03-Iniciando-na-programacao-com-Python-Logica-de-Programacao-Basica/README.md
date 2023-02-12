@@ -586,18 +586,125 @@ No VSCode temos um recurso chamado Run and Debbug, na aba onde está exibindo os
 Podemos, também, usar um recurso chamado BreakPoint para conseguirmos ver exatamente no ponto onde vc queria que parasse durante a compilação do código.
 
 ## Aula 25 - Operadores relacionais (de comparação) em Python:
+Vamos ver sobre os operações relacionais de comparação em Python.
+
+São elas
+
+    """
+    Operadores de comparação (relacionais)
+    OP      Significado         Exemplo (True)
+    >       maior               2 > 1
+    >=      maior ou igual      2 >= 2
+    <       menor               1 < 2
+    <=      menor ou igual      2 <= 2
+    ==      igual               'a' == 'a'
+    !=      diferente           'a' != 'b'
+    """
+
+Bom, em conceitos matemáticos mais à fundo, os operadores que conseguimos definir, todas elas são uma relação. A princípio, tudo na matemática podemos representar por funções que é uma relação. No caso, isso não muda tbm para os operadores de comparação que é uma relação.
+
+    maior = 2 > 1
+    maior_ou_igual = 2 >= 2
+    menor = 1 < 2
+    menor_ou_igual = 2 <= 2
+    igual = 'a' == 'a'
+    diferente = 'a' != 'b'
+    print(maior)
+    print(maior_ou_igual)
+    print(menor)
+    print(menor_ou_igual)
+    print(igual)
+    print(diferente)
+
+Em vez de usar vários prints, se quiser usar de modo interativo podemos jogar no terminal o seguinte comando
+
+    python -i aula25.py
+
+Que é o shell interativo do python.
 
 ## Aula 26 - Exercício de programação com if e comparação:
+O exercício é para vc realizar uma comparação.
 
 ## Aula 27 - Solução - Exercício de programação com if e comparação:
+Deixarei o código que o professor desenvolveu. A minha estará no arquivo aula26.py.
 
 ## Aula 28 - Operador Lógico "and":
+Bom, vamos ver sobre uma das lógicas proposicional, o 'e/and'.
+
+Quem conhece muito bem sobre teoria dos conjuntos a lógia aplicada nela é a mesma. Como é o meu caso irei usar essa aula só para ver quais são as sintaxes para eu poder aplicar a teoria
+
+    # Operadores lógicos
+    # and (e), or (ou) e not (não)
+    # and - Todas as condições precisam ser verdadeiras.
+    # Se qualquer valor for considerado falso, a expressão inteira avaliada naquele valor será considerada falso
+    # São considerado falso:
+    # 0 0.0 '' False
+    # Também existe o tipo None que é usado para representar um não valor.
+    entrada = input('[E]ntrar [S]air: ')
+    senha_digitada = input('Senha: ')
+
+    senha_permitida = '123456'
+
+    if entrada == 'E' and senha_digitada == senha_permitida:
+        print('Entrar')
+    else:
+        print('Sair')
+
+No caso, a sintaxe usada para representarmos o operador and é o próprio nome "and".
+
+No caso, assim como em JavaScript, em Python, também, temos a avaliação de curto circuito
+
+    # Avaliação de curto circuito
+    print(bool(0))
+    print(bool(0.0))
+    print(bool(''))
+    print(True and False and True)
+    print(True and 0 and True)
+    print('' and True and True)
+    print(True and True and 0.0)
+
+No caso, a ideia do curto circuito em python é a mesma que no JavaScript.
 
 ## Aula 29 - Operador Lógico "or":
+A avaliação do curto circuito em python é o mesmo que o JavaScript.
 
 ## Aula 30 - Operador lógico "not":
+Na matemática é conhecido como uma negação de uma sentença.
+
+Ou seja, negar um não seria sim, assim como negar um sim seria um não. No caso, aqui o not não muda nada, visto que a sintaxe para isso é o 'not'
+
+    not True => False
+
+    not False => True
+
+Nas demonstrações matemáticas isso aparece muito nas demonstrações por contra-positiva.
 
 ## Aula 31 - Operadores in e not in:
+O operador acima é literalmente o operador que confere a condição de pertinência ou não de um dado elemento sobre um conjunto.
+
+    # Operadores in e not in
+    # Strings são iteráveis
+    #  0 1 2 3 4 5
+    #  O t á v i o
+    # -6-5-4-3-2-1
+    # nome = 'Otávio'
+    # print(nome[2])
+    # print(nome[-4])
+    # print('vio' in nome)
+    # print('zero' in nome)
+    # print(10 * '-')
+    # print('vio' not in nome)
+    # print('zero' not in nome)
+
+    nome = input('Digite seu nome: ')
+    encontrar = input('Digite o que deseja encontrar: ')
+
+    if encontrar in nome:
+        print(f'{encontrar} está em {nome}')
+    else:
+        print(f'{encontrar} não está em {nome}')
+
+No caso, a forma como é conferida usando esses dois operadores in e not in, é por meio de iteração.
 
 ## Aula 32 - Interpolação de string com % em Python:
 
