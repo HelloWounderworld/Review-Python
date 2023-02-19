@@ -707,6 +707,7 @@ O operador acima é literalmente o operador que confere a condição de pertinê
 No caso, a forma como é conferida usando esses dois operadores in e not in, é por meio de iteração.
 
 ## Aula 32 - Interpolação de string com % em Python:
+Vamos ver sobre a interpolação de string com % em Python.
 
 ## Aula 33 - Formatação de strings com f-strings:
 
