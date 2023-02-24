@@ -1010,7 +1010,7 @@ Mas aí entra na seguinte pergunta. Se tem meios para driblar usando as condicio
 
 Bom, aí entra na questão de entender das limitações das condicionais. Por exemplo, existem casos em que há uma excessão em que a condicional não consegue dar conta ou considerar, mesmo que a lógica aplicada para tais regra de negócio estejam certos. Existem casos em que isso não consegue cobrir todas as possibilidades um algoritmo atende das exigências humanas. Daí, entra em papel a importância de uso do try/catch.
 
-## Aula 38 - Parte 1 e Parte 2: Variáveis, constantes e complexidade de código:
+## Aula 38 e 39 - Parte 1 e Parte 2: Variáveis, constantes e complexidade de código:
 Vamos falar sobre a complexidade de códigos e algumas boas práticas.
 
 Vamos analisar o seguinte código
@@ -1123,16 +1123,86 @@ Daí, note que, se colocarmos duas variáveis com mesmos valores o identificador
     print(id(1))
 
 ## Aula 41 - Flags, is, is not e None:
+Vamos continuar da aula anterior.
+
+Uma outra prática muito ruim seria criar uma variavel dentro de um bloco de código para que seja usado depois, fora dela
+
+    condicao = False
+
+    if condicao:
+        passou_no_if = True
+        print('Faça algo')
+    else:
+        print('Não faça algo')
+
+    print(passou_no_if)
+
+No caso, do exemplo acima é uma má prática disso. O motivo de ser uma má prática seria devido ao fato de que se tiver um caso em que uma dada condição não faça entrar no if, significa que essa variável nunca havia sido criado. E isso fará com que tenha alguma possibilidade de ter algum erro pela frente.
+
+No caso, o que seria uma boa prática nisso?
+
+Seria criar uma variável fora do bloco e só depois disso usar dentro do bloco. No caso, temos duas alternativas para corrigir essa má prática
+
+    condicao = False
+
+    if condicao:
+        passou_no_if = True
+        print('Faça algo')
+    else:
+        passou_no_if = None
+        print('Não faça algo')
+
+    print(passou_no_if)
+
+Acima, é uma das formas de solucionar, porém de forma pior, pois nela estaríamos dependendo do else. Então, a melhor forma seria o seguinte
+
+    condicao = True
+    passou_no_if = None
+
+    if condicao:
+        passou_no_if = True
+        print('Faça algo')
+    else:
+        print('Não faça algo')
+
+    print(passou_no_if, passou_no_if is None)
+
+No caso, foi declarado a variável antes de entrar no if e isso evitará futuros problemas de usar alguma variável não declarada.
 
 ## Aula 42 - Exercícios - Enunciados:
+Vamos ter três exercícios diferentes em uma só!
 
-## Aula 43 - Solução 1 dos Exercícios - Enunciados:
+O enunciado dos três são os seguintes
 
-## Aula 44 - Solução 2 dos Exercícios - Enunciados:
+    """
+    Faça um programa que peça ao usuário para digitar um número inteiro,
+    informe se este número é par ou ímpar. Caso o usuário não digite um número
+    inteiro, informe que não é um número inteiro.
+    """
 
-## Aula 45 - Solução 3 dos Exercícios - Enunciados:
+    """
+    Faça um programa que pergunte a hora ao usuário e, baseando-se no horário 
+    descrito, exiba a saudação apropriada. Ex. 
+    Bom dia 0-11, Boa tarde 12-17 e Boa noite 18-23.
+    """
+
+    """
+    Faça um programa que peça o primeiro nome do usuário. Se o nome tiver 4 letras ou 
+    menos escreva "Seu nome é curto"; se tiver entre 5 e 6 letras, escreva 
+    "Seu nome é normal"; maior que 6 escreva "Seu nome é muito grande". 
+    """
+
+## Aula 43, 44 e 45 - Solução 1, 2 e 3 dos Exercícios - Enunciados:
+Confere a sua resolução com respectivo resolução do professor.
 
 ## Aula 46 - Conversa - tipos built-in, documentação, tipo imutáveis, métodos de string:
+Vamos ver um pouco da documentação do python dos tipos que já bem imbutidos dentro dessa linguagem
+
+    https://docs.python.org/pt-br/3/library/stdtypes.html
+
+No caso, os que vemos ver são os tipos imutáveis. São elas:
+
+    str, int, float, bool
 
 ## Aula 47 - while e break - Estrutura de repetição (Parte 1):
 
