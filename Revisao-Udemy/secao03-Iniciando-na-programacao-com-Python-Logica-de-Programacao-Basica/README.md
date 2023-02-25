@@ -1204,13 +1204,132 @@ No caso, os que vemos ver são os tipos imutáveis. São elas:
 
     str, int, float, bool
 
+No caso, por serem valores imutáveis, serve a mesma a lógica que eu vi nos estudos de JavaScript. No sentido de que se fizermos algo do tipo
+
+    string = 'Leonardo Takashi Teramatsu'
+    outra_variavel = string
+
+Automaticamente fizemos uma cópia da variável string acima. O que difere com objetos.
+
+Além disso, o fato de ser imutável, uma vez atribuída um valor não podemos mudar o valor interno dela
+
+    string = 'Leonardo Takashi Teramatsu'
+    string[3] = 'ABC'
+
+Ou seja, o código acima retornará um erro.
+
+No caso, a forma correta de mudar algum valor atribuído em uma variável é criando uma outra varável da mesma e realizar o seguinte
+
+    string = 'Leonardo Takashi Teramatsu'
+    outra_variavel = f'{string[:3]}ABC{string[4:]}'
+
+Ou seja, usamos o format string para conseguirmos formatar o valor interno de uma string.
+
+Além disso, as strings tem os seus métodos tbm, como, por exemplo, se quisermos realizar alguma personalização na string podemos usar o método capitalize
+
+    string = 'leonardo takashi teramatsu'
+    print(string.capitalize())
+
+Assim como tem outras e muitos métodos para string, onde vc poderá consultar na documentação acima.
+
 ## Aula 47 - while e break - Estrutura de repetição (Parte 1):
+Vamos começar a ver sobre repetições que temos em python.
+
+No caso, vamos começar a ver a repetição pelo while.
+
+Bom, a estrutura de repetição, while, aqui ela tem a mesma funcionalidade que foi vista em JavaScript. A única diferença é que aqui em Python o while tem somente uma, visto que em JavaScript temos dois tipos o while e do while. Então, como foi avisado, devemos tomar cuidado com condições que colocamos no while que pode gerar um looping infinito
+
+    """
+    Repetições
+    while (enquanto)
+    Executa uma ação enquanto uma condição for verdadeira
+    Loop infinito -> Quando um código não tem fim
+    """
+    condicao = True
+
+    while condicao:
+        nome = input('Qual o seu nome: ')
+        print(f'Seu nome é {nome}')
+
+        if nome == 'sair':
+            break
+
+    print('Acabou')
+
+Importante lembrar que o break que estamos usando aqui, ela considera o laço mais próximo, nesse caso o único while que estamos usando. Assim, se tivermos um loop dentro de um outro loop, e usarmos o break para o loop dentro, ele irá sair apenas do loop dentro e o loop fora irá continuar ainda.
 
 ## Aula 48 - while - Condição em detalhes:
+Vamos ver com mais detalhe a condição que colocamos dentro do while.
+
+Vimos que além de usarmos diretamente os booleanos, podemos, por meio de várias formas de comparações, criarmos um boolenanos de forma implícitas e considerar esses booleanos na condição do while
+
+    """
+    Repetições
+    while (enquanto)
+    Executa uma ação enquanto uma condição for verdadeira
+    Loop infinito -> Quando um código não tem fim
+    """
+    contador = 0
+
+    while contador <= 10:
+        contador = contador + 1
+        print(contador)
+
+    print('Acabou')
+
+Ou seja, assim como usamos inúmeras formas de booleanos de forma implícita em condicionais if's, podemos realizar o mesmo para o while.
 
 ## Aula 49 - Operadores de atribuição com operadores aritméticos:
+Os operadores de atribuição aqui em python, tem a mesma lógica que foi visto em JavaScript.
+
+No caso, só deixarei o esboço seguinte
+
+    """
+    Operadores de atribuição
+    = += -= *= /= //= **= %=
+    """
+    contador = 10
+
+    ###
+
+    contador /= 5
+    print(contador)
 
 ## Aula 50 - while + continue - pulando alguma repetição:
+Bom, aqui o continue funciona da mesma forma como foi estudado em JavaScript, então não irei me aprofundar tanto.
+
+No caso, o continue, em repetição, ela serve para vc pular alguns dados
+
+    """
+    Repetições
+    while (enquanto)
+    Executa uma ação enquanto uma condição for verdadeira
+    Loop infinito -> Quando um código não tem fim
+    """
+    contador = 0
+
+    while contador <= 100:
+        contador += 1
+
+        if contador == 6:
+            print('Não vou mostrar o 6.')
+            continue
+
+        if contador >= 10 and contador <= 27:
+            print('Não vou mostrar o', contador)
+            continue
+
+        print(contador)
+
+        if contador == 40:
+            break
+
+
+    print('Acabou')
+
+Além disso, da mesma forma para break, o continue, quando ele é ativado, os códigos de linhas posteriores não serão rodados. O que significa que em um loop, ela irá simplesmente, continuar a iterar adiante. Por isso, teria que tomar muito cuidado onde colocar o continue e o break, para que vc não crie algum laço infinito ou que vc acabe deixando de rodar alguns códigos que são sempre necessários rodar.
+
+Mas a vantagem de usar break e o continue, está no fato de que eles te dão condições para tornar a sua compilação muito mais performáticos.
 
 ## Aula 51 - while + while (laços internos):
 
