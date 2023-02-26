@@ -1332,18 +1332,103 @@ Além disso, da mesma forma para break, o continue, quando ele é ativado, os c�
 Mas a vantagem de usar break e o continue, está no fato de que eles te dão condições para tornar a sua compilação muito mais performáticos.
 
 ## Aula 51 - while + while (laços internos):
+Vamos continuar com o assunto do while, desta vez vendo while dentro de um while.
+
+Bom, um bom exemplo que faz o uso de while dentro de um while seria para construir uma matriz, visto que ela precisa de linha e coluna. Isso em forma de lista é definitivamente uma lista dentro de uma lista.
+
+Obs: Podemos criar matriz 3d nessa brincadeira tbm colocando mais listas dentro de listas.
+
+Assim, para entendermos o uso do while dentro de while vamos usar a matriz como um exemplo disso. Primeiramente, indo passo a passo, vamos fazer o seguinte
+
+    """
+    Repetições
+    while (enquanto)
+    Executa uma ação enquanto uma condição for verdadeira
+    Loop infinito -> Quando um código não tem fim
+    """
+    qtd_linhas = 5
+
+    linha = 1
+    while linha <= qtd_linhas:
+
+        print(linha)
+
+        linha += 1
+
+
+    print('Acabou')
+
+Para certificarmos de que está funcionando.
+
+Visto que ele está funcionando corretamente, vamos agora trabalhar na sua coluna
+
+    qtd_linhas = 5
+    qtd_colunas = 5
+
+    linha = 1
+    while linha <= qtd_linhas:
+        
+        # print(linha)
+        coluna = 1
+        matriz = ''
+        while coluna <= qtd_colunas:
+            matriz = matriz + f'{linha}{coluna} '
+            # print(f'{linha=} {coluna=}')
+            coluna += 1
+        print(matriz)
+        linha += 1
+
+
+    print('Acabou')
+
+Bom, basicamente, nessa brincadeira, já daría para brincarmos com as teorias de álgebra linear e realizar algumas simulações com elas.
 
 ## Aula 52 - Exercício guiado com while:
+Vamos praticar um mini EP (exercício de programação) para fixar melhor o assunto nas nossas cabeças.
+
+Assim, o exercício é o seguinte
+
+    """
+    Iterando strings com while
+    """
+    #       012345678910
+    nome = 'Luiz Otávio'  # Iteráveis
+    #      1110987654321
+    tamanho_nome = len(nome)
+    print(nome)
+    print(tamanho_nome)
+    print(nome[3])
+
+    nova_string = ''
+    nova_string += '*L*u*i*z* *O*t*á*v*i*o'
+
+No caso, dado o nome, queremos que no final esse nome tenha asterisco antes de cada letra do nome.
 
 ## Aula 53 - Solução do exercício guiado com while:
+Veja a solução do professor e compare com a sua resolução.
 
-## Aula 54 - Exercício guiado - Calculadora - Parte 1:
+## Aula 54, 55 e 56 - Exercício guiado - Calculadora - Parte 1, 2 e 3:
+Bom, essa aula está como exercício, mas é opcional.
 
-## Aula 55 - Exercício guiado - Calculadora - Parte 2:
+No caso, se a pessoa se sentir preparado pode tentar fazer, mas, caso não sinta preparado, então vale um estudo acima disso.
 
-## Aula 56 - Exercício guiado - Calculadora - Parte 3:
+Eu me sinto mais preparado, então eu irei considerar essa aula como EP.
+
+    """ Calculadora com while """
+    while True:
+        print('nummmmm')
+        #########
+        sair = input('Quer sair? [s]im: ').lower().startswith('s')
+
+        if sair is True:
+            break
+
+Vamos criar uma calculadora que roda infinitamente até que a pessoa opte por sair. O esquema acima é o esquema base de como começar.
+
+Agora, vamos partir para o processo de criar a calculadora.
 
 ## Aula 57 - while / else (recurso peculiar do Python):
+
 
 ## Aula 58 - while - Qual letra apareceu mais vezes na frase? (Iterando strings com while):
 
