@@ -1705,17 +1705,151 @@ Basicamente, a lista em python é o array que eu ví em JavaScript e, claro, pos
 
 Inclusive, vale dar uma revisão em JavaScript para lista para traçar um comparativo na lista em Python para ver o que são e o que não são similares de uso entre eles.
 
+Até agora, vimos que o tipo de objeto que tem um comportamento muito similiar com a lista foram os strings. Bom, por quê estou falando isso? Basicamente, da mesma forma que conseguimos iterar o string conseguimos iterar uma lista.
+
 ## Aula 69 - Alterando uma lista com índices, del, append e pop (Tipo list):
+Vamos ver os métodos que temos para as listas, as mais usadas.
+
+Bom, eu já vi isso na minha faculdade, então essa aula será mais como uma revisão
+
+    """
+    Listas em Python
+    Tipo list - Mutável
+    Suporta vários valores de qualquer tipo
+    Conhecimentos reutilizáveis - índices e fatiamento
+    Métodos úteis:
+        append, insert, pop, del, clear, extend, +
+    Create Read Update   Delete
+    Criar, ler, alterar, apagar = lista[i] (CRUD)
+    """
+    #        0   1   2   3   4   5
+    lista = [10, 20, 30, 40]
+    # lista[2] = 300
+    # del lista[2]
+    # print(lista)
+    # print(lista[2])
+    lista.append(50)
+    lista.pop()
+    lista.append(60)
+    lista.append(70)
+    ultimo_valor = lista.pop(3)
+    print(lista, 'Removido,', ultimo_valor)
+
+Obs: Muito cuidado ao usar a função delete, del. Pois, dependendo do uso dele vc poderá deixar o processamento do seu código muito, mas muito, lento. Por exemplo, quando usamos o del para apagar qualquer elemento que não esteja no último, a lista que será exibida seria uma espécie de lista nova. Ou seja, quando uso esse del, praticamente é criado uma nova lista. Agora, suponhamos que usamos esse del para apagar o segundo elemento de uma lista que tenha 10 mil elementos? No caso, o processo estaria realizando uma criação de uma nova lista só para deslocar os outros 9998 elementos à um índice antecessor. Isso vai requer um consumo muito enorme do processamento da sua máquina e tornaria o código seu muito, mas muito, lento.
+
+Na medida do possível, uma boa prática que podemos realizar com as listas é add e remover apenas os últimos elementos. Ou seja, usamos as funções del e insert somente quando a lista que estamos manipulando seja uma lista bem menor.
 
 ## Aula 70 - Inserindo itens em qualquer índice da lista com insert (Tipo list):
+Vamos entender agora uma função que chamado insert que serve para inserir os elementos dentro de uma lista.
+
+No caso, vamos revisar o seguinte
+
+    """
+    Listas em Python
+    Tipo list - Mutável
+    Suporta vários valores de qualquer tipo
+    Conhecimentos reutilizáveis - índices e fatiamento
+    Métodos úteis:
+        append - Adiciona um item ao final
+        insert - Adiciona um item no índice escolhido
+        pop - Remove do final ou do índice escolhido
+        del - apaga um índice
+        clear - limpa a lista
+        extend - estende a lista
+        + - concatena listas
+    Create Read Update   Delete
+    Criar, ler, alterar, apagar = lista[i] (CRUD)
+    """
+    #        0   1   2   3
+    lista = [10, 20, 30, 40]
+    lista.append('Luiz')
+    nome = lista.pop()
+    lista.append(1233)
+    del lista[-1]
+    # lista.clear()
+    lista.insert(100, 5)
+    print(lista[4])
 
 ## Aula 71 - Concatenando e estendendo listas em Python:
+Vamos agora entender sobre concatenando e extensão de listas em Python.
+
+Bom, a ideia é o mesmo como foi visto em JavaScript, no ponto de vista lógico.
+
+Só irei mostrar as sintaxes de como realizar os processos
+
+    """
+    Listas em Python
+    Tipo list - Mutável
+    Suporta vários valores de qualquer tipo
+    Conhecimentos reutilizáveis - índices e fatiamento
+    Métodos úteis:
+        append - Adiciona um item ao final
+        insert - Adiciona um item no índice escolhido
+        pop - Remove do final ou do índice escolhido
+        del - apaga um índice
+        clear - limpa a lista
+        extend - estende a lista
+        + - concatena listas
+    Create Read Update   Delete
+    Criar, ler, alterar, apagar = lista[i] (CRUD)
+    """
+    lista_a = [1, 2, 3]
+    lista_b = [4, 5, 6]
+    lista_c = lista_a + lista_b
+    lista_a.extend(lista_b)
+    print(lista_a)
 
 ## Aula 72 - Cuidados com tipos de dados mutáveis - list e copy:
+Vamos ver alguns cuidados que precisamos tomar ao trabalharmos com os tipos de dados mutáveis.
+
+A princípio a lógica é a mesma do que eu estudei em JavaScript, sobre a forma de copiar uma lista
+
+    lista_a = [1, 2, 3]
+    lista_b = lista_a
+
+No caso, o formato acima não estará gerando uma cópia da lista. Ou seja, as duas variáveis estará apontando para a mesma memória.
+
+Agora, a forma certa de realizar a tal cópia seria o seguinte
+
+    """
+    Cuidados com dados mutáveis
+    = - copiado o valor (imutáveis)
+    = - aponta para o mesmo valor na memória (mutável)
+    """
+    lista_a = ['Luiz', 'Maria', 1, True, 1.2]
+    lista_b = lista_a.copy()
+    print(lista_a)
+    print(lista_b)
+    print('--------------------')
+
+    lista_a[0] = 'Qualquer coisa'
+    print(lista_a)
+    print(lista_b)
+    print('--------------------')
 
 ## Aula 73 - for in com tipo list:
+No caso, como foi dito em algumas aulas anteriores, podemos usar o for para iterar as listas
+
+    """
+    for in com listas
+    """
+    lista = ['Maria', 'Helena', 'Luiz']
+
+    for nome in lista:
+        print(nome, type(nome))
 
 ## Aula 74 - Exercício - exiba os índices da lista (aula com solução):
+Nessa aula é opcional se o estudante vai querer considerar ela como exercício ou como uma aula.
+
+Eu irei considerar como um exerício
+
+    """
+    Exercício
+    Exiba os índices da lista
+    0 Maria
+    1 Helena
+    2 Luiz
+    """
 
 ## Aula 75 - Introdução ao empacotamento e desempacotamento:
 

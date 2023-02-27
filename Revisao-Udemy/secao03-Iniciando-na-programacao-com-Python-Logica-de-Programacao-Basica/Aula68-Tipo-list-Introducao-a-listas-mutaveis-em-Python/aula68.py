@@ -15,5 +15,7 @@ string = 'ABCDE'  # 5 caracteres (len)
 #       -5   -4     -3             -2   -1
 lista = [123, True, 'Luiz Otávio',  1.2, []]
 lista[-3] = 'Maria'
+print(bool([])) # lista sem elementos é False
+print(bool(['Hello'])) # lista com elemento é True
 print(lista)
 print(lista[2], type(lista[2]))
