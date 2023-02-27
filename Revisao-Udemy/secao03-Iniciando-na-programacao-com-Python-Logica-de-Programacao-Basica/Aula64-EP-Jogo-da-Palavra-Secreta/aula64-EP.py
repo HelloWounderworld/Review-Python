@@ -42,7 +42,7 @@ while True:
             
     print(f'Letra formatada: {exibe_palavra}')
     
-    if '*' not in exibe_palavra:
+    if secret_word == exibe_palavra:
         print('Parabéns! Vc completou a palavra secreta!')
         print(f'A palavra era {secret_word}!')
         print(f'Depois de {numero_tentativas}x tentativas!')
