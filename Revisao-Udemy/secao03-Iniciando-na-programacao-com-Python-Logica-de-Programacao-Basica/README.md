@@ -1471,8 +1471,77 @@ Bom, lembrando que a minha resolução eu utilizei while dentro de while. Mas po
 Essa aula foi mais para melhorar a leitura e interpretação do código.
 
 ## Aula 60 - Introdução ao for / in - estrutura de repetição para coisas finitas:
+Vamos ver sobre for, que é uma das formas de iterações mais importantes que temos em Python.
+
+O for ele é uma estrutura de repetição, assim como vimos em while. Entretanto, o que difere com o while é que, enquanto que no while vc tem mais controle sobre a forma como a estrutura de repete, em for vc não tem esse controle condicional. No caso, ele itera de forma finita o conteúdo na qual vc pediu para ele iterar
+
+    senha_salva = '123456'
+    senha_digitada = ''
+    repeticoes = 0
+
+    while senha_salva != senha_digitada:
+        senha_digitada = input(f'Sua senha ({repeticoes}x): ')
+
+        repeticoes += 1
+
+    print(repeticoes)
+    print('Aquele laço acima pode ter repetições infinitas')
+
+Um exemplo de repetição pelo while acima
+
+    texto = 'Python'
+
+    novo_texto = ''
+    for letra in texto:
+        novo_texto += f'*{letra}'
+        print(letra)
+    print(novo_texto + '*')
+
+Exemplo de repetição do for.
+
+Bom, aí entra a pergunta. Qual das duas formas de iterações é boa?
+
+A resposta, obviamente, é depende. Pois, por exemplo, existem situações em que o for ele acaba sendo incompatível para certas finalidades exigidas.
+
+Um exemplo disso, seria para caso vc exigir uma repetição indeterminada, como no exemplo acima em que colocamos a senha e enquanto a senha não estiver certa o programa ela irá continuar a perguntar várias vezes até que vc forneça a senha correta. Percebe-se que nesse tipo de cenário, não há uma quantidade de repetições determinadas as serem realizadas. Assim como vimos outros tipo de exercícios que tivemos com o uso do while, onde vc coloca a condicional, literalmente, "True" e definimos uma função dentro de while que ela repita enquanto o programa não receber alguma resposta que indica em sair do laço pelo break, como no programa que te perguntava se deseja sair ou não do laço. Nessas situações, claramente, o laço for não é eficiente, pois o laço for ela é eficiente no uso de repetições com quantidade determinada e de forma bem direta sem muito trabalho que tínhamos para o while.
 
 ## Aula 61 - range + for para usar intervalos de números:
+Vamos ver sobre o range usado no for.
+
+Lembrando que o range ele não depende do for assim como o for não depende do range para o seu uso.
+
+No caso, o range ele nos permite definir o intervalo de iteração do for
+
+    """
+    For + Range
+    range -> range(start, stop, step)
+    """
+
+No caso, como descrito acima, no range podemos definir o start, stop e o step, respectivamente, o começo, o alcance e os passos. No caso, o começo e o alcance seria definitivamente o intervalo em que iremos compilar seguindo a regra do conjunto dos números naturais de [n] = {0, 1, 2, ..., n-2, n-1}, visto que definimos range(0, n) ou range(n), para n um natural. E o step serve para definir os passos em que vc quer que a iteração pule.
+
+Segue um exemplo simples do uso do range no for
+
+    for i in range(10):
+        print(i)
+    print('----------------------')
+    for i in range(0,10):
+        print(i)
+    print('----------------------')
+    for i in range(5,10):
+        print(i)
+    print('----------------------')
+
+Um exemplo usando o step
+
+    numeros = range(0, 100, 8)
+
+    for numero in numeros:
+        print(numero)
+
+Bom, assim como vimos em JavaScript, em python, usando o step, podemos usar números negativos tbm. No caso, se quisermos usar o step negativo, vamos precisar que os pontos de partidas e finais sejam negativos tbm
+
+    for i in range(0,-10, -2):
+        print(i)
 
 ## Aula 62 - Como o for funciona por baixo dos panos? (next, iter, iterável e iterador):
 
