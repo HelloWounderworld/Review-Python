@@ -33,11 +33,12 @@ while True:
     if len(letra) > 1 or letra == ' ' or letra == '':
         print('Por favor, digite apenas uma letra diferente de espaço e vazio!')
         continue
-    
-    for i in range(len(secret_word)):
-        if secret_word[i].lower() == letra.lower():
-            troca = f'{exibe_palavra[:i]}{secret_word[i]}{exibe_palavra[i+1:]}'
-            exibe_palavra = troca
+
+    if letra.lower() in secret_word.lower():
+        for i in range(len(secret_word)):
+            if secret_word[i].lower() == letra.lower():
+                troca = f'{exibe_palavra[:i]}{secret_word[i]}{exibe_palavra[i+1:]}'
+                exibe_palavra = troca
             
     print(f'Letra formatada: {exibe_palavra}')
     
