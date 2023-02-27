@@ -14,10 +14,11 @@ na palavra secreta.
 Faça a contagem de tentativas do seu
 usuário.
 """
-secret_word = 'Leonardo Takashi Teramatsu'
+secret_word = input('Digite uma palavra secreta: ')
 exibe_palavra = ''
 numero_tentativas = 0
 deseja_continuar = ''
+letras_acertadas = ''
 
 for i in secret_word:
     if i == ' ':
@@ -33,6 +34,12 @@ while True:
     if len(letra) > 1 or letra == ' ' or letra == '':
         print('Por favor, digite apenas uma letra diferente de espaço e vazio!')
         continue
+    
+    if letra not in letras_acertadas:
+        letras_acertadas += letra
+    else:
+        print('Vc já havia escolhido essa letra. Tente uma outra!')
+        continue
 
     if letra.lower() in secret_word.lower():
         for i in range(len(secret_word)):
@@ -46,12 +53,15 @@ while True:
         print('Parabéns! Vc completou a palavra secreta!')
         print(f'A palavra era {secret_word}!')
         print(f'Depois de {numero_tentativas}x tentativas!')
+        print(f'A sequência de letras que vc escolheu: {letras_acertadas}')
         while True:
             deseja_continuar = input('Deseja continuar? [s]im ou [n]ão: ')
             if deseja_continuar == 's':
                 secret_word = input('Redefinindo a palavra secreta: ')
                 exibe_palavra = ''
+                deseja_continuar = ''
                 numero_tentativas = 0
+                letras_acertadas = ''
                 for i in secret_word:
                     if i == ' ':
                         exibe_palavra += i
