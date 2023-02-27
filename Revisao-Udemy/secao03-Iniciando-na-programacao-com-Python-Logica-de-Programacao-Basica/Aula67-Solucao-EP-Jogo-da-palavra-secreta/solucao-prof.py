@@ -14,6 +14,7 @@ na palavra secreta.
 Faça a contagem de tentativas do seu
 usuário.
 """
+# Esse módulo os serve para limpar o terminal!
 import os
 
 palavra_secreta = 'perfume'

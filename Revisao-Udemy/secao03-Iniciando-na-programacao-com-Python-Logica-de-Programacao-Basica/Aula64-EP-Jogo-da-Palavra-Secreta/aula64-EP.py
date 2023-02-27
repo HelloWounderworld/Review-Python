@@ -14,6 +14,7 @@ na palavra secreta.
 Faça a contagem de tentativas do seu
 usuário.
 """
+import os
 secret_word = input('Digite uma palavra secreta: ')
 exibe_palavra = ''
 numero_tentativas = 0
@@ -67,6 +68,7 @@ while True:
                         exibe_palavra += i
                     else:
                         exibe_palavra += '*'
+                os.system('clear')
                 break
             elif deseja_continuar == 'n':
                 print('Até a próxima!')

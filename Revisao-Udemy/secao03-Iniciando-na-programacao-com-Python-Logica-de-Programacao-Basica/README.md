@@ -1683,6 +1683,8 @@ Aqui será o que é pedido para o problema
     usuário.
     """
 
+Tente, depois que resolvido o problema, deixar o meu código o mais enxuto possível!
+
 ## Aula 65 - Sobre exercícios - não saber é normal:
 Lembre-se! O fato de surtir a vontade de aprender e vc estar aqui acompanhando isso já é um talento, até onde se sabe na definição da neurosciência! Pois, independente se a circunstância te obriga ou não, vc poderia ter optado por não fazer nada ou escolher outra coisa. Mas se vc se identificou, intencionalmente ou não, isso é um indício de que vc tem talento na área! O resto é persistência, vide a frase do Thomaz Edison
 
@@ -1695,6 +1697,13 @@ Bom, compara com a solução do professor com o seu!
 Bom, compara com a solução do professor com o seu!
 
 ## Aula 68 - Tipo list - Introdução às listas mutáveis em Python:
+Vamos aprender sobre listas.
+
+No caso, deixamos claro que as listas são muito, mas muito, usadas para vários trabalhos com linguagem Python.
+
+Basicamente, a lista em python é o array que eu ví em JavaScript e, claro, possui inúmeras funcionalidades similares que eu ví em JavaScript, para python tbm.
+
+Inclusive, vale dar uma revisão em JavaScript para lista para traçar um comparativo na lista em Python para ver o que são e o que não são similares de uso entre eles.
 
 ## Aula 69 - Alterando uma lista com índices, del, append e pop (Tipo list):
 
