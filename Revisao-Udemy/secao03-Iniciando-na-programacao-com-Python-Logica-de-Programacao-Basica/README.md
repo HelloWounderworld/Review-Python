@@ -1852,14 +1852,130 @@ Eu irei considerar como um exerício
     """
 
 ## Aula 75 - Introdução ao empacotamento e desempacotamento:
+No caso, vamos ver sobre atribuição via desestruturação (conhecido como empacotamento e desempacotamento) para lista em Python.
+
+No caso, será a minha revisão sobre atribuição via desestruturação.
+
+No caso, a lógica é a mesma do que estudei em JavaScript
+
+    nomes = ['Maria', 'Helena', 'Luiz']
+
+    nome1, nome2, nome3 = nomes
+
+    print(nome1)
+    print(nome2)
+    print(nome3)
+
+Agora, da mesma forma em JavaScript, as quantidades de variáveis tem que ser equivalentes com a quantidade de elementos que tem dentro da lista.
+
+Além disso, se quisermos definir somente uma variável usando a atribuição via desestruturação, a prática é análoga do que vimos em JavaScript
+
+    nome1, *resto = nomes
+    print(nome1)
+    print(resto)
+
+Ou seja, a única coisa que diferencia com o JavaScript está na sintaxe.
+
+Com relação ao resto, existe uma boa prática entre os desenvolvedores que indicam que o resto que tiver na lista não irei usar. Para isso, usamos o underline
+
+    # nome1, *resto = nomes
+    nome1, *_ = nomes
+    print(nome1)
+    # print(resto)
+    print(_)
+
+O mesmo serve para variáveis, usando atribuição via desestruturação, de que não vamos querer usar
+
+    # nome1, *resto = nomes
+    # nome1, *_ = nomes
+    _, nome2, *_ = nomes
+    # print(nome1)
+    print(nome2)
+    # print(resto)
+    print(_)
 
 ## Aula 76 - Tipo tuple (tuplas):
+Bom, como na aula anterior não discutimos muito bem sobre tuplas, vamos ver isso nessa aula.
+
+No caso, a tupla a sua sintaxe se dá pelo ()
+
+    nomes = ('Maria', 'Helena', 'Luiz')
+
+Podemos definir uma tupla sem usar o (), tbm
+
+    nomes = ('Maria', 'Helena', 'Luiz')
+
+Ela é uma lista imutável.
+
+Bom, tudo o que vc pode fazer numa lista, na qual não altere os elementos definidos dentro dela e/ou que modifique a quantidade da lista, vc pode fazer numa tupla.
+
+Uma outra forma de criarmos uma tupla seria convertendo de uma lista
+
+    nomes = ['Maria', 'Helena', 'Luiz']
+    print(nomes)
+    print('-----------------')
+    nomes1 = tuple(nomes)
+    nomes2 = list(nomes)
+    print(nomes1[-1])
+    print(nomes1)
+    print('-----------------')
+    print(nomes2[-1])
+    print(nomes2)
+    print('-----------------')
 
 ## Aula 77 - enumerate para enumerar valores de iteráveis (pegar índices):
+Vamos enumerar!! (No sentido matemático?? kkkkkkkk)
+
+No caso, dada uma lista não vazia, temos uma função chamado enumerate que enumera todos os índices da lista.
+
+Em outras palavras, é como uma sequência que exibe os seus índices donde cada elemento está definido
+
+    """
+    enumerate - enumera iteráveis (índices)
+    """
+    # O enumerate faz algo do tipo de baixo numa lista
+    # [(0, 'Maria'), (1, 'Helena'), (2, 'Luiz'), (3, 'João')]
+    lista = ['Maria', 'Helena', 'Luiz']
+    lista.append('João')
+    print(enumerate(lista))
+    print(list(enumerate(lista)))
+    # Podemos definir a partir de qual índice começará a ser enumerado.
+    print(list(enumerate(lista, start=19)))
+    print('-----------------------')
+    # Curioso que quando colocamos o enumerate no for, não precisamos colocar o list para iterar
+    for indice, nome in enumerate(lista):
+        print(indice, nome, lista[indice])
+    print('-----------------------')
+
+    for item in enumerate(lista):
+        print(item)
+        indice, nome = item
+        print(indice, nome)
+    print('-----------------------')
+
+    for tupla_enumerada in enumerate(lista):
+        print('FOR da tupla:')
+        for valor in tupla_enumerada:
+            print(f'\t{valor}')
+    print('-----------------------')
+
+No caso, pelo enumerate, o formato em que será exibido o indice e o elemento definido nesse índice estará no formato de tupla.
 
 ## Aula 78 - Exercício - crie uma lista de compras com listas:
+Vamos praticar listas!
+
+Segue a sentença
+
+    """
+    Faça uma lista de comprar com listas
+    O usuário deve ter a possibilidade de
+    inserir, apagar e listar valores da sua lista
+    Não permita que o programa quebre com 
+    erros de índices inexistentes na lista.
+    """
 
 ## Aula 79 - Solução do exercício - crie uma lista de compras com listas (com try / except):
+Compare com a solução do professor!
 
 ## Aula 80 - Imprecisão dos números de ponto flutuante + round e decimal.Decimal:
 
