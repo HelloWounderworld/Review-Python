@@ -2114,6 +2114,7 @@ Nesse método, note que, precisamos passar algum parâmetro para ela para unir s
 Obs: Até agora, somente a lista, string e tuples são iteráveis.
 
 ## Aula 82 - Listas dentro de listas (iteráveis dentro de iteráveis):
+É mais para quem não entendeu direito o conceito. Visto que se vc mnaja de matriz, então acaba sendo mais fácil a sua compreensão.
 
 ## Aula 83 - Detalhes sobre o interpretador do Python:
 
