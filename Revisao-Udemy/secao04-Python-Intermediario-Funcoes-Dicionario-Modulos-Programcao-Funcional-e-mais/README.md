@@ -1,6 +1,9 @@
 # Seção 4 - Python Intermediário - Funções, Dicionários, Módulos, Programação Funcional e +
 
 ## Aula 01 - O que vamos aprender nessa seção intermediária?:
+Se vc chegou até aqui firme e forte, pode se considerar um nível um pouco acima do intermediário na linguagem Python!
+
+Recomendamos que vc faça uma revisão do que vc aprendeu da seção anterior, pois daqui em diante, irei omitir certas tecnicalidades, esperando que a pessoa já entenda a msg por trás dessa omissão.
 
 ## Aula 02 - Introdução às funções Python - def define uma função:
 
