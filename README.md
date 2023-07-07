@@ -110,7 +110,7 @@ Caso, vc queira executar fora do ambiente virtual.
 
 Agora, temos o tema (opcional) e os ícones, donde vc pode escolher a extensão:
 
-    - Om Theme
+    - Omni Dracula VSCode Theme
 
     - Material Icon Theme
 

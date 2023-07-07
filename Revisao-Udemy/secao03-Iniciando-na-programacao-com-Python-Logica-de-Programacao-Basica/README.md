@@ -2156,17 +2156,216 @@ São comandos que vc pode executar pelo terminal propriamente da linguagem pytho
 Obs: Um detalhe que até agora não foi visto e que foi feito as aulas e exercícios de programas de forma natural, seria sobre o uso do ponto é vígula,;. No JavaScript, podemos ver que toda hora usamos esse caractere e até agora em python não ocorreu esse uso do caractere. Mas isso não significa que no python não tenha isso. Ou seja, tem sim. E vamos ver os momentos convenientes em que esse ponto e vígula seria necessário ser utilizado.
 
 ## Aula 84 - Desempacotamento em chamadas de funções:
+Vamos abordar sobre o assunto de desempacotamento em Python e de suas funções tbm.
+
+Vimos que a termos a seguinte situação
+
+    lista1 = ['Maria', 'Helena', 'Eduarda']
+    lista2 = ['Maria', 'Helena', 1, 2, 3, 'Eduarda']
+    
+    a1, b1, c1 = lista1
+    a2, b2, c2 = lista2
+    print(a1, c1)
+    print(a2, c2)
+
+Ao rodarmos o código acima, será retornado um erro para o print(a2, c2), visto que a lista2, ela está com mais elementos do que computado por a2, b2 e c2.
+
+    Traceback (most recent call last):
+    File "/home/leonardo/Documentos/estudos-programacao/Review-Python/Revisao-Udemy/secao03-Iniciando-na-programacao-com-Python-Logica-de-Programacao-Basica/Aula84-Desempacotamento-em-chamadas-de-funcoes/aula84.py", line 9, in <module>
+        a2, b2, c2 = lista2
+    ValueError: too many values to unpack (expected 3)
+
+O erro que será exibido está acima.
+
+Para corrigirmos esse erro, teremos que usar um asterisco com undeerline, que indica o resto, caso não usado
+
+    lista1 = ['Maria', 'Helena', 'Eduarda']
+    lista2 = ['Maria', 'Helena', 1, 2, 3, 'Eduarda']
+    
+    a1, b1, c1 = lista1
+    a2, b2, c2, *_ = lista2
+    print(a1, c1)
+    print(a2, c2)
+
+Porém, assim, não ficaria o mesmo que o print(a1, c1), ou seja, que printa a Maria e a Eduarda. No caso, o que seria necessário para conseguirmos realizar isso para o print(a2, c2)? Bastaríamos usar o resto, *_, no meio deles
+
+    lista1 = ['Maria', 'Helena', 'Eduarda']
+    lista2 = ['Maria', 'Helena', 1, 2, 3, 'Eduarda']
+    
+    a1, b1, c1 = lista1
+    a2, b2, *_, c2 = lista2
+    print(a1, c1)
+    print(a2, c2)
+
+Isso irá nos retornar o mesmo que está no print(a1, c1).
+
+Com a mesma analogia, podemos pegar o penúltimo elemento tbm, como seguinte
+
+    lista1 = ['Maria', 'Helena', 'Eduarda']
+    lista2 = ['Maria', 'Helena', 1, 2, 3, 'Eduarda']
+
+    a1, b1, c1 = lista1
+    a2, b2, *_, c2 = lista2
+    a3, b3, *_, c3, d3 = lista2
+    print(a1, c1)
+    print(a2, c2)
+    print(a3, c3, d3)
+
+Bom, não era isso o que iríamos abordar no assunto dessa aula. Porém, fica como um reforço sobre tuplas para vcs.
+
+O assunto em questão é sobre desempacotamento em chamadas de funções.
+
+Agora, suponhamos que queremos iterar uma lista. A forma comum de realizarmos isso é usando o for
+
+    lista2 = ['Maria', 'Helena', 1, 2, 3, 'Eduarda']
+
+    for nome in lista2:
+        print(nome)
+
+    for nome in lista2:
+        print(nome, end=' ') # Caso vc quer que ele exiba em uma linha, ele tira o \n, quebra de linha
+
+    for nome in lista2:
+        print(nome, sep=' ') # Caso vc quiser que seja exibido sem o separador
+
+    for nome in lista2:
+        print(nome, end=' ', sep=' ') # Caso vc quiser que seja exibido em uma lista e sem o separador
+
+Caso eu queira realizar o mesmo que no for que usamos o print(nome, end=' ', sep=' ') de maneira bem mais resumida, bastaria realizar o seguinte
+
+    lista2 = ['Maria', 'Helena', 1, 2, 3, 'Eduarda']
+
+    for nome in lista2:
+        print(nome)
+
+    for nome in lista2:
+        print(nome, end=' ') # Caso vc quer que ele exiba em uma linha, ele tira o \n, quebra de linha
+
+    for nome in lista2:
+        print(nome, sep=' ') # Caso vc quiser que seja exibido sem o separador
+
+    for nome in lista2:
+        print(nome, end=' ', sep=' ') # Caso vc quiser que seja exibido em uma lista e sem o separador
+
+    print(*lista2)
+
+O mesmo é possível realizar para outros tipos de valores
+
+    string = 'ABCD'
+    lista2 = ['Maria', 'Helena', 1, 2, 3, 'Eduarda']
+    tupla = 'Python', 'é', 'legal'
+
+    print(*lista2)
+    print(*string)
+    print(*tupla)
+
+Mas qual a parte legal disso? Seria que para lista mais complexas, podemos, usando isso, melhorar a sua visualização pelo terminal ou console.
+
+    salas = [
+        # 0        1
+        ['Maria', 'Helena', ],  # 0
+        # 0
+        ['Elaine', ],  # 1
+        # 0       1       2
+        ['Luiz', 'João', 'Eduarda', ],  # 2
+    ]
+
+    print(salas)
+    print(*salas)
+    print(*salas, end='\n')
+    print(*salas, sep='\n')
+
+No caso, isso que vimos, usando o print, é o desempacotamento em funções.
+
+Claro, podemos realizar a mesma coisa sem o uso de print, no caso, com a chamada de outras funções e isso será abordado ao longo das aulas.
 
 ## Aula 85 - Operação ternária com Python (if e else de uma linha):
+A Operação ternária nas linguagens de programação são bem famosas. Basicamente, estamos fazendo if-else em uma única linha.
+
+    print('Valor' if True else 'Outro valor')
+    print('Valor' if False else 'Outro valor')
+
+    condicao = 10 == 10
+    variavel = 'Valor' if condicao else 'Outro valor'
+    print(variavel)
+
+No caso, a única diferença é que nas outras linguagens a sintaxe para expressar essa lógica ternária é por "? :".
+
+Com a operação ternária podemos realizar, mesmo que não seja o recomendável, uma concatenação de lógica
+
+    'Valor' if True else 'Valor2' if True else 'Valor3' if True ...
 
 ## Aula 86 - Exercício - Gerar o primeiro dígito de um CPF com Python:
+Seguir a questão
+
+    """
+    Calculo do primeiro dígito do CPF
+    CPF: 746.824.890-70
+    Colete a soma dos 9 primeiros dígitos do CPF
+    multiplicando cada um dos valores por uma
+    contagem regressiva começando de 10
+
+    Ex.:  746.824.890-70 (746824890)
+    10  9  8  7  6  5  4  3  2
+    *  7   4  6  8  2  4  8  9  0
+    70  36 48 56 12 20 32 27 0
+
+    Somar todos os resultados: 
+    70+36+48+56+12+20+32+27+0 = 301
+    Multiplicar o resultado anterior por 10
+    301 * 10 = 3010
+    Obter o resto da divisão da conta anterior por 11
+    3010 % 11 = 7
+    Se o resultado anterior for maior que 9:
+        resultado é 0
+    contrário disso:
+        resultado é o valor da conta
+
+    O primeiro dígito do CPF é 7
+    """
 
 ## Aula 87 - Solução do exercício - Gerar o primeiro dígito de um CPF com Python:
+A minha solução foi mais robusta. Mas seguir a do professor!
 
 ## Aula 88 - Exercício - Gerar o segundo dígito de um CPF com Python:
+Seguir com a questão
+
+    """
+    Calculo do segundo dígito do CPF
+    CPF: 746.824.890-70
+    Colete a soma dos 9 primeiros dígitos do CPF,
+    MAIS O PRIMEIRO DIGITO,
+    multiplicando cada um dos valores por uma
+    contagem regressiva começando de 11
+
+    Ex.:  746.824.890-70 (7468248907)
+    11 10  9  8  7  6  5  4  3  2
+    *  7   4  6  8  2  4  8  9  0  7 <-- PRIMEIRO DIGITO
+    77 40 54 64 14 24 40 36  0 14
+
+    Somar todos os resultados:
+    77+40+54+64+14+24+40+36+0+14 = 363
+    Multiplicar o resultado anterior por 10
+    363 * 10 = 3630
+    Obter o resto da divisão da conta anterior por 11
+    3630 % 11 = 0
+    Se o resultado anterior for maior que 9:
+        resultado é 0
+    contrário disso:
+        resultado é o valor da conta
+
+    O segundo dígito do CPF é 0
+    """
 
 ## Aula 89 - Solução do exercício - Gerar o segundo dígito de um CPF com Python:
+Seguir com a solução do professor!
 
 ## Aula 90 - Possíveis problemas e soluções para nosso algoritmo do CPF:
+No caso, essa aula se trata mais para a finalidade de levarmos em consideração os casos em que o cpf digitado está com algumas "sujeiras" como espaços, ponto a mais, vírgula, etc...
+
+Para isso é usado uma formatação de texto para facilitar a edição do que foi informado e conseguir deixar no formato que queremos.
 
 ## Aula 91 - Criando um gerador de CPFs com nosso algoritmo e Python:
+Nessa aula, vamos aprender a criar um CPF com o algoritmo que desenvolvemos na aula de exercícios.
+
+Basicamente, para que seja necesssário gerar um CPF será necessário informar 9 números aleatórios.
