@@ -344,6 +344,7 @@ No caso, como a prioridade da ordem é de dentro para fora, então o print(y) ex
 Leitura:
 
     https://phylos.net/2021-06-01/python-escopos-e-namespaces
+    https://www.interviewcake.com/concept/java/call-stack#:~:text=The%20call%20stack%20is%20what,dice%20and%20printed%20the%20sum.
 
 ## Aula 07 - Retorno de valores das funções (return):
 
