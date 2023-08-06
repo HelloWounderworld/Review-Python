@@ -370,21 +370,222 @@ Mas, agora, suponhamos que tal valor exibido pelo "x+y" queremos que tal valor s
 
 Ou seja, a sintaxe "return", como o nome disse, ele retorna algum valor. E isso só pode ser executado dentro da função e que é uma sintaxe que serve para parar a execução de uma função. Ou seja, podemos criar uma função, donde combinado com condicionais, exista um conjunto de return. Quando acionado o return dentro de uma função, mesmo havendo outros códigos posteriores, ela não será mais executada. A função para exatamente nela.
 
-## Aula 08 - (Parte 1) *args para quantidade de argumentos não nomeados variáveis:
+## Aula 08 - (Parte 1) e (Parte 2) *args para quantidade de argumentos não nomeados variáveis:
+Agora, uma pergunta. Note que, a função print() podemos colocar quantos argumentos finitos que quisermos que ela é exibida no console ao ser executada
 
-## Aula 09 - (Parte 2) *args para quantidade de argumentos não nomeados variáveis:
+    print(1)
+    print(1,2,3)
+    print(1,2,3,4,5,6,7)
+
+Entretanto, em uma função personalizada, como soma(x,y), temos um limite de quantidade de argumentos que podemos colocar, donde, excedido isso, não será possível compilar a função
+
+    def soma(x,y):
+        return x + y
+
+Mas aí, vem a pergunta, existe alguma forma de conseguirmos dinamizar isso para as funções personalizadas como no print()?
+
+A resposta é sim. Vamos usar a sintaxe "*args", como podemos ver no exemplo abaixo
+
+    x, y, *resto = 1, 2, 3, 4, 5, 6, 7
+    print(x,y,resto)
+
+Podemos realizar isso em funções personalizada tbm, como segue
+
+    def soma(*args):
+        print(args, type(args))
+
+    soma(1,2,3,4,5,6,7)
+
+Vamos ver que o "print(args)" devolve os argumentos que passamos em soma(1,2,3,4,5,6,7) na forma de tupla. Claro que podemos alterar essa tupla para uma lista como segue
+
+    def soma(*args):
+        args = list(args)
+        print(args, type(args))
+
+    soma(1,2,3,4,5,6,7)
+
+Mas, a finalidade nossa aqui dessa função é realizarmos a soma dos valores que foram passados no argumento
+
+    def soma(*args):
+        sum = 0
+        for i in args:
+            sum+=i
+        return sum
+
+    print(soma(1,2,3,4,5,6,7))
+
+Além disso, em vez de passarmos os argumentos uma por uma, poderíamos criar uma variável que carrega todos os argumentos queremos passar em uma função
+
+    def soma(*args):
+        sum = 0
+        for i in args:
+            sum+=i
+        return sum
+
+    random = 1,2,3,4,5,6,7
+    print(soma(random))
+
+Ops... Creio que não funcinou, pois foi mostrado a seguinte msg, que vc está mandando uma tupla e o "*args" ela forma uma tupla no conjunto de argumentos. Mas, então, qual a forma correta de guardarmos um conjunto de argumentos em uma variável e passar isso em uma função? Bom, bastaríamos colocar um asterisco na variável que carrega o argumento
+
+    def soma(*args):
+        sum = 0
+        for i in args:
+            sum+=i
+        return sum
+
+    random = 1,2,3,4,5,6,7
+    print(soma(*random))
+
+No caso, o que foi feito acima, é um ato de desempacotamento, como foi feito no exemplo do "x, y, *resto".
 
 ## Aula 10 - Exercícios com funções + Solução (prepare-se para pausar):
+Bora praticar! Segue o enunciado
+
+Primeiro enunciado
+
+    # Exercícios com funções
+
+    # Crie uma função que multiplica todos os argumentos
+    # não nomeados recebidos
+    # Retorne o total para uma variável e mostre o valor
+    # da variável.
+
+Segundo enunciado
+
+    # Crie uma função fala se um número é par ou ímpar.
+    # Retorne se o número é par ou ímpar.
 
 ## Aula 11 - Higher Order Functions - Funções de primeira classe:
+Vamos entender sobre funções de primeira classe. Basicamente, a definição de funções de primeira classe significa que, assim como outros dados em Python, as funções em Python, também, podem ser tratadas como um dado.
+
+    def saudacao(msg):
+        return msg
+
+    print(saudacao('Bom dia!'))
+
+No caso, como a definição acima se aplica, pegando a função, saudacao, como exemplo, podemos realizar a seguinte tratativa nela como se fosse um dado mesmo
+
+    def saudacao(msg):
+        return msg
+
+    saudacao_2 = saudacao
+    random = saudacao_2('Boa noite!!!')
+    print(random)
+    print(saudacao('Bom dia!'))
+
+Ou seja, note que, na variável "saudacao_2" estou atribuindo à ela "saudacao" que é o nome da função e, em seguida, usando a variável "saudacao_2" como se fosse uma função colocando um argumento 'Boa notie!!!'.
+
+Nessa brincadeira, podemos definir uma função que decide ou não executar alguma outra função, como segue
+
+    def saudacao(msg):
+        return msg
+
+    def executa(funcao):
+        return funcao()
+
+    saudacao_2 = saudacao
+    random = executa(saudacao_2)
+    print(random)
+
+Entretanto, do jeito como está acima dará erro, pois na função "saudacao" ela exige que tenha algum argumento e na chamada acima não considera nenhum tipo de argumento. Para resolvermos isso, seria necessário colocar "*arg" como mais um argumento da função "executa"
+
+    def saudacao(msg):
+        return msg
+
+    def executa(funcao, *arg):
+        return funcao(*arg)
+
+    saudacao_2 = saudacao
+    random = executa(saudacao_2, 'Boa tarde!')
+    print(random)
+
+Claro, no lugar de "*arg" poderia ser um parâmetro simples, mas o *arg ela serve mais para podemos conseguir flexibilizar mais a quantidade de argumentos, caso, por ventura, eu acabe colocando mais parâmetros dentro da função saudacao
+
+    def saudacao(msg, nome):
+        return f'{msg}, {nome}'
+
+    def executa(funcao, *arg):
+        return funcao(*arg)
+
+    saudacao_3 = saudacao
+    random = executa(saudacao_3, 'Boa tarde', 'Leonardo')
+    print(random)
 
 ## Aula 12 - Termos técnicos: Higher Order Functions e First-Class Functions:
+Academicamente, os termos Higher Order Functions e First-Class Functions têm significados diferentes.
+
+- Higher Order Functions - Funções que podem receber e/ou retornar outras funções
+
+- First-Class Functions - Funções que são tratadas como outros tipos de dados comuns (strings, inteiros, etc...)
+
+Não faria muita diferença no seu código, mas penso que deveria lhe informar isso.
+
+Observação: esses termos podem ser diferentes e ainda refletir o mesmo significado.
 
 ## Aula 13 - Closure e funções que retornam outras funções:
+O Closure, no caso, ela é a definição do que vimos de funções de primeira classe nas aulas anteriores, quando definimos a função "executa". Ou seja, é uma função que retorna outras funcções.
 
-## Aula 14 - Exercício com funções:
+Vamos abordar o assunto com mais profundidade explorando o que mais de interessante podemos conseguir obter desse conceito
 
-## Aula 15 - Solução do exercício com funções:
+    def criar_saudacao(saudacao, nome):
+        return f'{saudacao}, {nome}!'
+
+    s1 = cria_saudacao('Bom dia', 'Leonardo')
+    s2 = cria_saudacao('Boa noite', 'Leonardo')
+    print(s1)
+    print(s2)
+
+Bom, o formato da função acima, ainda não é uma clousure. Mas, basicamente, já podemos ver que ela retorna a saudação que queremos fazer de forma correta. Agora, começando a implementar o clousure, que é criar uma funçõa que exeucta outra função, podemos realizar a seguinte modificação da função acima
+
+    def criar_saudacao(saudacao, nome):
+        def saudar():
+            return f'{saudacao}, {nome}!'
+        return saudar()
+
+    s1 = cria_saudacao('Bom dia', 'Leonardo')
+    s2 = cria_saudacao('Boa noite', 'Leonardo')
+    print(s1)
+    print(s2)
+
+No caso, se executarmos o script acima, vamos ver que tudo continua ocorrendo de forma correta. Porém, mesmo assim, ainda não é definitivamente uma clousure, pois, lembrando novamente, clousure ela nos dá mais flexibilidade de executar as funções nos momentos que queremos que ela seja executada ou não. A função acima, uma vez acionada, ela será executada e feito o devido retorno, f'{saudacao}, {nome}!'. Porém, temos uma forma de conseguirmos evitar que isso ocorra e de conseguirmos atribuir às variáveis "s1" e "s2" somente as funções saudar() prontas para serem executadas, mas não executando-as
+
+    def criar_saudacao(saudacao, nome):
+        def saudar():
+            return f'{saudacao}, {nome}!'
+        return saudar
+
+    s1 = cria_saudacao('Bom dia', 'Leonardo')
+    s2 = cria_saudacao('Boa noite', 'Leonardo')
+    print(s1)
+    print(s2)
+
+Ao rodarmos o script acima, vamos ver que os dois prints retornam a memória da função saudar (o que indica que as informações estão guardadas na memória), que são diferentes entre "s1" e "s2", mas não o que de fato essa função, saudar(), retorna que é a saudação. Ou seja, isso significa que as duas variáveis "s1" e "s2" passam a serem funções que vc tem a liberdade de definir o momento em que ela será executada
+
+    def criar_saudacao(saudacao, nome):
+        def saudar():
+            return f'{saudacao}, {nome}!'
+        return saudar
+
+    s1 = cria_saudacao('Bom dia', 'Leonardo')
+    s2 = cria_saudacao('Boa noite', 'Leonardo')
+    print(s1)
+    print(s1())
+
+    print(s2)
+    print(s2())
+
+Basicamente, isso é o clousure. Ou seja, vc não executa a função, mas as informações dos argumentos que vc passou estão guardadas na memória, e vc terá acessao só no momento em que vc executa, fechando os parênteses (close, por issoclosure) para, aí sim, acessar as informações que ficam guaradadas na memória do computador.
+
+Aciona o Breakpoint para verificar isso passo a passo e ver como funciona e ver se está de acordo com o que foi abordado acima!
+
+Bom, a clousure, praticamente, é o que define o paradigma de uma programação funcional.
+
+## Aula 14 e 15 - Exercício com funções e Solução do exercício com funções:
+Bora praticar! Seguir o enunciado
+
+    # Exercícios
+    # Crie funções que duplicam, triplicam e quadruplicam
+    # o número recebido como parâmetro.
 
 ## Aula 16 - Introdução ao tipo de dados dict - Dicionários em Python:
 
