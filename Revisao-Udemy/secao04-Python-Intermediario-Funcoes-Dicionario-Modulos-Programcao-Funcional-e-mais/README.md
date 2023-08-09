@@ -580,6 +580,9 @@ Aciona o Breakpoint para verificar isso passo a passo e ver como funciona e ver 
 
 Bom, a clousure, praticamente, é o que define o paradigma de uma programação funcional.
 
+    https://www.programiz.com/python-programming/closure
+    https://www.learnpython.org/en/Closures
+
 ## Aula 14 e 15 - Exercício com funções e Solução do exercício com funções:
 Bora praticar! Seguir o enunciado
 
