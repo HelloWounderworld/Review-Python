@@ -756,15 +756,123 @@ Vamos explorar os métodos usuais na linguagem Python.
 Logo, são elas
 
 - len: Conta a quantidade de chaves ou elementos existentes dentro de um dicionário e lista, respectivamente.
-    Mais pela frente, vamos aprender a montar uma classe usando o Python que é o momento em que entramos no conceito da programação orientada à objetos.
+    
+    Mais pela frente, vamos aprender a montar uma classe usando o Python que é o momento em que entramos no conceito da programação orientada à objetos. No caso, por curiosidade, iremos mostrar as duas formas de usarmos tais métodos que é uma classe
+
+        pessoa = {
+            'nome': 'Leonardo Takashi',
+            'sobrenome': 'Teramatsu'
+        }
+
+        print(pessoa.__len__())
+        print(len(pessoa))
+
+    Lembramos, um detalhe importante de um dicionário, é que ele, mesmo não sendo definitivamente, ele é como um conjunto, ou seja, vc poderia definir várias chaves iguais
+
+        pessoa = {
+            'nome': 'Leonardo Takashi',
+            'sobrenome': 'Teramatsu1',
+            'sobrenome': 'Teramatsu2',
+            'sobrenome': 'Teramatsu3'
+        }
+
+        print(pessoa['sobrenome'])
+
+    No caso, acima, no print, será exibido o último valor que foi definido para a chave "sobrenome".
+
+    Além disso, ao analisarmos o comprimento desse dicionário, usando o "len", será exibido um valor "2". Como havíamos dito que esse dicionário, mesmo não sendo definitivamente um conjunto, mas ele se comporta como uma, em um conjunto vc poderia colocar infinitos elementos repetidos dentro dela que, ainda sim, será assimilado que existe um elemento desse dentro dela, o que difere, por exemplo, com a lista.
+
+        pessoa = {
+            'nome': 'Leonardo Takashi',
+            'sobrenome': 'Teramatsu1',
+            'sobrenome': 'Teramatsu2',
+            'sobrenome': 'Teramatsu3'
+        }
+
+        print(pessoa['sobrenome'])
+        print(pessoa.__len__())
+        print(len(pessoa))
 
 - keys: Permite que iteremos um dicionário via chave e não pelos valores definidos em cada chave.
 
+    O método "keys" ele retorna as chaves que são definidos dentro de um dicionários. No caso, o seu uso se dá como segue
+
+        pessoa = {
+            'nome': 'Leonardo Takashi',
+            'sobrenome': 'Teramatsu'
+        }
+
+        print(pessoa.keys())
+
+    No caso, ele retorna um dict_keys com uma lista dentro dela. No caso, claro, podemos sim acessar os valores das chaves dentro dela, mas não diretamente. Precisamos converter-las como seguinte
+
+        pessoa = {
+            'nome': 'Leonardo Takashi',
+            'sobrenome': 'Teramatsu'
+        }
+
+        print(pessoa.keys())
+        print(tuple(pessoa.keys()))
+        print(list(pessoa.keys()))
+
+    Que é o famoso processo de coersão.
+
 - values: Permite que iteremos um dicionário via os valores que são definidos para cada chave.
+
+    Agora, para entender o uso desse método vamos primeiro iterar o dicionário
+
+        pessoa = {
+            'nome': 'Leonardo Takashi',
+            'sobrenome': 'Teramatsu'
+        }
+
+        for chave in pessoa:
+            print(chave)
+        
+        for chave in pessoa.keys():
+            print(chave)
+
+    Em ambos os for's, será retornado as chaves que foram definidos dentro do dicionário "pessoa".
+
+    Agora, o values, entra dentro desse cenário, para mostrarmos que erla irá retornar os valores do que as chaves como segue
+
+        pessoa = {
+            'nome': 'Leonardo Takashi',
+            'sobrenome': 'Teramatsu'
+        }
+
+        for chave in pessoa:
+            print(chave)
+        
+        for chave in pessoa.keys():
+            print(chave)
+
+        print(pessoa.values())
+        print(tuple(pessoa.values()))
+        print(list(pessoa.values()))
+
+        for chave in pessoa.values():
+            print(chave)
+
+    No caso, podemos se utilizar do método values como o keys, donde a única diferença é que, em vez de chaves, ele retornará os valores.
 
 - items: Permite que iteremos via chave e o valor correspondente.
 
+    O uso do método "items", também, é similar ao uso dos outros dois métodos acima, "keys" e "values". No caso, ela irá nos retornar tanto a chave quanto o valor na forma de tuplas em pares
+
+        print(pessoa.items())
+        print(tuple(pessoa.items()))
+        print(list(pessoa.items()))
+
+        for item in pessoa.items():
+            print(item)
+
+        for chave, valor in pessoa.items():
+            print(chave, valor)
+
 - setdefault: adiciona o valor caso não exista a chave.
+
+    
 
 - copy: retorna uma cópia rasa (shallow copy).
 
