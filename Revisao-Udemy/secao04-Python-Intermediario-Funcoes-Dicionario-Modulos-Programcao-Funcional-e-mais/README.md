@@ -756,6 +756,7 @@ Vamos explorar os métodos usuais na linguagem Python.
 Logo, são elas
 
 - len: Conta a quantidade de chaves ou elementos existentes dentro de um dicionário e lista, respectivamente.
+
 Mais pela frente, vamos aprender a montar uma classe usando o Python que é o momento em que entramos no conceito da programação orientada à objetos.
 
 - keys: Permite que iteremos um dicionário via chave e não pelos valores definidos em cada chave.
