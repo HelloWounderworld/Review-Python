@@ -1345,3 +1345,41 @@ São elas, as mais usuais
 ## Aula 51 - Modularização - Entendendo os seus próprios módulos e sys.path no Python:
 
 ## Aula 52 - Como importar coisas do seu próprio módulo (ponto de vista do __main__):
+
+## Aula 53 - Recarregando módulos, importlib e singleton:
+
+## Aula 54 - Introdução aos packages (pacotes) em Python:
+
+## Aula 55 - O ponto de vista do __main__ pode te confundir em módulos e pacotes Python:
+
+## Aula 56 - __init__.py é um arquivo de inicialização dos packages em Python:
+
+## Aula 57 - Proposta de 3 exercícios em um:
+
+## Aula 58 - Solução - Proposta de 3 exercícios em um:
+
+## Aula 59 - Exercício - Adiando execução de funções:
+
+## Aula 60 - Solução - Exercício - Adiando execução de funções:
+
+## Aula 61 - Variáveis livres + nonlocal (locals, globals):
+
+## Aula 62 - Funções decoradoras em geral:
+
+## Aula 63 - Decoradores em Python (@syntax_sugar):
+
+## Aula 64 - Decoradores com parâmetros:
+
+## Aula 65 - Ordem de aplicação dos decoradores:
+
+## Aula 66 - Exercício - Unir listas:
+
+## Aula 67 - Solução do Exercício + zip e zip_longest do itertools:
+
+## Aula 68 - Exercícios - somando duas listas:
+
+## Aula 69 - Exercício solucionado - somando listas:
+
+## Aula 70 - count é um iterador sem fim (itertools):
+
+## Aula 71 - Combinations, Permutations e Product - Itertools:
