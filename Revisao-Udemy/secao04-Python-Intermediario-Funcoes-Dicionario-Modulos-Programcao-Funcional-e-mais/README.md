@@ -1377,10 +1377,235 @@ Seguir o enunciado do exercício.
     ]
 
 ## Aula 30 - Introdução à função lambda + list.sort e sorted:
+Vamos aprender sobre função lambda em Python.
+
+No caso, a função lambda é uma função anônima de uma linha. No caso, sempre que montamos uma função lambda, toda a relação deverá estar contida em uma única linha.
+
+    lista = [4, 32, 1, 34, 5, 6, 6, 21, ]
+    lista.sort(reverse=True)
+    sorted(lista)
+
+No caso, a funçã, usado acima, é uma função de ordenação, mas não é um função lambda. No caso, acima, é um exemplo simples de ordenação, visto que temos os números inteiros sendo usado nela. Agora, imagina se quisermos realizar uma espécie de ordenação numa lista de bibliotecas como seguite
+
+    lista = [
+        {'nome': 'Luiz', 'sobrenome': 'miranda'},
+        {'nome': 'Maria', 'sobrenome': 'Oliveira'},
+        {'nome': 'Daniel', 'sobrenome': 'Silva'},
+        {'nome': 'Eduardo', 'sobrenome': 'Moreira'},
+        {'nome': 'Aline', 'sobrenome': 'Souza'},
+    ]
+
+No caso, não iremos conseguir usar o sort() como acima, pois aqui temos dicionarios entre dicionários, donde não há uma ordem entre objetos para conseguirmos realizar a tal ordenação que tanto queremos. Uma das maneiras, que podemos usar o sort() para conseguirmos realizar alguma ordenação de forma mais flexível, no sentido de definirmos os parâmetros que queremos considerar para realizar a ordenação seria usando o "key" dentro do sorte e nela passar alguma função que considera algum indice dentro da ordenação.
+
+    def ordena(item):
+        print('Objeto a ser ordenado: ', item)
+        return item['nome']
+
+    lista.sort(key=ordena)
+    print(lista)
+
+No caso, o que está acontecendo acima, seria que usamos a função ordena dentro do sort(). Ou seja, conseguimos definir por qual parâmetro consideramos paramos realizarmos a tal ordenação, 'nome'.
+
+Lembrando que o Python, ele utiliza a tabela unicode para considerar a ordenação de qualquer caracteres. No nosso caso, o unicode é o utf8.
+
+Entretanto, até agora, não abordamos função lambda. Vamos, agora, finalmente, usar uma função lambda para mostrarmos como isso ficaria mais flexivel do que o formato acima para conseguirmos realizar a devida ordenacação
+
+    lista.sort(key=lambda item: item['nome'])
+
+No caso, acima é definitivamente a função lambda. Note que, a versão da função lambda acima, é o último exemplo que mostramos de ordenação usando "key" de forma enxuta.
+
+Podemos realizar a mesma ordenação aplicando a função lambda dentro da função sorted tbm, como segue
+
+    sorted(lista, key=lambda item: item['nome'])
+
+No caso, a ordenação acima é reversa.
 
 ## Aula 31 - Funções lambda complexas (para entendimento):
+Bom, vamos ver como podemos verificar que tais funções podem ou não serem convertidos em uma função lambda.
+
+Segue as funções seguintes
+
+    def executa(funcao, *args):
+        return funcao(*args)
+
+    def soma(x,y):
+        return x + y
+
+    def cria_multiplicador(multiplicador):
+        def multiplica(numero):
+            return numero * multiplicador
+        return multiplica
+    
+    print(executa(cria_multiplicador(soma(1,3)), 10))
+
+Vamos, agora, aprender a converter as funções acima em funções lambdas.
+
+- Primeiro, vamos converter a função soma em função lambda
+
+        print(
+            executa(
+                lambda x,y: x+y,
+                9, 3
+            ),
+            executa(soma, 9,3),
+            soma(9,3)
+        )
+
+    Note que, a forma acima, retornará o que precisamos.
+
+    Uma outra forma mais eficiente de realizarmos essa soma para mais e mais parâmetros seria da seguinte forma
+
+        print(
+            executa(
+                lambda *args: sum(args),
+                1,2,3,4,5,6,7
+            )
+        )
+
+    Neste caso, estou usando a função "sum" para conseguirmos  realizar as devidas somas.
+
+- Agora, vamos converter a função cria_multiplicador em uma função lambda:
+
+    No caso, essa função, como ela executa uma outra função que está definida dentro dela, ficaria um pouco mais complicado realizar a devida execução
+
+        duplica = executa(
+                lambda x: lambda y: x*y,
+                19
+            )
+
+        print(duplica(3))
+
+    No caso, como a função criar_multiplicador ela serve para retornar alguma uma outra função, então na variável duplica precisamos criar uma função lambda e dentro dessa função lambda retornar outra função lambda onde essa função lambda de dentro ela retorna a multiplicação dos parâmetros da primeira função lambda e da segunda, que está definida dentro da primeira. E o duplica, finalmente, executa a segunda função lambda, visto que colocamos o segundo parâmetro para conseguirmos realizar a multplicação.
+
+    Entretanto, notamos que a função lambda acima ficou muito complexo. No caso, a dica é não usar dessa forma. Claro, não significa que seria tranquilo, mas não é recomendável à esse nível que tornaria o código difícil para realizar a leitura.
+
+Obs: É considerado como uma má prática a seguinte forma de função lambda
+
+    funcao = lambda parametro: parametro
 
 ## Aula 32 - Empacotamento e desempacotamento de dicionários + *args e **kwargs:
+Nessa aula, vamos aprender sobre empacotamento e desempacotamento de dicionários.
+
+No caso, o que é empacotamento e desempacotamento de dicionários? Seria o seguinte
+
+    a, b = 1, 2
+    a, b = b, a
+    print(a, b)
+
+Note que, no caso, acima realizamos esse processo em valores imutáveis. Mas a mesma analogia é aplicado para dicionários como seguinte
+
+    pessoa = {
+        'nome': 'Leonardo',
+        'sobrenome': 'Hayashi'
+    }
+
+    a, b = pessoa
+    print(a, b)
+
+No caso, na forma acima, o print retornará as chaves do dicionário pessoa.
+
+Mas, podemos definir de uma forma que retorne os valores definidos nas chaves como seguinte
+
+    pessoa = {
+        'nome': 'Leonardo',
+        'sobrenome': 'Hayashi'
+    }
+
+    a, b = pessoa.values()
+    print(a, b)
+
+Ou, podemos desempacotar na forma de itens tbm como seguinte
+
+    pessoa = {
+        'nome': 'Leonardo',
+        'sobrenome': 'Hayashi'
+    }
+
+    a, b = pessoa.items()
+    print(a, b)
+
+Podemos, tbm, realizar um desempacotamento interno como seguinte
+
+    pessoa = {
+        'nome': 'Leonardo',
+        'sobrenome': 'Hayashi'
+    }
+
+    (a1, a2), b = pessoa.items()
+    print(a1, a2)
+    print(b)
+
+Podemos usar essa mesma lógica e aplicar na iteração
+
+    for chave, valor in pessoa.items():
+        print(chave, valor)
+
+Agora, se quisermos unir dois dicionários como seguinte
+
+    pessoa = {
+        'nome': 'Leonardo',
+        'sobrenome': 'Hayashi'
+    }
+
+    dados_pessoa = {
+        'idade': 26,
+        'altura': 1.84
+    }
+
+    print(pessoa, dados_pessoa)
+
+Bom, uma alternativa que temos para realizar a união dos dois dicionários, seria criando um terceiro dicionários e dentro dela extrair os dois dicionários
+
+    pessoa = {
+        'nome': 'Leonardo',
+        'sobrenome': 'Hayashi'
+    }
+
+    dados_pessoa = {
+        'idade': 26,
+        'altura': 1.84
+    }
+
+    pessoa_completa = {**pessoa, **dados_pessoa}
+
+    print(pessoa, dados_pessoa)
+    print(pessoa_completa)
+
+Uma outra alternativa seria usando o kwargs, que é conhecido como "keyword arguments". Daí, podemos utilizar dessa funcionalidade da seguinte forma
+
+    def mostro_argumentos_nomeados(*args, **kwargs):
+        print(kwargs)
+
+    mostro_argumentos_nomeados(nome='Leonardo', qlq=1236)
+
+Note que, no print dentro dessa função, ao passarmos os parâmetros da forma costumeira de definir os elementos dentro do dicionario, devolverá um dicionário.
+
+A parte legal disso, seria que isso nos permitirá iterar num for da seguinte forma
+
+    def mostro_argumentos_nomeados(*args, **kwargs):
+        for chave, valor in kwargs.items():
+            print(chave, valor)
+
+    mostro_argumentos_nomeados(nome='Leonardo', qlq=1236)
+
+No caso, a função acima reconhece os argumentos não nomeados tbm. No caso, podemos passar os parâmetros como seguinte tbm
+
+    def mostro_argumentos_nomeados(*args, **kwargs):
+        print('Não nomeados: ', args)
+        for chave, valor in kwargs.items():
+            print(chave, valor)
+
+    mostro_argumentos_nomeados(1, 2, 3, nome='Leonardo', qlq=1236)
+
+No caso, podemos, também, passar como argumento dentro dessa função um dicionário desempacotado como seguinte
+
+    def mostro_argumentos_nomeados(*args, **kwargs):
+        for chave, valor in kwargs.items():
+            print(chave, valor)
+
+    mostro_argumentos_nomeados(**pessoa_completa)
+
+Bom, por vias didáticos, a função mostro_argumentos_nomeados, definido acima, ela serve tanto para valores não nomeados quanto para nomeados, respectivamente, *args e **kwargs.
 
 ## Aula 33 - Introdução à List comprehension em Python:
 
