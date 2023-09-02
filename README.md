@@ -3,7 +3,7 @@ Esse repositório será uma revisão minha da linguagem python que aprendi na fa
 
 Conforme o meu progresso na revisão, irei reviver os meus códigos que eu criei no passado, no intuito de exercer as minhas skills sobre essa linguagem de programação.
 
-## Refrência:
+## Referência:
 Usarei as seguintes referências:
 
 - Curso Udemy, Curso de Python 3 do Básico Ao Avançado (com projetos reais), Luiz Otávio Miranda.
