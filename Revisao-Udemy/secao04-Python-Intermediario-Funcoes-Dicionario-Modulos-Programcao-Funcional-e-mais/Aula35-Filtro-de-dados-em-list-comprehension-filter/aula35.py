@@ -13,6 +13,10 @@ novos_produtos = [
     {**produto, 'preco': produto['preco']}
     if produto['preco'] > 20 else {**produto}
     for produto in produtos
+    if produto['preco'] > 10
 ]
 
 p(novos_produtos)
+
+lista = [n for n in range(10) if n < 5]
+p(lista)

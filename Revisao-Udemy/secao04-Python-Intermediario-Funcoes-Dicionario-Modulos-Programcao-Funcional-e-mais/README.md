@@ -1715,7 +1715,7 @@ No caso, vemos que usamos uma condição ternária acima.
 ## Aula 35 - Filtro de dados em list comprehension (filter):
 Vamos, agora, aprender a fazer a list comprehension usando o filtro.
 
-Mas, antes de abordamos o assunto, vamos melhorar a nossa forma de exibição importando um módulo chamado "pprint". Da seguinte forma
+Mas, antes de abordamos o assunto, vamos melhorar a nossa forma de exibição importando um módulo chamado "pprint", pretty print. Da seguinte forma
 
     import pprint
 
@@ -1732,15 +1732,254 @@ Ou seja, podemos definir vários parâmetros que podem ser ou não ser considera
     def p(v):
         pprint.pprint(v, sort_dicts=False, width=40)
 
+Agora, vamos partir para a abordagem do filtro em list comprehension. No caso, vamos criar um list comprehension simples primeiro
+
+    lista = [n for n in range(10)]
+    p(lista)
+
+Daí, vamos conseguir realizar o filtro usando o if, no caso, essa condicional virá depois do for, pois é uma condicional que definirá se um determinado elemento será incluído na lista ou não
+
+    lista = [ n for n in range(10) if n < 5]
+    p(lista)
+
+Note que, só foi incluído os elementos que satisfez a condicional acima. No caso, isso é uma forma de realizar o filtro. Agora, vamos misturar, com o filtro e o mapeamento, ou seja, as condicionais antes do for e depois do for
+
+    produtos = [
+        {'nome': 'p1', 'preco': 20, },
+        {'nome': 'p2', 'preco': 10, },
+        {'nome': 'p3', 'preco': 30, },
+    ]
+
+    novos_produtos = [
+        {**produto, 'preco': produto['preco']}
+        if produto['preco'] > 20 else {**produto}
+        for produto in produtos
+        if produto['preco'] > 10
+    ]
+
+    p(novos_produtos)
+
+No caso, a interpretação acima, do if depois do for, é inclua o produto dentro da lista, se o preço dele for acima do 10.
+
+Bom, como podemos ver a lógica condicional tanto do mapeamento quanto do filtro acima, não está tão legal. Obviamente, caso realizarmos o uso delas iremos colocar uma lógica mais conveniente. Porém, o importante aqui é entender a diferença entre o conceito de mapeamento e filtro. Enquanto que o mapeamento ela serve para vc colocar as condicionais sem selecionar o que será ou não incluso na lista, de modo que, sempre no final o tamanho da lista seja o mesmo que a quantidade de iterações realizadas por for, o filtro vc usa as condicionais e que não necessariamente, no final, o tamanho da lista esteja no mesmo tamanho que a quantidade de iterações que foi feito pelo for. Claro, podemos combinar os dois, como podemos ver acima, mas recomendamos o leitor entender direitinho o conceito de mapeamento e filtro para manusear as condicionais de forma mais flexível e que faça sentido.
+
 ## Aula 36 - List comprehension com mais de um for:
+Uma outra coisa legal de list comprehension em python é que podemos usar iterações dentro de iterações. Ou seja, quantos for que quisermos.
+
+Suponhamos o seguinte cenário
+
+    lista = []
+
+    for x in range(3):
+        for y in range(3):
+            lista.append((x,y))
+
+Bom, vamos tentar realizar o cenário acima usando list comprehension. No caso, ficaria da seguinte forma
+
+    lista2 = [(x,y) for x in range(3) for y in range(3)]
+
+Lembrando, que no list comprehension, o que fica no lado esquerdo do for é o que será incluído dentro da lista.
+
+Essa mesma forma de iteração podemos realizar da seguinte forma tbm
+
+    lista3 = [
+        [x for y in range(3)]
+        for x in range(3)
+    ]
+
+Em outras palavras, a interpretação disso seria, para cada índice x itero o x dentro da lista, que fica dentro da lista, três vezes pelo índice y.
+
+Bom, o legal disso é que podemos usar para criação de matrizes de forma rápida para aplicações de conceitos de álgebra linear, Análise no Rn e Probabilidade e Estatística.
 
 ## Aula 37 - Mais detalhes sobre list comprehension:
+Eu criei um vídeo gratuito falando muito mais sobre list comprehension tirando como base as dúvidas desse curso. Veja em 
+
+    https://youtu.be/1YbTDczvqco
+
+Professor Luiz Otávio!
 
 ## Aula 38 - Dictionary Comprehension e Set Comprehension:
+Bom, como podemos imaginar, se existe list comprehension, então existe sim dictionary comprehension e set comprehension e vamos abordar sobre tais conteúdos nessa aula.
+
+- Dictionary Comprehension:
+
+    Vamos considerar o seguinte dicionário
+
+        produto = {
+            'nome': 'Caneta Azul',
+            'preco': 2.5,
+            'categoria': 'Escritório'
+        }
+
+    Como se aplica o conceito de comprehension dentro do dicionário? Bom, a lógica é a mesma que foi abordado para list comprehension.
+
+    Logo, fazemos o seguinte, lembra que para o dicionário podemos fazer um for que pega tanto a chave quanto o valor dessa chave?
+
+        novos_produtos = {
+            chave: valor
+            for chave, valor in produto.items()
+        }
+
+        p(novos_produtos)
+
+    Importamos o módulo pprint.
+
+    Bom, a mesma coisa podemos realizar para criar uma nova tupla
+
+        tupla_produto = (
+            (chave, produto)
+            for chave, produto in produto.items()
+        )
+
+        p(tuple(tupla_produto))
+
+    Claro, que se temos como fazer o dictionary comprehension, podemos, também, realizar os devidos mapeamentos e filtros. Por exemplo, se quisermos fazer com que todos os valores de strings sejam maiúculas, como no meio dos valores existe float, então precisaríamos colocar alguma condicional para possibilitar isso
+
+        novos_produtos = {
+            chave: valor.upper()
+            if isinstance(valor, str) else valor
+            for chave, valor in produto.items()
+        }
+
+        p(novos_produtos)
+
+    Lembrando que o par if/else para mapeamento é necessário.
+
+    No uso so isinstance() acima, podemos colocar uma condição em forma de tupla para ter mais possibilidades de análise booleana, pois viraria uma lógica de "ou". São elas
+
+        novos_produtos = {
+            chave: valor
+            if isinstance(valor, (int, float)) else valor.upper()
+            for chave, valor in produto.items()
+        }
+
+        p(novos_produtos)
+
+    Podemos, também, como previsto, realizar filtros acima disso para selecionarmos os tipos de valores que podemos colocar dentro do dicionário
+
+        novos_produtos = {
+            chave: valor
+            if isinstance(valor, (int, float)) else valor.upper()
+            for chave, valor in produto.items()
+            if chave == 'categoria'
+        }
+
+        p(novos_produtos)
+
+    Lembrando que, em filtros, usamos somente o if, não podemos usar else.
+
+    Claro que, visto list comprehension e dictionary comprehension, podemos misturar tbm. Ou seja, a partir de um dicionário criar um list comprehension e vice-versa.
+
+        lista = [
+            ('nome', 'Leonardo'),
+            ('altura', 1.84),
+            ('profissao', 'Engenheiro de Sistema'),
+            ('formacao', 'Matemática pura')
+        ]
+
+        dc = {
+            chave: valor
+            for chave, valor in lista
+        }
+
+        p(dc)
+
+    Claro, a forma acima nos permite customizar a criação da lista.
+
+    Caso queira realizar a criação do dicionário acima sem realizar nenhuma personalização, então bastaria realizar o seguinte
+
+        p(dict(lista))
+
+- Set Comprehension:
+
+    Aqui é bem mais simples do que dictionary e list comprehension. No caso, bastaria realizar o seguinte
+
+        s1 = {i for i in range(10)}
+        p(s1)
+        p(set(range(10)))
+
+    Claro, considerando as características de um conjunto.
+
+Seguir o link para estudo com mais profundidade
+
+    https://pyneng.readthedocs.io/en/latest/book/08_python_basic_examples/x_comprehensions.html
+    https://towardsdatascience.com/the-use-of-list-dictionary-and-set-comprehensions-to-shorten-your-code-66e6dfeaae13
 
 ## Aula 39 - isinstace() - para saber se objeto é de determinado tipo:
+Bom, como usamos na última aula, o isinstance() ela serve para checar se um valor é de um determinado tipo.
+
+Considere a seguinte lista
+
+    lista = ['a', 1, 1.1, True, [0, 1, 2], (1, 2), {0, 1}, {'nome': 'Leonardo'}]
+
+Claro, em programação não é uma boa prática vc receber esse tipo de lista que tem muita coisa misturada. Porém, nos problemas do dia a dia em uma empresa isso é muito comum de acontecer e acaba sendo necessário desenvolver um código que trate tais valores.
+
+Agora, vamos usar o isinstance iterando esse for
+
+    for item in lista:
+        print(item, isinstance(item, set))
+
+Bom, podemos, claro, combinar com as condicionais if usando o isinstance
+
+    for item in lista:
+        if isinstance(item, set):
+            item.add(5)
+            print(item, isinstance(item, set))
+
+No caso, esse uso nos permite realizar diferentes tipos de tratativas conforme o tipo que o elemento dentro da lista está sendo representado.
+
+O legal do VSCode, agora é algo típico desse IDE, podemos ver que dentro da condicional do if acima, realizamos o item.add(5). A parte curiosa disso é que quando realizamos o "item." ele exibe todos os métodos que lhe é possível utilizar para o set. Ou seja, o VSCode foi inteligente o suficiente para reconhecer que dentro daquela condicional, o item que estou tratando é um conjunto. Da mesma forma que podemos realizar isso para outros tipos de dados. Algo que nas outras IDE's não é possível realizar.
+
+Bom, isso é um indício que hoje em dia a programação está mais fácil graças aos editores de textos. (Só espero que um dia ainda criem uma linguagem de programação única que serve para tudo, em vez de existir tantas linguagens de programação... Assim, o programador se preocuparia em focar somente nos conceitos matemáticos para conseguir criar algum código robusto. Da mesma forma que facilita para um matemático que queria trabalhar com a computação tbm...)
+
+    for item in lista:
+        if isinstance(item, set):
+            item.add(5)
+            print(item, isinstance(item, set))
+
+        elif isinstance(item, str):
+            item = item.upper()
+            print(item, isinstance(item, str))
+
+        elif isinstance(item, (int, float)):
+            item+=1
+            print(item, isinstance(item, (int, float)))
+
+        else:
+            print('OUTRO')
 
 ## Aula 40 - Valores Truthy e Falsy, Tipos Mutáveis e Imutáveis:
+Vamos ver mais sobre os valores Falsy e Truthy.
+
+Bom, o falsy e thuthy, podemos usar sobre os valores mutáveis e imutáveis, donde temos como padrão os tipos de valores que são considerados falsos ou outros como verdadeiros. Já vimos sobre isso nas aulas anteriores sobre os valores mutáveis e imutáveis. Recomendamos que o leitor revise tais aulas caso ficou alguma dúvida.
+
+    lista = []
+    dicionario = {}
+    conjunto = set()
+    tupla = ()
+    string = ''
+    inteito = 0
+    flutuante = 0.0
+    nada = None
+    falso = False
+    intervalo = range(0)
+
+
+    def falsy(valor):
+        return 'falsy'if not valor else 'truthy'
+
+
+    print(f'TESTE', falsy('TESTE'))
+    print(f'{lista=}', falsy(lista))
+    print(f'{dicionario=}', falsy(dicionario))
+    print(f'{conjunto=}', falsy(conjunto))
+    print(f'{tupla=}', falsy(tupla))
+    print(f'{string=}', falsy(string))
+    print(f'{inteito=}', falsy(inteito))
+    print(f'{flutuante=}', falsy(flutuante))
+    print(f'{nada=}', falsy(nada))
+    print(f'{falso=}', falsy(falso))
+    print(f'{intervalo=}', falsy(intervalo))
 
 ## Aula 41 - dir, hasattr e getattr em Python:
 
