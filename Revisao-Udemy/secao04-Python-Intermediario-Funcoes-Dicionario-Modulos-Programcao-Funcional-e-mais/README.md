@@ -2056,9 +2056,7 @@ Link para leitura
 
 ## Aula 45 - yield from em generator functions:
 
-## Aula 46 - (Parte 1) try e except para tratar exceções:
-
-## Aula 47 - (Parte 2) try e except para tratar exceções:
+## Aula 46 e 47 - (Parte 1 e 2) try e except para tratar exceções:
 
 ## Aula 48 - try, except, else e finally + Built-in Exceptions:
 
