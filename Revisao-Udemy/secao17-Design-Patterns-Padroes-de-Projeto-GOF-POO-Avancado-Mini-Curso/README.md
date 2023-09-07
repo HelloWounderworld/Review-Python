@@ -1,0 +1,1 @@
+# Design Patterns (Padrões de Projeto - GOF) - POO Avançado - Mini Curso:
