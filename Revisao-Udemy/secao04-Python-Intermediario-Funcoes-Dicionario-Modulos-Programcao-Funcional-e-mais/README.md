@@ -2038,6 +2038,8 @@ No caso, o iterator ele te devolve os valores sucessores. Sem se importar em qua
 
 Podemos ver acima, nos três prints, conforme chamamos o "next(iterator)" ele devolve o próximo da lista iterable.
 
+Lembrando, iterator só se usa sobre objetos iteráveis!
+
 O livro em que o professor Luiz Otávio viu sobre esse conceito pela primeira vez foi no
 
 - Padrões de Projetos, Soluções reutilizáveis de software orientado a objetos
@@ -2051,10 +2053,250 @@ Link para leitura
     https://stackoverflow.com/questions/9884132/what-are-iterator-iterable-and-iteration
 
 ## Aula 43 - Generator expression, Iterables e Iterators em Python:
+Vamos aprender sobre generator. No caso, esse generator é algo antigo que já existia no JavaScript, porém no Python foi implementado de forma recente.
+
+Basicamente, o generator são funções que sabem pausar em determinada ocasião.
+
+Todo generator é um iterator, mas não vale a recíproca.
+
+Vamos mostrar um exemplo básico para melhorar a sua compreensão
+
+    generator = [n for n in range(10)]
+
+    print(generator)
+
+Bom, pegamos um iterável simples acima só para exibição. Mas, agora, imagina se a variável "generator" acima tiver 10000 range e tiver que exibir isso tudo de uma vez. Isso, com certeza, tornaria a exibição caótica. No caso, o generator ele serve para vc conseguir determinar o momento para pausar.
+
+Qual é a vantagem disso?
+
+Bom, suponhamos que vc tenha que lidar com uma quantidade de dados exuberante e dela vc precisa tirar somente alguns dados. No caso, seria muito ineficiente se vc tiver que tratar toda hora todos os dados para conseguirmos filtrar somente aqueles dados que precisamos. No caso, o generator, ele facilita isso de forma a otimizar o processo sem a necessidade de ter que passar para todos os dados, mas, sim, selecionando somente aquelas que precisamos.
+
+Para isso, do exemplo acima, bastaria mudar a lista para "()" como segue
+
+    generator = (n for n in range(10000))
+
+    print(generator)
+
+Daí, no print será exibido um generator expression, do tipo
+
+    <generator object <genexpr> at 0x7fac0339ec80>
+
+Diferentemente de darmos o print sobre a forma
+
+    generator = [n for n in range(10000)]
+    
+    print(generator)
+
+Que será exibido uma quantidade exuberante de dados.
+
+Vamos importar o módulo "sys" para mostrarmos o tamanho dos dados de cada tipo
+
+    import sys
+
+    lista = [n for n in range(10000)]
+    generator = (n for n in range(10000))
+
+    print(sys.getsizeof(lista))
+    print(sys.getsizeof(generator))
+
+Ao rodarmos o código acima, conseguimos ver que o tamanho da lista e do generator há uma deferença bem evidente.
+
+Ou seja, o que isso singifica?
+
+Significa que, enquanto na variável "lista" que, de fato, é uma lista quando criado uma lista via list comprehension, isso já estaria sendo guardado na memória da máquina, com o generator não será guardado. Podemos mudar o tamanho do range para lista e generator e isso ficará evidente, pois enquanto a lista irá aumentar de memória, o generator continuará na mesma quantidade.
+
+Qual a vontagem disso?
+
+Basicamente, otimiza o consumo da memória de modo que o generator, pelo fato dele não guardar nada na memória, ele fica no estado de espera para que vc solicite algum dado que esteja guardado sobre ele.
+
+Assim, podemos realizar a busca de forma otimizada como segue
+
+    import sys
+
+    generator = (n for n in range(10000))
+
+    print(sys.getsizeof(generator))
+    print(generator)
+
+    print(next(generator))
+    print(next(generator))
+    print(next(generator))
+
+Note que, acima, no print que usa o método next, está sendo feito direitinho a busca necessária dos valores que foram iterados.
+
+Agora, podemos usar o for para conseguirmos realizar a devida busca necessária de forma otimizada, entendido a natureza do generator
+
+    import sys
+
+    generator = (n for n in range(10000))
+
+    print(sys.getsizeof(generator))
+    print(generator)
+
+    for n in generator:
+        print(n)
+
+Vimos que foi feito uma iteração em escala enorme que foi exibido pelo terminal correto? Bom, isso está preenchendo a memória conforme a quantidade de iterações que ocorreu, o que é diferente da situação que temos um iterável [n for n in range(10000)] pronto, pois isso indica que esses 10mil valores já estará guardado na memória, o que não é otimista do ponto de vista de uso de espaço da memória.
+
+Ok, falei das vantagens de se usar um generator. Mas e as desvantagens?
+
+Bom, o generator ele é um iterável, mas nela não se aplica os métodos e técnicas que temos de uma lista. Ou seja, não podemos saber o tamanho dela, no caso não dá para usar o len, muito menos não podemos consultar o valor pelo índice, etc... Tudo isso, só pelo fato dele não estar na memória, como uma lista estaria. Portanto, só é possível consultar os valores próximos uma por uma e iterar ela com o for de modo que vc consiga realizar uma busca mais eficiente
+
+    print(len(generator))
+    print(generator[50])
+
+Os dois prints acima dará um erro. Assim, como outros métodos que se aplica para uma lista dará o mesmo erro, pois não está na memória.
+
+Fonte para leitura
+
+    https://www.geeksforgeeks.org/difference-between-iterator-vs-generator/
+    https://stackoverflow.com/questions/2776829/difference-between-pythons-generators-and-iterators
 
 ## Aula 44 - Introdução às Generator functions em Python:
+Bom, agora, vamos explorar mais ainda dos recursos úteis que temos para o Generator.
+
+Vamos começar por montar uma função
+
+    def generator(n=0):
+        return 1
+
+    gen = generator(n=0)
+    print(gen)
+
+Esse aqui é só para começar para ver que a função retorna "1" mesmo. Até aqui, não estamos abordarndo de forma eficiente a natureza principal da função generator, que é a sua propriedade de conseguir pausar.
+
+Agora, sim, vamos desenvolver um algoritmo que usar muito bem da natureza do generator. Segue o seguinte código
+
+    def generator(n=0):
+        yield 1
+
+    gen = generator(n=0)
+    print(gen)
+
+No caso, note que, acima mudamos o return para yield. O que essa sintaxe tem de funcionalidade?
+
+Ela retorna o valor "1", só que na variável "gen" que executamos a função generator, esse valor "1" retornado não está guardado na memória. Como podemos ver no print, em vez dela devolver um valor "1", ela devolve generator expression, como do seguinte tipo
+
+    <generator object generator at 0x7fcd9b45cc80>
+
+Isso, novamente, evidencia que não está guardado na memória o valor retornado, mas, sim, ela está esperando ser chamado como podemos ver se fizermos o seguinte
+
+    def generator(n=0):
+        yield 1
+
+    gen = generator(n=0)
+    print(gen)
+    print(next(gen))
+
+No print que usa o método "next" ela retorna o valor "1", como de se esperar, e é o momento em que irá consumir um espaço na memória tbm.
+
+Como dizemos quando começamos a abordar sobre generator. Todo generator é um iterável tbm, então, obviamente, podemos usar o seguinte método iter tbm
+
+    def generator(n=0):
+        yield 1
+
+    gen = generator(n=0)
+    print(gen.__iter__())
+    print(next(gen))
+
+Acrescentamos tbm que depois do yield podemos usar o return tbm. Mas aí como esse return irá funcionar visto que já foi retornado algo, mesmo que não esteja na memória? Bom, o return ela servirá para mostrar que não há mais valor e ela será exibida em uma funcionalidade chamada raise
+
+    def generator(n=0):
+        yield 1
+        return 'ACABAOU'
+
+    gen = generator(n=0)
+    print(gen.__iter__())
+    print(next(gen))
+    print(next(gen))
+
+No caso, ao executarmos o código acima, vamos conseguir ver que na segunda vez que é chamado o next, como não tem mais nenhum valor depois do "1" que foi retornado, então no terminal será exibido uma mensagem "StopIteration" exibindo o valor do return, que neste caso é o "ACABOU".
+
+Ou seja, o return, ela serve para defitivamente parar a função, pois, depois do yield, pode existir mais e mais yields que visto que, pelo next ou por alguma iteração for, foi batido um tal valor retornado pelo yield, a função generator, irá continuar com a leitura da linha sucessiva dentro dela
+
+    def generator(n=0):
+        yield 1
+        print('Continuando......')
+        yield 2
+
+    gen = generator(n=0)
+    print(gen.__iter__())
+    print(next(gen))
+    print(next(gen))
+
+No caso, forma como está acima, no segundo next será exibido o valor "2", pois quando foi executado o primeiro next, foi pausado a função generator na linha onde está "yield 1", e quando usamos o next pela segunda vez, dentro da função "generator", ela dará a continuidade a partir do ponto em que foi pausado, "yiel 1", adiante, então virá o print('Continuando.....') e em seguida o segundo yield, "yield 2".
+
+Isso irá continuar até que o próximo next não retorne nada, caso vc não use o return, pois aí, por padrão, as funções def elas retornam um None.
+
+Bom, entendido o conceito e visto a sua funcionalidade do ponto de vista manual, usando o next, vamos agora dinamizar isso usando o for. Assim, conseguimos montar o seguinte código para função generator para considerar escalas de valores maiores
+
+    def generator(n=0):
+        yield 1
+        print('Continuando......')
+        yield 2
+
+    gen = generator(n=0)
+    for n in gen:
+        print(n)
+
+Note que, na forma dinâmica acima, usando o for, quando o for exibiu tudo o que pode ser exibido pelo generator, não foi exibido a mensagem "StopIteration". Ela simplesmente parou a exibição no "2" ou se tiver algum print ou qualquer outra coisa em seguida, menos o return, irá parar nela.
+
+Agora, vamos melhorar a qualidade do código generator, como prometido, para escala maior
+
+    def generator(n=0, maximum=100000):
+        while True:
+            yield n
+
+            n += 1
+
+            if n > maximum:
+                return
+
+    gen = generator()
+    gen1 = generator(n=5, maximum=200)
+    for n in gen:
+        print(n)
+
+Bom, note que, agora, a função generator, por padrão temos duas variáveis padrões definidas nela, e que o yield está dentor de um laço infinito while, cujo o laço irá parar somente quando ocorrer o return, ou seja, entendo dentro da condicional.
 
 ## Aula 45 - yield from em generator functions:
+Podemos, também, usar o yield from em funções generators. O que é isso?
+
+Basicamente, o yield from ela importa o processo de uma outra função generator para uma outra função.
+
+Exemplo, suponhamos as duas seguintes funções
+
+    def gen1():
+        yield 1
+        yield 2
+        yield 3
+
+    def gen2():
+        yield 4
+        yield 5
+        yield 6
+
+Bom, note que, a função gen2 é uma continuação da função gen1. Daí, existem situações em que depois que ocorrer um processo numa determinada função eu quero que o processo seja continuado numa outra função. Para isso que serve o yield from, que bastaria usar da seguinte forma
+
+    def gen1():
+        yield 1
+        yield 2
+        yield 3
+
+    def gen2():
+        yield from gen1()
+        yield 4
+        yield 5
+        yield 6
+
+    gen = gen2()
+
+    for numero in gen:
+        print(numero)
+
+Daí, será exibido todos os números de 1 até 6.
+
+Bom, com isso podemos fazer coisas bem mais interessantes. Recomendo o leitor tentar entender a lógica de programação que está no código do arquivo aula45.py.
 
 ## Aula 46 e 47 - (Parte 1 e 2) try e except para tratar exceções:
 
