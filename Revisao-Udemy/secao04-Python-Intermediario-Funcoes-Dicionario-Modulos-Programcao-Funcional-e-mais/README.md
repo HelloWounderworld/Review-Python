@@ -2632,7 +2632,25 @@ No caso, o raise ela relança o erro que ocorreu. Entretanto, a condição acima
 
     print(divide(8, 0))
 
-Note que, ao executarmos o código acima, agora, a msg de erro clássico "division by zero" mudou para pela msg que escrevi dentro da classe ZeroDivisionError.
+Note que, ao executarmos o código acima, agora, a msg de erro clássico "division by zero" mudou para pela msg que escrevi dentro da classe ZeroDivisionError. Basicamente, o que eu fiz acima é criar o meu próprio erro.
+
+Agora, como uma via de uma boa prática, vamos precisar realizar o seguinte. Em uma função, sempre seria uma boa colocar de funcionalidade somente o que queremos que aquela função realize. Por exemplo, a função que criamos "divide" seria de boa prática colocar dentro dessa função a funcionalidade de divisão, somente. Entretanto, na forma como está a função "divide" no último exemplo, ela está sendo colocado a funcionalidade de tratativa do erro. O ideal é que essa tratativa esteja separado e que ela seja chamado dentro dessa função. No caso, algo do seguinte tipo
+
+    def divisao_por_zero_indefinido(denominador):
+        if denominador == 0:
+            raise ZeroDivisionError('Não pode dividir pelo zero!')
+
+    def divide(x, y):
+        divisao_por_zero_indefinido(y)
+        return x / y
+
+    print(divide(8, 0))
+
+Isso nos permite melhorar a qualidade da leitura do código, de forma que ela fica mais didática, e tbm na sua organização. De forma que cada função fique mais independente da outra, pois a forma acima facilita em considerar e desconsiderar algumas funcionalidades sem a necessidade de refatorar grandes quantidades de linha.
+
+Da mesma forma serve para conseguirmos criar a tratativa para outros tipos de erros, pois imagina a pessoa passa, dentro do argumento da função, alguma String? No caso, para esse cenário segue o seguinte
+
+    
 
 ## Aula 50 - Módulos - import, from, as e *:
 
