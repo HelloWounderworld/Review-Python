@@ -2838,7 +2838,7 @@ Vamos começar por uma importação simples onde o arquivo se encontra no mesmo 
 
     print('Este modulo, dentro do aula_51.py, se chama ', __name__)
 
-No caso, nos nomes dos módulos não podemos colocar espaços ou caracteres especiais como acentos, etc... Sempre elas precisam estar juntas com traço ou underscore em letras minúsculas.
+No caso, nos nomes dos módulos não podemos colocar espaços ou caracteres especiais como acentos, etc... Sempre elas precisam estar juntas com underscore em letras minúsculas.
 
 Agora, voltando para o arquivo aula51.py, ao executarmos esse módulo, vamos ver que, será exibido o print dentro do arquivo aula51.py, primeiro, e, em seguida, a do arquivo aula_51.py. E o que o "__name__" vai exibir nos dois casos será diferente.
 
