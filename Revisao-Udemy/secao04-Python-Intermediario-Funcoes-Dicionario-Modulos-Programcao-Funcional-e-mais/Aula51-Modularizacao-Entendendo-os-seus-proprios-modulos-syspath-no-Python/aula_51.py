@@ -1,0 +1,1 @@
+print('Este modulo, dentro do aula_51.py, se chama ', __name__)
