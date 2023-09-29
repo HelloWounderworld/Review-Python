@@ -2883,10 +2883,258 @@ Link para leitura
     https://acervolima.com/sys-path-em-python/
 
 ## Aula 52 - Como importar coisas do seu próprio módulo (ponto de vista do __main__):
+Lembrando, novamente, os níveis dos arquivos tem que estarem iguais ou abaixo do "__main__"!!! Se não, ficaria mais complicado conseguirmos montar toda a arquitetura do sistema!!
+
+Vamos aprender a importar coisas do seu próprio módulo. Algo análogo de como foi feito nos módulos que foram importados ou métodos que importamos diretamente a partir dos módulos nativos que já vem com a linguagem Python.
+
+Bom, já vimos na última aula, se importarmos o módulo inteiro, tudo que tiver dentro desse módulo será importado. Agora se vai ser ou não executado já é outra história. Vamos criar uma pasta "code-class-52" e dentro dela criamos o arquivo "aula52.py" que será o nosso arquivo principal, __main__, e no mesmo nível de arquivo dele criamos módulo "aula52_m.py".
+
+No arquivo, aula52.py, colocamos o seguinte
+
+    import aula52_m
+
+    print('Este módulo, aula52.py, se chama: ', __name__)
+
+E no arquivo, aula52_m.py, colocamos o seguinte
+
+    print('Este módulo, aula52_m, se chama: ', __name__)
+
+Bom, ao rodarmos o arquivo, aula52.py, vimos que até aqui nada de novidade. Vimos que o print que está dentro do módulo, aula52_m.py, já é executado no momento em que executamos o arquivo, aula52.py.
+
+Agora, no arquivo, aula52_m.py, vamos criar uma variável
+
+    print('Este módulo, aula52_m, se chama: ', __name__)
+
+    variavel_modulo = 'Leonardo'
+
+Se rodarmos o arquivo, aula52.py, vamos ver só o print que está no arquivo, aula52_m.py. Como vamos acessar essa variável? 
+
+A resposta é da mesma forma como acessamos os métodos dos módulos nativos do Python. Ou seja, acessamos da seguinte forma, no arquivo, aula52.py
+
+    import aula52_m
+
+    print('Este módulo, aula52.py, se chama: ', __name__)
+    print(aula52_m) # Uma forma de saber de qual path esse módulo está vindo
+    print(aula52_m.variavel_modulo)
+
+Agora, da mesma forma que vimos nos módulos nativos do Python, temos uma forma de importamos somente os métodos ou variáveis definidas dentro daquele módulo da seguinte forma, no arquivo, aula52.py
+
+    import aula52_m
+    from aula52_m import variavel_modulo
+
+    print('Este módulo, aula52.py, se chama: ', __name__)
+    print(aula52_m) # Uma forma de saber de qual path esse módulo está vindo
+    print(aula52_m.variavel_modulo)
+    print(variavel_modulo)
+
+Da mesma forma que se definimos os métodos, funções que ficam dentro de um objeto/módulo, a forma como vamos usa-las é o mesmo que vimos nos módulos nativos que Python. No caso, no arquivo, aula52_m.py, colocamos 
+
+    print('Este módulo, aula52_m, se chama: ', __name__)
+
+    variavel_modulo = 'Leonardo'
+
+    def soma(x, y):
+        return x + y
+
+E assim no arquivo, aula52.py, temos
+
+    import aula52_m
+    from aula52_m import soma, variavel_modulo
+
+    print('Este módulo, aula52.py, se chama: ', __name__)
+    #print(aula52_m)
+    print(aula52_m.variavel_modulo)
+    print(variavel_modulo)
+    print(aula52_m.soma(2, 3))
+    print(soma(3, 4))
+
+Claro que, assim como vimos para os módulos nativos, conseguimos apelidar os módulos personalizados que importamos, no arquivo, aula52.py
 
 ## Aula 53 - Recarregando módulos, importlib e singleton:
+Vamos aprender a recarregar os módulos aqui.
+
+Vamos criar uma pasta "code-class-53" e dentro dela iremos criar dois arquivos "aula53.py" e "aula53_m.py". Daí, vamos realizar a importação do módulo, aula53_m.py, como fizemos nas últimas duas aulas anteriores para o módulo principal, aula53.py.
+
+Por começo, no módulo, aula53_m.py, colocamos
+
+    print(123)
+
+Até agora nada de novo. Em seguida, vamos colocar no módulo, aula53_m.py, a seguinte variável
+
+    variavel = 'Leonardo'
+
+Agora, no módulo, aula53.py, vamos tentar realizar o seguinte
+
+    import aula53_m
+
+    print(aula53_m.variavel)
+
+    for i in range(10):
+        import aula53_m
+
+    print('Fim')
+
+Note que, o print que está dentro do módulo, aula53_m.py, não está sendo exibido nas dez interações do for. O for, por exemplo, ela está sim iterando, bastaria dar um print no índice "i" que está percorrendo de 0 à 9.
+
+Isso porque a importação de módulos elas são um tipo singleton. O que é isso?
+
+Basicamente, o singleton é algo que a existência dela seja única naquele programa. Em outras palavras, quando importamos algum módulo, essa importação fica guardado na memória do processador de modo que vc não precisa importar novamente sempre que for necessário realizar o uso dela. Isso entra dentro do padrão de eficiência para economizar espaço na memória.
+
+Entretanto, existem cenários em que vc precisa recarregar alguns módulos já importados. Não é algo muito comum, porém, em raras ocasiões é necessário realizar o recarregamento do módulo. Para isso, usamos um outro módulo para possibilitar esse recarregamento que seria o importlib. No caso, no arquivo, aula53.py, importamos o módulo
+
+    import importlib
+
+    import aula53_m
+
+    print(aula53_m.variavel)
+
+    for i in range(10):
+        importlib.reload(aula53_m)
+
+    print('Fim')
+
+No caso, a cada chamada desse reload dentro do módulo importlib, iremos recarregar o módulo aula53_m.py.
+
+Bom, qual a necessidade disso? Para entendermos isso, vamos ativar no terminal o modo iterativo em Python. Ou seja, pelo terminal, vai até a pasta code-class-53, e nela joga o seguinte comando
+
+    python -i aula53.py
+
+Vamos ver que nela irá o arquivo e ficará no modo interactive Python. Feito isso, no módulo, aula53_m.py, realizamos a seguinte alteração
+
+    variavel = 'Leonardo 1'
+
+Daí, no modo interactive Python ainda ativo, em ">>>" jogamos o seguinte comando
+
+    aula53_m.variavel
+
+Será exibido o antigo valor
+
+    Leonardo
+
+E não o atual.
+
+Para isso que serve o reload do método importlib, pois ela irá recarregar o módulo, aula53_m.py, de modo que vc irá conseguir verificar a alteração feita nela. Joga de novo, no '>>>', o comando
+
+    importlib.reload(aula53_m)
+
+Em seguida, acessamos a variável de novo, '>>> aula53_m.py'. Verá que a alteração feita no módulo, aula53_m.py, agora está sendo considerado.
+
+Para sair do modo interactive Python, basta colocar o comando 'quit()'.
+
+Bom, precisa fazer tudo isso só para recarregar o módulo? Não!
+
+No caso, a cada mudança que eu realizar no módulo, aula53_m.py, se eu recompilar novamente o módulo, aula53.py, seja ela pelo terminal ou diretamente no arquivo ou numa aplicação, refresh page, conseguimos considerar as alterações que ocorreram no outro módulo.
+
+Bom, a moral da história é que vc tem que entender que os módulos Pythons são recarregados uma única vez, o que define a natureza de coisas que são chamados singletons em programação!
+
+Link para leitura:
+
+    https://refactoring.guru/pt-br/design-patterns/singleton/python/example
+    https://docs.python.org/3/library/importlib.html
+    https://realpython.com/lessons/reloading-module/
+    https://stackoverflow.com/questions/18500283/how-do-you-reload-a-module-in-python-version-3-3-2
 
 ## Aula 54 - Introdução aos packages (pacotes) em Python:
+Bom, até agora, criamos vários módulos e realizamos os devidos estudos acima dele.
+
+Mas, agora, vamos introduzir o conceito de pacotes (packages) que seria o caso de uma pasta que carrega varios módulos.
+
+Para isso, vamos criar o arquivo principal, aula54.py, e no mesmo nível desse arquivo vamos criar uma pasta chamado "aula54_p" e dentro dessa pasta vamos criar um arquivo com o nome "modulo.py".
+
+Agora, no arquivo principal/raiz, aula54.py, vamos importar o módulo que está dentro do pacote, aula54_p. Para isso, vamos colocar o seguinte
+
+    import aula54_p.modulo
+
+Agora, no módulo, modulo.py, nela definimos o seguinte
+
+    def soma_do_modulo(x, y):
+        return x + y
+
+Bom, agora, para conseguirmos usar dos recursos definidos dentro do módulo, modulo, é a mesma coisa como vimos nas aulas anteriores, no arquivo, aula54.py, colocamos
+
+    import aula54_p.modulo
+
+    print(aula54_p.modulo.soma_do_modulo(2, 3))
+
+Daí, podemos verificar que estamos usando o método que definimos dentro do módulo, modulo.
+
+Para mais detalhes de como está relacionado e qual arquivo é o main, vamos colocar o seguinte
+
+    from sys import path
+
+    import aula54_p.modulo
+
+    print(__name__)
+    print(*path, sep='\n')
+    print(aula54_p.modulo.soma_do_modulo(2, 3))
+
+Bom, ao rodarmos o arquivo, notamos que o print(*path, sep='\n') ela irá mostrar todos as paths reconhecendo se tem ou não algum módulo python definido nela.
+
+Da mesma forma, podemos importar o método diretamente dentro do módulo que definimos
+
+    from sys import path
+
+    import aula54_p.modulo
+    from aula54_p.modulo import soma_do_modulo
+
+    print(__name__)
+    print(*path, sep='\n')
+    print(aula54_p.modulo.soma_do_modulo(2, 3))
+    print(soma_do_modulo(3, 4))
+
+Conseguimos, também, apelidar usando alias, "as".
+
+Agora, uma outra curiosidade que temos, é importar somente o módulo inteiro dentro de um pacote. No caso, para isso realizamos o seguinte
+
+    from sys import path
+
+    import aula54_p.modulo
+    from aula54_p import modulo
+    from aula54_p.modulo import soma_do_modulo
+
+    print(__name__)
+    print(*path, sep='\n')
+    print(aula54_p.modulo.soma_do_modulo(2, 3))
+    print(soma_do_modulo(3, 4))
+    print(modulo.soma_do_modulo(4, 5))
+
+No caso, no "from aula54_p import modulo", vc está conseguindo importar o módulo inteiro, modulo. E a forma de usarmos os métodos definidos dentro desse módulo, modulo, é usando o name space.
+
+Bom, daí temos outras formas de importar que é similar ao que vimos nas três últimas aulas.
+
+    from sys import path
+
+    import aula54_p.modulo
+    from aula54_p import modulo
+    from aula54_p.modulo import soma_do_modulo
+    from aula54_p.modulo import *
+
+    print(__name__)
+    print(*path, sep='\n')
+    print(aula54_p.modulo.soma_do_modulo(2, 3))
+    print(soma_do_modulo(3, 4))
+    print(modulo.soma_do_modulo(4, 5))
+
+Onde, vimos que a forma de importar "from aula54_p.modulo import *" é considerada de má prática. Porém, no cenário em que estamos, que temos liberdade de criar um pacote e módulo personalizado, caso importamos por essa prática considerada ruim, conseguimos selecionar os tipos de recursos que podem ser importados usando a sintaxe "__all__". No caso, no módulo, modulo, colocamos o seguinte
+
+    __all__ = [
+        'variavel'
+    ]
+
+    print('Este modulo, modulo.py, tem o nome: ', __name__)
+
+    variavel = 'Leonardo'
+
+    def soma_do_modulo(x, y):
+        return x + y
+
+Ao colocarmos, dentro da lista __all__, a variavel, na forma de importação, from aula54_p.modulo import *, o "tudo" que conseguimos importar desse módulo será considerado somente as que estejam dentro dessa lista "__all__".
+
+Bom, claro que, se comentarmos a lista "__all__" inteirinha, vamos cuspir todo o recurso para a fora dessa lista e conseguiremos usar dentro da forma de importação de má prática, from aula54_p.modulo import *.
+
+Link para leitura:
+
+    https://realpython.com/python-modules-packages/
 
 ## Aula 55 - O ponto de vista do __main__ pode te confundir em módulos e pacotes Python:
 
