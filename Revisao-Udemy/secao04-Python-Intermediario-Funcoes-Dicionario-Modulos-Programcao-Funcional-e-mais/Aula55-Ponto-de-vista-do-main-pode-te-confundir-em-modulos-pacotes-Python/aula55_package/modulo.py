@@ -5,7 +5,8 @@ from aula55_package.modulo_b import fala_oi
 
 variavel = 'Alguma coisa'
 
-@@ -12,3 +13,4 @@ def soma_do_modulo(x, y):
+def soma_do_modulo(x, y):
+    return x + y
 
 
 nova_variavel = 'OK'
