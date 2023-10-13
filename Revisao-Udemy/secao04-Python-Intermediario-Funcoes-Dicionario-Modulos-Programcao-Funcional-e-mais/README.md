@@ -3593,6 +3593,49 @@ Link para leitura - SRP:
     https://www.devmedia.com.br/arquitetura-o-principio-da-responsabilidade-unica/18700#:~:text=O%20Mandamento%20do%20princ%C3%ADpio%20da,ela%20n%C3%A3o%20segue%20este%20princ%C3%ADpio.
 
 ## Aula 63 - Decoradores em Python (@syntax_sugar):
+Bom, visto que aprendemos funções decoradoras, vamos precisar aprender sobre decoradores.
+
+Bom, vamos continuar com o mesmo código da última aula
+
+    # Funções decoradoras e decoradores
+    # Decorar = Adicionar / Remover/ Restringir / Alterar
+    # Funções decoradoras são funções que decoram outras funções
+    # Decoradores são usados para fazer o Python
+    # usar as funções decoradoras em outras funções.
+
+    def criar_funcao(func):
+        def interno(*args, **kwargs):
+            print('Vou te decorar!')
+            for arg in args:
+                is_string(arg)
+            resultado = func(*args, **kwargs)
+            print(f'O seu resultado foi {resultado}')
+            print('Ok, agora você foi decorado!')
+            return resultado
+        return interno
+
+    def inverte_string(string):
+        return string[::-1]
+
+    def is_string(param):
+        if not isinstance(param, str):
+            raise TypeError('param deve ser uma string')
+
+    inverte_string_checando_parametro = criar_funcao(inverte_string)
+    invertida = inverte_string_checando_parametro('123')
+    print(invertida)
+
+No caso, iremos aplicar os conceitos de decoradores em cima desse código. Mas, claro, antes de tudo, o que são decoradores?
+
+Decoradores em Python são conhecidos como Syntax Sugar (Açúcar Sintático). Em outras palavras, os decoradores em Python são recursos que facilitam a utilização das funções decoradoras em python!
+
+Links para leituras
+
+    https://pythonacademy.com.br/blog/domine-decorators-em-python
+
+    https://www.geeksforgeeks.org/decorators-in-python/
+
+    https://pt.stackoverflow.com/questions/23628/como-funcionam-decoradores-em-python#:~:text=Uma%20fun%C3%A7%C3%A3o%20em%20Python%20%C3%A9,par%C3%A2metro%20e%20retorna%20uma%20fun%C3%A7%C3%A3o.
 
 ## Aula 64 - Decoradores com parâmetros:
 
