@@ -4067,7 +4067,7 @@ Ao executarmos o trecho acima, iremos conseguir ver que, no print, será exibido
 
 A ordem é inversa. Será exibido "15 1 2 3 4 5".
 
-## Aula 66 - Exercício - Unir listas:
+## Aula 66 e 67 - Exercício e Solução - Unir listas + zip e zip_longest do intertools:
 Seguir o enunciado
 
     # Exercício - Unir listas
@@ -4081,7 +4081,7 @@ Seguir o enunciado
     # Resultado
     # [('Salvador', 'BA'), ('Ubatuba', 'SP'), ('Belo Horizonte', 'MG')]
 
-## Aula 67 - Solução do Exercício + zip e zip_longest do itertools:
+Vamos aprender, tbm, sobre o módulo intertool donde iremos aprender os métodos zip e zip_longest.
 
 ## Aula 68 - Exercícios - somando duas listas:
 
