@@ -1,8 +1,9 @@
 # count é um iterador sem fim (itertools)
 from itertools import count
 
-c1 = count(10)
-r1 = range(10, 100)
+c1 = count(10, 8)
+c2 = count(step=5, start=10)
+r1 = range(10, 100, 8)
 print(next(c1))
 print(next(c1))
 print(next(c1))
@@ -22,6 +23,13 @@ for i in c1:
         break
 
     print(i)
+print()
+print('count')
+for k in c2:
+    if k >= 100:
+        break
+
+    print(k)
 print()
 print('range')
 for j in r1:

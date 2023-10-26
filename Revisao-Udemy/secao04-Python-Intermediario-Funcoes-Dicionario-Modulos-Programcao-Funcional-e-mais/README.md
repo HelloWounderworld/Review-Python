@@ -4290,9 +4290,44 @@ Bom, visto que no range, também, é possível definir o início tbm. O mesmo va
     for j in r1:
         print(j)
 
-Da mesma forma que conseguimos definir os steps no range, no sentido de iterar apenas os múltiplos de número "n", sendo $`n\in\mathbb{N}`$.
+Da mesma forma que conseguimos definir os steps no range, no sentido de iterar apenas os múltiplos de número $`n`$, sendo $`n\in\mathbb{N}`$.
+
+Da mesma forma que podemos definir direito para quem começa ou qual será o step
+
+    from itertools import count
+
+    c1 = count(10)
+    c2 = count(step=5, start=10)
+    r1 = range(10, 100)
+
+    print(next(c1))
+    print(next(c1))
+
+    print('c1', hasattr(c1, '__iter__'))
+    print('c1', hasattr(c1, '__next__'))
+
+    print('r1', hasattr(r1, '__iter__'))
+    print('r1', hasattr(r1, '__next__'))
+
+    print('count')
+    for i in c1:
+        if i >= 100:
+            break
+
+        print(i)
+
+    for k in c2:
+        if k >= 100:
+            break
+
+        print(k)
+    print()
+    print('range')
+    for j in r1:
+        print(j)
 
 ## Aula 71 - Combinations, Permutations e Product - Itertools:
+Vamos ver como utilizar as ferramentas matemáticas de contagem básica que aprendemos no ensino médio.
 
 ## Aula 72 - groupby - agrupando valores (itertools):
 
