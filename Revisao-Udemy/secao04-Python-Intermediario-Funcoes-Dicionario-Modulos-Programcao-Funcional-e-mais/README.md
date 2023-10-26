@@ -4081,12 +4081,243 @@ Seguir o enunciado
     # Resultado
     # [('Salvador', 'BA'), ('Ubatuba', 'SP'), ('Belo Horizonte', 'MG')]
 
-Vamos aprender, tbm, sobre o módulo intertool donde iremos aprender os métodos zip e zip_longest.
+Vamos aprender, tbm, sobre o módulo itertools donde iremos aprender os métodos zip e zip_longest.
 
-## Aula 68 - Exercícios - somando duas listas:
+Primeiro, irei colocar a forma como o professor solucionou o problema
 
-## Aula 69 - Exercício solucionado - somando listas:
+    def zipper(lista1, lista2):
+        intervalo_maximo = min(len(lista1), len(lista2))
+        return [
+            (lista1[i], lista2[i]) for i in range(intervalo_maximo)
+        ]
+
+    l1 = ['Salvador', 'Ubatuba', 'Belo Horizonte']
+    l2 = ['BA', 'SP', 'MG', 'RJ']
+    print(zipper(l1, l2))
+
+Bom, existe um método nativo do python que já realiza criações sem a necessidade de criarmos uma função da forma como temos acima. Esse método se chama "zip"
+
+    l1 = ['Salvador', 'Ubatuba', 'Belo Horizonte']
+    l2 = ['BA', 'SP', 'MG', 'RJ']
+    print(zip(l1, l2))
+    print(list(zip(l1, l2)))
+
+Temos, também, um módulo do Python que se chama itertools e dentro dela um método chamado "zip_longest", donde ele faz a mesma coisa que o zip com uma única diferença. Em vez de pegar a menor lista, que nem o zip, ele pega a maior lista.
+
+    from itertools import zip_longest
+
+    l1 = ['Salvador', 'Ubatuba', 'Belo Horizonte']
+    l2 = ['BA', 'SP', 'MG', 'RJ']
+    print(zip(l1, l2))
+    print(list(zip(l1, l2)))
+    print(zip_longest(l1, l2))
+    print(list(zip_longest(l1, l2)))
+
+## Aula 68 e 69 - Exercícios e Solução - somando duas listas:
+Seguir o enunciado
+
+    """
+    Considerando duas listas de inteiros ou floats (lista A e lista B)
+    Some os valores nas listas retornando uma nova lista com os valores somados:
+    Se uma lista for maior que a outra, a soma só vai considerar o tamanho da
+    menor.
+    Exemplo:
+    lista_a     = [1, 2, 3, 4, 5, 6, 7]
+    lista_b     = [1, 2, 3, 4]
+    =================== resultado
+    lista_soma  = [2, 4, 6, 8]
+    """
+    lista_a = [10, 2, 3, 40, 5, 6, 7]
+    lista_b = [1, 2, 3, 4]
+    lista_soma = [x + y for x, y in zip(lista_a, lista_b)]
+    print(lista_soma)
+
+    # lista_soma = []
+    # for i in range(len(lista_b)):
+    #     lista_soma.append(lista_a[i] + lista_b[i])
+    # print(lista_soma)
+
+    # lista_soma = []
+    # for i, _ in enumerate(lista_b):
+    #     lista_soma.append(lista_a[i] + lista_b[i])
+    # print(lista_soma)
+
+No exercício anterior, fizemos a soma de duas listas usando várias soluções diferentes.
+
+Uma delas foi usando zip para unir duas listas e utilizar list comprehension para fazer a conta:
+
+    lista_a = [10, 2, 3, 4, 5]
+    lista_b = [12, 2, 3, 6, 50, 60, 70]
+    lista_soma = [x + y for x, y in zip(lista_a, lista_b)]
+    print(lista_soma)  # Saída: [22, 4, 6, 10, 55]
+
+O problema é que zip só une as listas até o tamanho da menor lista (como proposto no exercício).
+
+Uma outra possibilidade é usar zip_longest para capturar os valores da lista maior.
+
+A ideia é a mesma, veja:
+
+    from itertools import zip_longest
+    
+    lista_a = [10, 2, 3, 4, 5]
+    lista_b = [12, 2, 3, 6, 50, 60, 70]
+    lista_soma = [x + y for x, y in zip_longest(lista_a, lista_b, fillvalue=0)]
+    print(lista_soma)  # [22, 4, 6, 10, 55, 60, 70]
+
+Neste caso, usamos o "fillvalue" como 0 (zero), assim conseguimos capturar os valores restantes da lista maior, realizando contas, sem obter um erro em nosso programa.
 
 ## Aula 70 - count é um iterador sem fim (itertools):
+Vamos mostrar um contador infinito em Python, que se chama "count" que é um método dentro do módulo itertools.
+
+Basicamente, o "count" ele é um contador infinito e um iterador sem fim.
+
+Vamos, por começar, a importar tal método
+
+    from itertools import count
+
+    c1 = count()
+
+    print(next(c1))
+    print(next(c1))
+
+Vamos conseguir ver que irá retornar 0 e 1.
+
+Bom, se vc lembra de algumas longas aulas anteriores, existem formas de conferir se um determinado método ele é um iterador e iterável
+
+    from itertools import count
+
+    c1 = count()
+
+    print(next(c1))
+    print(next(c1))
+
+    print('c1', hasattr(c1, '__iter__'))
+    print('c1', hasattr(c1, '__next__'))
+
+Coisa que, no r1 = range(10), podemos ver que não é true em todos
+
+    from itertools import count
+
+    c1 = count()
+    r1 = range(10)
+
+    print(next(c1))
+    print(next(c1))
+
+    print('c1', hasattr(c1, '__iter__'))
+    print('c1', hasattr(c1, '__next__'))
+
+    print('r1', hasattr(r1, '__iter__'))
+    print('r1', hasattr(r1, '__next__'))
+
+Ou seja, conseguimos ver que o "range" ele é um iterável, mas não é o iterador.
+
+Agora, lembrando que o método "count()" é um iterável infinito, então se usarmos o "for" de forma imprecisa, irá entrar num loop infinito, o que vc deverá tomar cuidado
+
+    from itertools import count
+
+    c1 = count()
+    r1 = range(10)
+
+    print(next(c1))
+    print(next(c1))
+
+    print('c1', hasattr(c1, '__iter__'))
+    print('c1', hasattr(c1, '__next__'))
+
+    print('r1', hasattr(r1, '__iter__'))
+    print('r1', hasattr(r1, '__next__'))
+
+    for i in c1:
+        if i >= 100:
+            break
+
+        print(i)
+
+Perceba que a contagem do for acima está começando pelo 2, pois já foi feito a iteração pelo next nos dois prints acima.
+
+Bom, se o seu computador não for muito possante, isso poderia travar o seu computador se não colocarmos algum break dentro do for iterando o count(), visto que esse método é um iterador/contador infinito.
+
+Diferentemente de range, que sempre que usamos ele, precisamos definir um fim para ele
+
+    from itertools import count
+
+    c1 = count()
+    r1 = range(10)
+
+    print(next(c1))
+    print(next(c1))
+
+    print('c1', hasattr(c1, '__iter__'))
+    print('c1', hasattr(c1, '__next__'))
+
+    print('r1', hasattr(r1, '__iter__'))
+    print('r1', hasattr(r1, '__next__'))
+
+    for i in c1:
+        if i >= 100:
+            break
+
+        print(i)
+    print()
+    for j in range(100):
+        print(j)
+
+Bom, visto que no range, também, é possível definir o início tbm. O mesmo vale para o count
+
+    from itertools import count
+
+    c1 = count(10)
+    r1 = range(10, 100)
+
+    print(next(c1))
+    print(next(c1))
+
+    print('c1', hasattr(c1, '__iter__'))
+    print('c1', hasattr(c1, '__next__'))
+
+    print('r1', hasattr(r1, '__iter__'))
+    print('r1', hasattr(r1, '__next__'))
+
+    print('count')
+    for i in c1:
+        if i >= 100:
+            break
+
+        print(i)
+    print()
+    print('range')
+    for j in r1:
+        print(j)
+
+Da mesma forma que conseguimos definir os steps no range, no sentido de iterar apenas os múltiplos de número "n", sendo $`n\in\mathbb{N}`$.
 
 ## Aula 71 - Combinations, Permutations e Product - Itertools:
+
+## Aula 72 - groupby - agrupando valores (itertools):
+
+## Aula 73 - map, partial, GeneratorType e esgotamento de Iterators:
+
+## Aula 74 - filter é um filtro funcional:
+
+## Aula 75 - reduce - faz a redução de um iterável em um valor:
+
+## Aula 76 - Funções recursivas, recursividade e Stack Overflow:
+
+## Aula 77 - Limite de recursão e cuidados com funções recursivas:
+
+## Aula 78 - O que são ambientes virtuais? (venv):
+
+## Aula 79 - Como criar o seu ambiente virtual com venv:
+
+## Aula 80 - Ativando e desativando o meu ambiente virtual venv:
+
+## Aula 81 - pip - instalando pacotes e bibliotecas:
+
+## Aula 82 - Criando e usando um requirements.txt:
+
+## Aula 83 - Criando arquivos com Python + Context Manager with:
+
+## Aula 84 - with open (context manager) e métodos úteis do TextIOWrapper:
+
+## Aula 85 - Modos de abertura de arquivo e encoding com with open:

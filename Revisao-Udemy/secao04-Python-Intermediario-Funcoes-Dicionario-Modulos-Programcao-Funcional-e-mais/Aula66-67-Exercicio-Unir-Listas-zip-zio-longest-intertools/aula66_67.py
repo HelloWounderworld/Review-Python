@@ -41,3 +41,23 @@ def uniao(cidade, estado):
 
 result = uniao(cidade, estado)
 print(result)
+
+# Claro, que a forma acima não estou verificando qual é a menor lista para iterar sobre ele
+# Poderia, eu realizar o seguinte para melhorar a função
+
+def uniao(cidade, estado):
+    return [(cidade[i], estado[i]) for i in range(min(len(cidade), len(estado)))]
+
+result = uniao(cidade, estado)
+print(result)
+
+# Usando o método zip
+print(zip(cidade, estado))
+print(list(zip(cidade, estado)))
+
+# Usando o método zip_longest do módulo itertools
+from itertools import zip_longest
+
+print(zip_longest(cidade, estado))
+print(list(zip_longest(cidade, estado)))
+print(list(zip_longest(cidade, estado, fillvalue='SEM CIDADE!')))
