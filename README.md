@@ -12,8 +12,6 @@ Usarei as seguintes referências:
 
 - Problem Solving with Algorithms and Data Structures using Python - Second Edition, Bradley N. Miller e David L. Ranum.
 
-- Introdução à Programação com Python Algoritmos e lógica de programação para iniciantes, Nilo Ney Coutinho Menezes.
-
 - Fluent Python - Luciano Ramalho. 
 
 Tais referências, em livros, citados acima serão lidos, em paralelo, conforme o conceito revisado pelo curso da Udemy na expectativa de me aprofundar mais ainda no conceito.
