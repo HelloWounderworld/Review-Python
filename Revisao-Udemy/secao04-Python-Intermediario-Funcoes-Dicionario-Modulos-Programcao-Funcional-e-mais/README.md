@@ -4630,3 +4630,19 @@ Vamos melhorar a qualidade do código, seguindo os princípios do clean code, pa
 ## Aula 84 - with open (context manager) e métodos úteis do TextIOWrapper:
 
 ## Aula 85 - Modos de abertura de arquivo e encoding com with open:
+
+## Aula 86 - os.remove, os.unlink e os.rename - apagando, renomeando e movendo arquivos:
+
+## Aula 87 - Salvando dados Python em JSON com módulo json:
+
+## Aula 88 - Problema dos parâmetros mutáveis em funções Python:
+
+## Aula 89 - Exercício - Lista de tarefas com opções de desfazer e refazer:
+
+## Aula 90 - Solução do Exercício - Lista de tarefas com opções de desfazer e refazer:
+
+## Aula 91 - Evitando uso de condicionais + Guard Clause:
+
+## Aula 92 - Exercício (+solução) - salvando a lista de tarefas em JSON:
+
+## Aula 93 - Positional-Only Parameters (/) e Keyword-Only Arguments (*):
