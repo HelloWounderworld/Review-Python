@@ -5221,15 +5221,117 @@ No livro Set Theory, Thomas Jech, Springer Editor, procurar pelo Teorema da Recu
 
 A função recursiva ela tem uma motivação matemática muito forte e o uso em programação é muito recorrente.
 
+Basicamente, a ideia de recursividade em funções é uma função que chama ela mesma de volta de modo que isso acaba gerando um loop.
+
+O bom é que as funções recursivas servem para partir os problemas grandes em menores, contanto que tenha uma uniformidade, esse detalhe é importante. A uniformidade aqui eu me refiro à padrões que se repetem da mesma forma independente da escala. Um exemplo de uma função recursiva que conseguimos criar aqui é o fatorial que temos em matemática
+
+    n! = n * (n-1) * (n-2) * ... * 3 * 2 * 1
+
+Vamos criar uma função recursiva bem simples para entendermos a ideia
+
+    def recursiva(inicio=0, fim=10):
+        # Caso recursivo
+        # contar até chegar ao final
+        inicio += 1
+        return recursiva(inicio, fim)
+
+Claro, se rodarmos o código do jeito que está acima, dará um loop infinito, pois não colocamos uma condicional que simplesmente pare o loop. Isso implicará em um problema chamado "Stack Overflow". Claro, não é o site em que conseguimos encontrar vários problemas comentadas, resolvidas ou até mesmo problemas em abertos que estão sendo investigados. O erro, Stack Overflow, que me refiro aqui é o próprio problema que a frase fala "Muito cheio" ao ponto de transbordar. No caso, o Python está dizendo que tem um limite que podemos colocar na memória, visto que a cada loop o valor "+1" que é feito na função cima é mais um dado criado na memória.
+
+Vamos colocar uma condicional que faz o loop parar
+
+    def recursiva(inicio=0, fim=10):
+        # Caso base
+        if inicio >= fim:
+            return fim
+        # Caso recursivo
+        # contar até chegar ao final
+        inicio += 1
+        return recursiva(inicio, fim)
+
+    print(recursiva())
+
+Estudei muito isso na faculdade. Qualquer coisa o leitor poderá visitar a outra pasta minha, O-que-Fiz-Na-Faculdade, que está nesse mesmo repositório.
+
 Seguir link para leitura
 
     https://pt.wikipedia.org/wiki/Recursividade
 
 ## Aula 77 - Limite de recursão e cuidados com funções recursivas:
+Vimos na seção anterior que ao executarmos a função recursiva sem que coloquemos alguma condição que faça o loop infinito dela parar, iremos ter um erro chamado Stack Overflow, donde no erro o Python informa que só conseguimos suportar até 1000.
 
-## Aula 78 - O que são ambientes virtuais? (venv):
+O tipo de erro acima podemos reproduzir até colocando valores tbm com condições que faria o Python parar
 
-## Aula 79 - Como criar o seu ambiente virtual com venv:
+    def recursiva(inicio=0, fim=10):
+        print(inicio, fim)
+        # Caso base
+        if inicio >= fim:
+            return fim
+        # Caso recursivo
+        # contar até chegar ao final
+        inicio += 1
+        return recursiva(inicio, fim)
+
+    print(recursiva(0, 1000))
+
+Entretanto, temos uma forma de conseguirmos alterar o limite disso, algo que não recomendo, usando o módulo sys que tem o método "setrecursionlimit($`n`$)", com $`n\in\mathbbo{N}`$.
+
+    import sys
+
+    sys.setrecursionlimit(1004)
+
+    def recursiva(inicio=0, fim=10):
+        print(inicio, fim)
+        # Caso base
+        if inicio >= fim:
+            return fim
+        # Caso recursivo
+        # contar até chegar ao final
+        inicio += 1
+        return recursiva(inicio, fim)
+
+    print(recursiva(0, 1000))
+
+Não recomendo usar acima e procurar mais em respeitar o limite que o python estabelece.
+
+Agora, vamos, finalmente, partir para definir recursivamente o fatorial e vamos tentar entender a lógica disso
+
+    def fatorial(n):
+        if n <= 1:
+            return 1
+        return n * fatorial(n-1)
+
+    print(fatorial(5))
+
+Foi intuitivo a recursão acima para ti?
+
+Bom, o momento em que definimos o fatorial recursivamente, de início, pode confundir bastante pessoas, pois tirando o caso base que é compreensível, estamos retornando "n * fatorial(n-1)". Faz sentido isso?
+
+Resposta, sim, faz, pois o que está ocorrendo no retorno é exatamente a seguinte condição. Dado $`n\in\mathbb{N}`$ estritamente maior do que 1, temos que o fatorial de $`n`$ pode ser expressa da forma
+
+    n! = n * (n-1)! = n * (n-1) * (n-2)! = ... = n * (n-1) * (n-2) * ... * 3 * 2 * 1
+
+No caso, ao retornarmos o "n * fatorial(n-1)" estamos, indutivamente, realizando a relação de igualdade acima passo a passo, pois se destrincharmos com a função que definimos da mesma forma acima ficaria
+
+    fatorial(n) = n * fatorial(n-1) = n * (n-1) * fatorial(n-2) = ... = n * (n-1) * (n-2) * ... * 3 * 2 * fatorial(1)
+
+onde o caso fatorial(1) cai no caso base do valor 1.
+
+Bom, entendido como se aplica a recursividade nos fatoriais acima, quero dar a seguinte observação. A forma como foi codado acima ela é didática para entender como funciona o fatorial, porém não serve para conseguirmos realizar contas gigantescas. Já me ferrei num exercício de programa onde tive que computar a série de Taylor trigonométrica para conseguir obter resultados precisos esquecendo desse fator e, consequentemente, otimizar o código...
+
+No caso, se vc quiser utilizar fatorial em escalas de contas enormes, será necessário melhorar a qualidade do código no sentido de antes mesmo de atingir o valor limite, sempre parar a contagem para guardar o valor de múltiplicação feita até então em um dado imutável e conseguir esvaziar a memória deixando apenas a memória do valor que foi feito a multiplicação e conseguir processeguir a partir do ponto que parou adiante. Isso precisa de um pouco mais de esforço para otimizar e realizar isso.
+
+A não ser que vc se ateie à uma prática que considero duvidosa que é usando o setrecursionlimit do módulo sys.
+
+## Aula 78 e 79 - O que são ambientes virtuais? (venv) Como criar o seu ambiente virtual com venv:
+Foi lançado recentemente (eu tô vendo essa aula em 06/11/2023, então não sei especificamente o quanto foi recente) um módulo no Python chamado venv que é própriamente para criar o ambiente virtual em Python. Claro, segundo o professor, Luiz Otávio Miranda, diz que na área de tecnologia frequentemente quando vem novidades na linguagem está atrelado aos novos módulos ou bibliotecas, porém, precisa ter um cuidado nisso, pois existem módulos ou bibliotecas que não dão continuidade ao ponto de tornarem obsoletos no meio do processo. Então, é recomendável que ao longo do processo de atualização do que vem de novidade na tecnologia em seus estudos, quando está sendo lançado um novo módulo ou biblioteca, que o estudante seja cauteloso em verificar se ela é promissora ou não deixando no ar por hora antes mesmo de implementar ela de forma oficial em seus projetos importantes.
+
+Agora, o venv, segundo o professor, Luiz Otávio Miranda, é um módulo novo do Python que chegou para ficar pois ela será usada para criar ambientes virtuais que é usado até em frameworks do Python chamado Django para a pessoa conseguir trabalhar com frontEnd usando a linguagem Python como base.
+
+Seguir link para leitura e aplicação:
+
+    https://docs.python.org/3/library/venv.html
+
+    https://docs.python.org/pt-br/3/library/venv.html
 
 ## Aula 80 - Ativando e desativando o meu ambiente virtual venv:
 
