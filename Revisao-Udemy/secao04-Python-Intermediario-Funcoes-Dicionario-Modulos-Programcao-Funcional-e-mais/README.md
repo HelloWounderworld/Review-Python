@@ -5327,6 +5327,8 @@ Foi lançado recentemente (eu tô vendo essa aula em 06/11/2023, então não sei
 
 Agora, o venv, segundo o professor, Luiz Otávio Miranda, é um módulo novo do Python que chegou para ficar pois ela será usada para criar ambientes virtuais que é usado até em frameworks do Python chamado Django para a pessoa conseguir trabalhar com frontEnd usando a linguagem Python como base.
 
+Vantagens do venv, ela é que nem Docker. No caso, se por acaso vc estiver trabalhando num projeto que vc já trabalhou anos atrás e o cliente pedir para melhorar ela ou corrigir uns bugs, as versões dos pacotes que vc havía usado vc não irá precisar baixar na sua máquina toda tornando ela desnecessariamente pesado. Mas, sim, sem a necessidade de instalar as versões dos pacotes antigos na sua máquina, vc poderá criar um ambiente virtual e dentro dela instalar as versões antigas dos pacotes que serão necessário e nela rodar o projeto antigo para realizar as devidas melhorias nela.
+
 Seguir link para leitura e aplicação:
 
     https://docs.python.org/3/library/venv.html
