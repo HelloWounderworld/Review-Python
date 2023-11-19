@@ -29,7 +29,7 @@ data structures algorithms, Cory Althoff.
 ## Recursos para revisar a linguagem de programação Python:
 Utilizei o editor de código VSCode (Visual Studio Code), da Microsoft, e usei a linguagem Git, para o controle de versionamento ao meu repositório GitHub.
 
-A versão do python que foi usado para essa revisão é o python3. Precisaria instalar ela pelo terminal, visto que o meu sistema operacional é Linux Ubuntu versão 20.04, caso não tenha sido instalado ainda, https://www.itsupportwale.com/blog/how-to-upgrade-to-python-3-10-on-ubuntu-18-04-and-20-04-lts/. Mas vamos tbm precisar de mais alguns pacotes python para ser instalado:
+A versão do python que foi usado para essa revisão é o python3. Precisaria instalar ela pelo terminal, visto que o meu sistema operacional é Linux Ubuntu versão 20.04 (Foi atualizado para 22.04 em 19/11/2023 - Esse README.md da raíz passará para uma atualização após a minha atualização), caso não tenha sido instalado ainda, https://www.itsupportwale.com/blog/how-to-upgrade-to-python-3-10-on-ubuntu-18-04-and-20-04-lts/. Mas vamos tbm precisar de mais alguns pacotes python para ser instalado:
 
     sudo apt-get install python3.11-dev python3.11-full
 
