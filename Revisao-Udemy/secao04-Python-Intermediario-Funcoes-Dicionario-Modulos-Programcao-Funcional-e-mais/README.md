@@ -5329,13 +5329,74 @@ Agora, o venv, segundo o professor, Luiz Otávio Miranda, é um módulo novo do 
 
 Vantagens do venv, ela é que nem Docker. No caso, se por acaso vc estiver trabalhando num projeto que vc já trabalhou anos atrás e o cliente pedir para melhorar ela ou corrigir uns bugs, as versões dos pacotes que vc havía usado vc não irá precisar baixar na sua máquina toda tornando ela desnecessariamente pesado. Mas, sim, sem a necessidade de instalar as versões dos pacotes antigos na sua máquina, vc poderá criar um ambiente virtual e dentro dela instalar as versões antigas dos pacotes que serão necessário e nela rodar o projeto antigo para realizar as devidas melhorias nela.
 
+O ambiente virtual venv, para o sistemas operacionais Linux e MacOS, são as mesmas. Porém, para o Windows, ela tem suas peculiaridades para possibilitar nos seus funcionamentos.
+
+A máquina que eu uso, o OS dela, é Linux Ubuntu. Caso o estudante esteja utilizando o Windows, recomendamentos seguir a seguinte documentação:
+
+    https://docs.python.org/pt-br/dev/library/venv.html
+
+    https://mothergeo-py.readthedocs.io/en/latest/development/how-to/venv-win.html
+
+Agora, para quem for usuário de Linux ou MacOS, como no meu caso, vamos seguir com o seguinte script para conseguirmos criar o ambiente virtual.
+
+Primeiro, vamos executar o seguinte comando para verificarmos a versão do Python
+
+    python -V ou python3 - V
+
+Depois que fizermos isso, realizamos o seguinte
+
+    python -m venv (nome do ambiente) ou python3 -m venv (nome do ambiente)
+
+Nesse curso, no caso, foi colocado o "nome do ambiente" como "ambiente" sem os parênteses.
+
+Assim, conseguimos ver que foi criado uma pasta chamado "ambiente".
+
+Para procurarmos o executável, onde está o ambiente virtual que pode ser execudado, usamos o seguinte comando. Funciona apenas no PowerShell.
+
+    gcm python ou gcm python -Syntax
+
+No caso de Linux ou MacOs é
+
+    which python ou which python3
+
+No meu caso, foi retornado
+
+    /usr/bin/python3
+
+Se colocarmos
+
+    /usr/bin/python3 -V
+
+Será o mesmo que
+
+    python3 -V
+
+Bom, essa aula só foi para conseguirmos criar o ambiente virtual.
+
+Qualquer coisa, recomendamos que o aluno pegue a leitura do README.md da pasta raiz desse repositório e realize as devidas instalações necessárias para, depois, voltar nesse curso.
+
 Seguir link para leitura e aplicação:
 
     https://docs.python.org/3/library/venv.html
 
     https://docs.python.org/pt-br/3/library/venv.html
 
+    https://csguide.cs.princeton.edu/software/virtualenv#:~:text=A%20Python%20virtual%20environment%20(venv,installed%20in%20the%20specific%20venv.
+
 ## Aula 80 - Ativando e desativando o meu ambiente virtual venv:
+Vamos aprender a ativar e desativar o ambiente virtual que criamos na aula anterior.
+
+No caso, o tipo de path que será colocado, depende de cada pessoa da forma como está seguindo esse curso e onde está guardando a pasta do ambiente virtual. Logo, identificado a path necessária, onde está o ambiente, bastaria colocar a seguinte path (Novamente, estou fazendo pelo Linux. No Windows, isso muda.)
+
+    . ambiente/bin/activate ou source ambiente/bin/activate
+
+Para desativar o ambiente virtual, será o seguinte comando
+
+    deactivate
+
+Detalhe!! Essa parte do curso de saber configurar o ambiente virtual é de extrema importância. Logo, recomendamos que o aluno dê um gás nesse curso de forma que não deixe nenhuma dúvida à respeito. E, se necessário, refaça todas as configurações do ambiente, passo a passo, de novo, para se certificar que está sabendo como fazer tudo.
+
+Irei atualizar a versão do meu Ubuntu de 20.04 para 22.04! (19/11/2023)
 
 ## Aula 81 - pip - instalando pacotes e bibliotecas:
 
