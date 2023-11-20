@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' /home/leonardo/Documentos/estudos-programacao/Review-Python/Revisao-Udemy/secao04-Python-Intermediario-Funcoes-Dicionario-Modulos-Programcao-Funcional-e-mais/Aula78-79-O-que-sao-ambientes-virtuais-Como-criar-seu-ambiente-virtual-com-venv/ambiente/bin/python3 "$0" "$@"
+'''exec' /home/leonardo/Documentos/estudos-programacao/Review-Python/Revisao-Udemy/secao04-Python-Intermediario-Funcoes-Dicionario-Modulos-Programcao-Funcional-e-mais/Aula78-79-80-O-que-sao-ambientes-virtuais-Como-criar-seu-ambiente-virtual-com-venv/ambiente/bin/python "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re

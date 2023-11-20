@@ -5398,6 +5398,8 @@ Detalhe!! Essa parte do curso de saber configurar o ambiente virtual é de extre
 
 Irei atualizar a versão do meu Ubuntu de 20.04 para 22.04! (19/11/2023)
 
+Foi feito a devida atualização, então vamos prosseguir com o curso.
+
 ## Aula 81 - pip - instalando pacotes e bibliotecas:
 
 ## Aula 82 - Criando e usando um requirements.txt:
