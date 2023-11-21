@@ -241,6 +241,6 @@ sudo update-alternatives --config python3
 
 Se não, vc poderá ter problemas de atualizações na sua máquina ou nem mesmo o comando padrão para abrir o terminal não rode.
 
-# Com base nos estudos da linguagem Python - Projetos que consegui criar:
+# Projetos que consegui criar:
 
 ## Nome do Projeto e as tecnologias usadas nela suas versões e o que precisa para rodar na máquina da pessoa:
