@@ -3,6 +3,11 @@ Esse repositório será uma revisão minha da linguagem python que aprendi na fa
 
 Conforme o meu progresso na revisão, irei reviver os meus códigos que eu criei no passado, no intuito de exercer as minhas skills sobre essa linguagem de programação.
 
+### Obs:
+Lembrando que esse repositório, somente, está voltado para a revisão conceitual da linguagem de programação Python. Logo, frameworks relacionados, como Django, o seu estudo teório, será realizado em outro repositório.
+
+Assim, como projetos usando a linguagem Python ou os seus respectivos frameworks, irei criar repositórios independentes, porém irei mencionar na forma de lista com um breve resumo nos repositórios de estudos teóricos/conceitos.
+
 ## Referência:
 Usarei as seguintes referências:
 
@@ -235,3 +240,7 @@ Se caso o python3.11 não for a versão em que está instalado na sua máquina, 
 sudo update-alternatives --config python3
 
 Se não, vc poderá ter problemas de atualizações na sua máquina ou nem mesmo o comando padrão para abrir o terminal não rode.
+
+# Com base nos estudos da linguagem Python - Projetos que consegui criar:
+
+## Nome do Projeto e as tecnologias usadas nela suas versões e o que precisa para rodar na máquina da pessoa:

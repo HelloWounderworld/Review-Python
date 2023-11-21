@@ -5402,6 +5402,7 @@ Foi feito a devida atualização, então vamos prosseguir com o curso.
 
 ## Aula 81 - pip - instalando pacotes e bibliotecas:
 
+
 ## Aula 82 - Criando e usando um requirements.txt:
 
 ## Aula 83 - Criando arquivos com Python + Context Manager with:
