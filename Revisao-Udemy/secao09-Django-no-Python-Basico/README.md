@@ -1,3 +1,0 @@
-# Django no Python - Básico:
-
-
