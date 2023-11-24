@@ -21,6 +21,8 @@ Usarei as seguintes referências:
 
 Tais referências, em livros, citados acima serão lidos, em paralelo, conforme o conceito revisado pelo curso da Udemy na expectativa de me aprofundar mais ainda no conceito.
 
+A maneira como irei utilizar os livros acima, como esses livros não se baseam em algum projeto, mas, sim, puramente no conceito, então irei pegar os tópicos que aprendi no curso da Udemy e nela, quando realizar a revisão de Python, ir para cada tópico dos livros que abordam o assunto que estou revisando e melhorar a qualidade do entendimento dela, realizando testes por código. Claro, estarei mencionando os livros na hora que estiver realizando a tal revisão.
+
 Outras referências complementares que irei lendo por fora, independente de qual linguagem de programação que eu esteja estudando, mas que são bons serem citados para o desencargo de consciência:
 
 - Introduction to Algorithms, Fouths Edition. Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
