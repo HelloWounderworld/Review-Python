@@ -27,10 +27,15 @@ Outras referências complementares que irei lendo por fora, independente de qual
 
 - Introduction to Algorithms, Fouths Edition. Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
 
-- The Self-Taught Computer Scientist - The beginner’s guide to
-data structures algorithms, Cory Althoff.
+- The Self-Taught Computer Scientist 
+
+- The beginner’s guide to data structures algorithms, Cory Althoff.
 
 - Clean Code, A Handbook of Agile Software Craftsmanship, Robert C. Martin.
+
+- Clean Architecture, A Craftsman's Guide to Software Structure and Desing, Robert C. Martin.
+
+- The Pragmatic Programmer, From Journeyman To Master, Devid Thomas and Andrew Hunt.
 
 
 ## Recursos para revisar a linguagem de programação Python:
