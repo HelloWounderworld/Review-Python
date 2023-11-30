@@ -37,6 +37,8 @@ Outras referências complementares que irei lendo por fora, independente de qual
 
 - The Pragmatic Programmer, From Journeyman To Master, Devid Thomas and Andrew Hunt.
 
+### Obs - Exercícios que deixei de fazer:
+Caso tiver algum arquivo com um exercício que deixei de fazer, basta colocar na procura geral por "#Fazer!".
 
 ## Recursos para revisar a linguagem de programação Python:
 Utilizei o editor de código VSCode (Visual Studio Code), da Microsoft, e usei a linguagem Git, para o controle de versionamento ao meu repositório GitHub.
