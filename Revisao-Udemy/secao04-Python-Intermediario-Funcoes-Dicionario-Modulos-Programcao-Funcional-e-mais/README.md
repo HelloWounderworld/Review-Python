@@ -6464,6 +6464,41 @@ Esse problema foi tirado do livro "The Pragmatic Programmer" que conta sobre uma
 Terá que ter no programa listar, desfazer e refazer.
 
 ## Aula 91 - Evitando uso de condicionais + Guard Clause:
+Conforme o exercício feito anteriormente, vamos melhorar a qualidade do código.
+
+Não signigica que não podemos usar as condicionais "if/elif/else". Porém, para tornar o código da pessoa mais robusta, no sentido de melhor performance e que não engloba possibilidades desnecessárias ou, até mesmo, interrupções indesejadas, seria um diferencial o estudante compreender muito bem os momentos convenientes de se usar as condicionais ou outras formas, que são tipos de condicionais, porém, mais convenientes ao cenário.
+
+Vamos levar em consideração o código da aula antecessora, donde, dentro do loop, while, foi feito o seguinte
+
+    while (True):
+        print('Comandos: listar, desfazer e refazer')
+        entrada = input('Digite uma tarefa ou comando: ')
+        
+        if entrada == 'listar':
+            listar(lista)
+            continue
+
+        elif entrada == 'desfazer':
+            desfazer(lista, listaRefaz)
+            listar(lista)
+            continue
+
+        elif entrada == 'refazer':
+            refazer(listaRefaz, lista)
+            listar(lista)
+            continue
+
+        elif entrada == 'clear':
+            # aqui serve para dar o comando "clear" para limpar o terminal
+            os.system('clear')
+            continue
+
+        else:
+            adicionar(entrada, lista)
+            listar(lista)
+            continue
+
+Bom, primeiro, vamos explicar o por quê, que o uso da condicional no cenário acima, não está tão conveniente.
 
 ## Aula 92 - Exercício (+solução) - salvando a lista de tarefas em JSON:
 
