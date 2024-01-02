@@ -30,6 +30,7 @@ def desfazer(lista, listaRefaz):
 
     listaRefaz.append(lista.pop())
     print()
+    listar(lista)
 
 def refazer(listaRefaz, lista):
     print()
@@ -39,6 +40,7 @@ def refazer(listaRefaz, lista):
 
     lista.append(listaRefaz.pop())
     print()
+    listar(lista)
 
 def adicionar(argumento, lista):
     print()
@@ -48,6 +50,7 @@ def adicionar(argumento, lista):
         return
     lista.append(argumento)
     print()
+    listar(lista)
 
 guardando_sigla = {'listar': 0, 'desfazer': 1, 'refazer': 2, 'clear': 3}
 # print(tuple(guardando_sigla.keys())[0])
@@ -63,27 +66,39 @@ listaRefaz = []
 while (True):
     print('Comandos: listar, desfazer e refazer')
     entrada = input('Digite uma tarefa ou comando: ')
+
+    comandos = {
+        'listar': lambda: listar(entrada),
+        'desfazer': lambda: desfazer(lista, listaRefaz),
+        'refazer': lambda: refazer(listaRefaz, lista),
+        'clear': lambda: os.system('clear'),
+        'adicionar': lambda: adicionar(entrada, lista)
+    }
+
+    comando = comandos.get(entrada) if comandos.get(entrada) is not None else \
+        comandos['adicionar']
+    comando()
     
-    if entrada == 'listar':
-        listar(lista)
-        continue
+    #if entrada == 'listar':
+    #    listar(lista)
+    #    continue
 
-    elif entrada == 'desfazer':
-        desfazer(lista, listaRefaz)
-        listar(lista)
-        continue
+    #elif entrada == 'desfazer':
+    #    desfazer(lista, listaRefaz)
+    #    listar(lista)
+    #    continue
 
-    elif entrada == 'refazer':
-        refazer(listaRefaz, lista)
-        listar(lista)
-        continue
+    #elif entrada == 'refazer':
+    #    refazer(listaRefaz, lista)
+    #    listar(lista)
+    #    continue
 
-    elif entrada == 'clear':
-        # aqui serve para dar o comando "clear" para limpar o terminal
-        os.system('clear')
-        continue
+    #elif entrada == 'clear':
+    #    # aqui serve para dar o comando "clear" para limpar o terminal
+    #    os.system('clear')
+    #    continue
 
-    else:
-        adicionar(entrada, lista)
-        listar(lista)
-        continue
+    #else:
+    #    adicionar(entrada, lista)
+    #    listar(lista)
+    #    continue
