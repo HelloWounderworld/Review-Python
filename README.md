@@ -118,7 +118,27 @@ Estarei passando os comandos para conseguirmos configurar o ambiente que precisa
 
     https://www.python.org/downloads/
 
-    ![Step1](./python-windows-install-step1.png)
+![Step1](images/python-windows-install-step1.png)
+
+・ステップ２：　ダウンロードを終えたあとは個人使用のPCのダウンロードファイルにこのようなアイコンが表示されると思います。
+
+![Step1](images/python-windows-install-step2.png)
+
+そのアイコンにダブルクリックします。のちにこのプログラムが管理レベルでセッティングを施してもよろしいのかを聞かれるかと思いますが”はい”と回答してください。
+
+・ステップ３：　以下の画面の通りにちゃんと二つのオプションをチェックしたところで”Install　Now”にクリックしていただきます。
+
+![Step1](images/python-windows-install-step3.png)
+
+・ステップ４：　全てインストールプロセスが完了しましたら以下の画面の通りに”Setup was successful"と表示されます。”Close”ボタンにクリックしていただけらばPythonのインストールが完了しました。
+
+![Step1](images/python-windows-install-step4.png)
+
+・ステップ５：　Pythonがインストールされてるかを確認するために個人のPCからパワーシェルかコマンドプロンプトを開き”python --version"とタイプします。もしも、以下の画面通りに映されましたらPythonがインストールされた証拠です。
+
+![Step1](images/python-windows-install-step5.png)
+
+あとはVSCodeを個人のPCにする必要があります。
 
 ## Instalando o VSCode:
 Instalado o VSCode, vamos abrir o projeto via essa IDE.
