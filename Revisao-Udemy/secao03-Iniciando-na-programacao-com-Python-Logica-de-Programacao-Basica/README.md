@@ -69,6 +69,8 @@ Agora, o aspas simples, tbm, serve para comentar, que também é uma DocString.
 
 No caso, o DocString, ele pode ser usado como uma forma de anotar e, como será lido pelo interpretador python, ele ficará guardado na memória, diferente de comentar por # que será ignorado.
 
+### O que raios e o interpretador do Python?
+
 ## Aula 06 - A função print:
 Vamos conhecer melhor sobre a função print.
 
