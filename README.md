@@ -43,6 +43,7 @@ Caso tiver algum arquivo com um exercício que deixei de fazer, basta colocar na
 ## Recursos para revisar a linguagem de programação Python:
 Utilizei o editor de código VSCode (Visual Studio Code), da Microsoft, e usei a linguagem Git, para o controle de versionamento ao meu repositório GitHub.
 
+### Configurando o Ambiente Python no Sistema Operacional Linux:
 Estarei passando os comandos para conseguirmos configurar o ambiente que precisamos para seguirmos com o curso de programação Python. No caso, o sistema operacional que estou utilizando é Linux Ubuntu 22.04 LTS e nela irei realizar as devidas configurações.
 
 - Abrindo o terminal na pasta raiz colocamos o seguinte comando
@@ -107,6 +108,19 @@ Estarei passando os comandos para conseguirmos configurar o ambiente que precisa
 
 - Agora, falta baixar a IDE chamado "VSCode" na sua máquina.
 
+## Pythonのインストール　Windows11：
+オペレーションシステムがWindows 11の方に向けてどのようにPythonを個人使用のPCにインストールをするのかを解説させていただきます。
+
+読解に苦しまないようにできる限り項目形式にして説明を施します。
+    
+
+・ステップ１：　Pythonのサイトにてアクセスをしてその言語のパッケージをダウンロードします。
+
+    https://www.python.org/downloads/
+
+    ![Step1](./python-windows-install-step1.png)
+
+## Instalando o VSCode:
 Instalado o VSCode, vamos abrir o projeto via essa IDE.
 
 Uma outra coisa que podemos testar, ativando novamente o nosso ambiente virtual, entrando no diretório teste criado, e, fora do diretório ambiente, criar um arquivo main.py e dentro desse arquivo, na primeira linha, apenas colocar print(1+1). Assim, acessado o ambiente virtual ativo, jogamos o comando "python main.py". Se retornar um 2, significa que deu certo.
