@@ -70,6 +70,11 @@ Agora, o aspas simples, tbm, serve para comentar, que também é uma DocString.
 No caso, o DocString, ele pode ser usado como uma forma de anotar e, como será lido pelo interpretador python, ele ficará guardado na memória, diferente de comentar por # que será ignorado.
 
 ### O que raios e o interpretador do Python?
+O interpretador trabalha de forma semelhante a uma shell de Unix: quando chamado com a saída padrão conectada a um console de terminal, ele lê e executa comandos interativamente; quando chamado com um nome de arquivo como argumento, ou com redirecionamento da entrada padrão para ler um arquivo, o interpretador lê e executa o script contido no arquivo.
+
+Fonte de link para leitura:
+
+    https://docs.python.org/pt-br/3/tutorial/interpreter.html
 
 ## Aula 06 - A função print:
 Vamos conhecer melhor sobre a função print.
@@ -114,7 +119,9 @@ Vamos introduzir aos tipos de dados.
 
 Vamos primeiro entender o que é a linguagem de programação Python.
 
-Assim como o JavaScript, Python ela é uma linguagem de programação de tipagem dinâmica. O que difere com o JavaScript, é que, enquanto o Python essa tipagem dinâmica é forte, o JavaScript ela é de uma tipagemdinâmica fraca.
+Assim como o JavaScript, Python ela é uma linguagem de programação de tipagem dinâmica. O que difere com o JavaScript, é que, enquanto o Python essa tipagem dinâmica é forte, o JavaScript ela é de uma tipagem dinâmica fraca.
+
+Obs: Ser uma linguagem de programacao de tipagem fraca ou forte, para entender, voce pode imaginar dois individuo, um que fala a sua lingua nativa de forma coloquial, mas que seja o suficiente para entender muito bem e, o outro individuo, usando a sua lingua nativa de forma bem rigorosa e formal. Ou seja, o primeiro e a tipagem fraca e, o segundo, e o de tipagem forte. Ou se for para dar de exemplo de dois matematico enquanto um faz o abuso de notacao, mas que nao tem problema, e o outro e extremamente formal, rigoso e preciso com as notacoes e que nao perdoa nenhum abuso de notacao.
 
     https://www.treinaweb.com.br/blog/quais-as-diferencas-entre-tipagens-estatica-ou-dinamica-e-forte-ou-fraca
 
@@ -212,7 +219,7 @@ Os booleanos são tipos de dados que são usados para declarar alguma validade d
     print(type(10 == 10))
     print(type(10 == 11))
 
-Ficaria mais fácil para mim entender que o booleano é uma espécie que atua como álgebra. Ou seja, não existe mais ou menos ou aproximado, mas sim ou é ou não é. Daria para axiomatizar toda a álgebra de grupos, aneis e corpos e teoria de Galois dentro disso. Um dos projetos meus é criar esse axioma em forma de classe para depois verificar em que área no mundo teria a aplicabilidade. O mesmo vale para a álgebra linear!
+Ficaria mais fácil para mim entender que o booleano é uma espécie que atua como álgebra. Ou seja, não existe mais ou menos ou aproximado, mas ou é sim ou é não. Daria para axiomatizar toda a álgebra de grupos, aneis e corpos e teoria de Galois dentro disso. Um dos projetos meus é criar esse axioma em forma de classe para depois verificar em que área no mundo teria a aplicabilidade. O mesmo vale para a álgebra linear!
 
 ## Aula 10 - Coerção de tipos (convertendo um tipo para outro):
 Vamos ver o que é conversão de tipos e coerção.

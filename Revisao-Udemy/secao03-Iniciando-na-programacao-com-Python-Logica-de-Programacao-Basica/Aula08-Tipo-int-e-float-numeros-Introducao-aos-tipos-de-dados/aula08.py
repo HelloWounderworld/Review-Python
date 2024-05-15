@@ -1,3 +1,6 @@
+# Remember it. All in Python is a Object.
+# When you use the syntax "type" in first place is always showed "class"
+
 # Tipo int
 print(11)
 print(-11)
