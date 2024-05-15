@@ -12,7 +12,7 @@ print(int('1'), type(int('1')))
 # print('a', type('a'))
 # print(int('a'), type(int('a')))
 
-print(1.0 + 1)
+print(1.0 + 1) # retorna um float
 
 print(bool(''))
 print(bool(' '))
