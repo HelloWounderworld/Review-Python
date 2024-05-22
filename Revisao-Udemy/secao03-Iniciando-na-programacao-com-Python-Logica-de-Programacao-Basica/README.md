@@ -617,7 +617,7 @@ Example:
 
 - Use conditionals (if/else): For controlling the flow of your program based on known conditions and making decisions based on variable states or predefined logic.
 
-## Aula 23 - if, elif e else: entendendo o fluxo do interpretador em condicionais:
+## Aula 23 - if, elif e else: entendendo o fluxo do interpretador em condicionais
 Vamos entender mais ainda sobre blocos.
 
 Lembra quando foi dito sobre a identação?
@@ -666,7 +666,9 @@ Basicamente, o bloco de condicionais, a forma como ela funciona, é o mesmo que 
 ## Aula 24 - O Debugger do VS Code e o interpretador do Python lendo os códigos:
 Vamos aprender a usar o Debugger do VSCode que permite vc conseguir conferir que tipo de erro está acontecendo.
 
-No VSCode temos um recurso chamado Run and Debbug, na aba onde está exibindo os recursos é o desenho com um play e um inseto colado nela. No caso, podemos usar esse Run and Debugger para podermos corrigir os erros de códigos que vc tem.
+No VSCode temos um recurso chamado Run and Debbug(ou basta teclar Ctrl + Shift + D), na aba onde está exibindo os recursos é o desenho com um play e um inseto colado nela. No caso, podemos usar esse Run and Debugger para podermos corrigir os erros de códigos que vc tem.
+
+![Run and Debugger](Aula24-Debbuger-do-VS-code-Interpretador-do-Python-lendo-os-codigos/aula24-Run-Debuuger)
 
 Podemos, também, usar um recurso chamado BreakPoint para conseguirmos ver exatamente no ponto onde vc queria que parasse durante a compilação do código.
 
