@@ -670,7 +670,9 @@ No VSCode temos um recurso chamado Run and Debbug(ou basta teclar Ctrl + Shift +
 
 ![Run and Debugger](Aula24-Debbuger-do-VS-code-Interpretador-do-Python-lendo-os-codigos/aula24-Run-Debugger.png)
 
-Podemos, também, usar um recurso chamado BreakPoint para conseguirmos ver exatamente no ponto onde vc queria que parasse durante a compilação do código.
+Podemos, também, usar um recurso chamado BreakPoint (fn + F9 ou F9, apenas, sobre a linha do codigo selecionado que vc queira que pare) para conseguirmos ver exatamente no ponto onde vc queria que parasse durante a compilação do código. No caso, clicando no Run and Debugger vc pode tbm clicar exatamente na linha que vc queira que ela pare, ao rodar o codigo.
+
+![BreakPoint](Aula24-Debbuger-do-VS-code-Interpretador-do-Python-lendo-os-codigos/aula24-Definning-breakpoint.png)
 
 ## Aula 25 - Operadores relacionais (de comparação) em Python:
 Vamos ver sobre os operações relacionais de comparação em Python.
