@@ -541,7 +541,7 @@ Bom, aqui a analogia é a mesma que no JavaScript, donde vc poderia usar o retur
 
 Bom, vimos que a ideia principal de montar um bloco em python é que ele seja feita via identação. Ou seja, quando vc cria uma instrução, tudo o que vem depois dele que esteja espaçado por um tab estará sendo executado dentro dele.
 
-### Try/Except (try/catch do Python) e o uso do if/elif/else:
+### Try/Except (try/catch do Python) e o uso do if/elif/else: Section 03 Class 37
 In programming, both try/catch blocks and conditionals (such as if statements) are used to control the flow of a program, but they serve different purposes and are used in different situations. Here’s an explanation of when to use each:
 
 #### Try/Catch Blocks
@@ -703,8 +703,9 @@ Bom, em conceitos matemáticos mais à fundo, os operadores que conseguimos defi
     print(menor)
     print(menor_ou_igual)
     print(igual)
-    print(diferente)
+    print(diferente)   
 
+### Interactive Mode PYthon - Modo Interativo em Python:
 Em vez de usar vários prints, se quiser usar de modo interativo podemos jogar no terminal o seguinte comando
 
     python -i aula25.py
@@ -756,6 +757,18 @@ No caso, a ideia do curto circuito em python é a mesma que no JavaScript.
 
 ## Aula 29 - Operador Lógico "or":
 A avaliação do curto circuito em python é o mesmo que o JavaScript.
+
+Obs: My recommendation is the student learned a bit more about math's proof concept about basic set theory. One can found it to practice at a good any book about Real Analysis in it introductory chapter. I will list someone of them:
+
+- Curso de Analise Real Volume 1, Elon Lages Lima.
+
+- Curso de Analise Real, Cassio Neri e Marcos Cabral.
+
+- Real Analysis, Foundations and Functions of One Variable, Vera T. Sos and Miklos Laczkovich.
+
+- Introduction to Calculus and Classical Analysis, Fourth Edition, Omar Hijab.
+
+- Mathematics for Computer Science, Eric Lehman, F Thomson Leighton and Albert R Meyer.
 
 ## Aula 30 - Operador lógico "not":
 Na matemática é conhecido como uma negação de uma sentença.
@@ -944,7 +957,7 @@ Assim, podemos tbm colocar o final onde queremos que seja pego
 
 No caso, colocamos o pedaço até onde queremos pegar, mas nesse caso aqui será omitido o índice 7. Ou seja, será pego até o índice 6.
 
-O mesmo podemos fazer de trá para frente. No caso, se quisermos pegar uma fatia a partir de um ponto e tudo o que vier antes dele podemos fazer o seguinte
+O mesmo podemos fazer de trás para frente. No caso, se quisermos pegar uma fatia a partir de um ponto e tudo o que vier antes dele podemos fazer o seguinte
 
     print(variavel[:5])
 
@@ -959,7 +972,7 @@ Podemos, tbm, saber a quantidade de caractere que está presente numa string usa
     print(len('aaaaaaaaa'))
     print(len(variavel))
 
-No caso, aqui fica evidente que de fato é contado idependente se um dado caractere apareceu mais de uma vez, ela é contado mesmo assim indexando um novo índice nela. Seria uma função em que vai dos naturais e algumas quantidades de índices de naturais vão até um mesmo caratere de palavras.
+No caso, aqui fica evidente que de fato é contado idependente se um dado caractere apareceu mais de uma vez, ela é contado mesmo assim indexando um novo índice nela. Seria uma função em que vai dos naturais e algumas quantidades de índices de naturais vão até um mesmo caractere de palavras.
 
 Ainda faltou falar de passos no fatiamento
 
@@ -980,7 +993,7 @@ Podemos usar, nessa bricadeira, o número negativo tbm
     print(variavel[0:len(variavel):-1])
     print(variavel[0:len(variavel):-2])
 
-Nisso, o que irá acontecer é que em vez de contar os passos de esquerda para direita, é contado de direita para à esquerda. Entretanto, ao usarmos o número negativo, os outros números tbm precisam serem negativos. Como prova disso, os dois prints acima não será retornado nada. O certo teria que ser
+Nisso, o que irá acontecer é que em vez de contar os passos de esquerda para direita, é contado de direita para à esquerda. Entretanto, ao usarmos o número negativo, os outros números tbm precisam ser negativos. Como prova disso, os dois prints acima não será retornado nada. O certo teria que ser
 
     print(variavel[-1:-10:-1])
     print(variavel[-1:-10:-2])
@@ -996,7 +1009,7 @@ Podemos fazer o mesmo para o print(variavel[-1:-10:-1]) da seguinte forma abaixo
 
 Como nesse caso aqui que foi invertido a string.
 
-## Aula 35 - Exercício: teste seu conhecimento até aqui e Aula 36 - Solução - Exercício: teste seu conhecimento até aqui:
+## Aula 35 e 36 - Exercício: teste seu conhecimento até aqui
 Vamos fazer um teste para fixar melhor os conteúdos que foi estudados até agora
 
 No caso, essa seria as exigências
@@ -1097,9 +1110,11 @@ No código acima, vc vai ver que se colocarmos no input algo que não seja núme
 
 Mas aí entra na seguinte pergunta. Se tem meios para driblar usando as condicionais em vez de try/catch, então por quê temos que usa-las?
 
-Bom, aí entra na questão de entender das limitações das condicionais. Por exemplo, existem casos em que há uma excessão em que a condicional não consegue dar conta ou considerar, mesmo que a lógica aplicada para tais regra de negócio estejam certos. Existem casos em que isso não consegue cobrir todas as possibilidades um algoritmo atende das exigências humanas. Daí, entra em papel a importância de uso do try/catch.
+Bom, aí entra na questão de entender das limitações das condicionais. Por exemplo, existem casos em que há uma excessão em que a condicional não consegue dar conta ou considerar, mesmo que a lógica aplicada para tais regra de negócio estejam certos. Existem casos em que isso não consegue cobrir todas as possibilidades que um algoritmo atende das exigências humanas. Daí, entra em papel a importância de uso do try/catch.
 
-## Aula 38 e 39 - Parte 1 e Parte 2: Variáveis, constantes e complexidade de código:
+Ou seja, basicamente, a ideia e que se vc verificar uma situacao em que seja necessario testar algo, mas que nao da para computar todas as possibilidades, o uso do try/cath acaba sendo essencial. O uso da condicional, apenas, se usa em situacoes em que vc verifica se uma determinada regra de negocio ou ate mesmo as possibilidades estao todas computaveis para serem analisadas e que basta que uma delas sejam satisfeitas, isso em uma situacao mais controlada.
+
+## Aula 38 e 39 - Parte 1 e Parte 2: Variáveis, constantes e complexidade de código
 Vamos falar sobre a complexidade de códigos e algumas boas práticas.
 
 Vamos analisar o seguinte código
