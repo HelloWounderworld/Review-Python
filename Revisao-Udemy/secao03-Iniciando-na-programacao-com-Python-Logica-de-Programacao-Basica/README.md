@@ -668,7 +668,7 @@ Vamos aprender a usar o Debugger do VSCode que permite vc conseguir conferir que
 
 No VSCode temos um recurso chamado Run and Debbug(ou basta teclar Ctrl + Shift + D), na aba onde está exibindo os recursos é o desenho com um play e um inseto colado nela. No caso, podemos usar esse Run and Debugger para podermos corrigir os erros de códigos que vc tem.
 
-![Run and Debugger](Aula24-Debbuger-do-VS-code-Interpretador-do-Python-lendo-os-codigos/aula24-Run-Debuuger.png)
+![Run and Debugger](Aula24-Debbuger-do-VS-code-Interpretador-do-Python-lendo-os-codigos/aula24-Run-Debugger.png)
 
 Podemos, também, usar um recurso chamado BreakPoint para conseguirmos ver exatamente no ponto onde vc queria que parasse durante a compilação do código.
 
