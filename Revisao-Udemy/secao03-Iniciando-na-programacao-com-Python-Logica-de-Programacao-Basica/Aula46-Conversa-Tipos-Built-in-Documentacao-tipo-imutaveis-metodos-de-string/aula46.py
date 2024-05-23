@@ -3,7 +3,7 @@ https://docs.python.org/pt-br/3/library/stdtypes.html
 Imutáveis que vimos: str, int, float, bool
 """
 string = 'leonardo takashi teramatsu'
-# string[3] = 'ABC'
+# string[3] = 'ABC' # Isso ira retornar um erro
 # outra_variavel = string
 outra_variavel = f'{string[:3]}ABC{string[4:]}'
 print(string)

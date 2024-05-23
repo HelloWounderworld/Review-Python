@@ -1,5 +1,6 @@
 """ while/else """
-string = 'Valor qualquer'
+# string = "Valor ocultado"
+string = input("Coloque algum texto: ")
 
 i = 0
 while i < len(string):

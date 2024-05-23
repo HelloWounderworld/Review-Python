@@ -1,5 +1,7 @@
 """Qual letra apareceu mais vezes?"""
 
+# O(n2): tem laco uma dentro da outra
+
 letra = input('Digite uma frase: ')
 
 i = 0

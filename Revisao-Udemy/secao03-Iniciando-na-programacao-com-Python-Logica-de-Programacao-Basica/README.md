@@ -1304,7 +1304,7 @@ Vamos ver um pouco da documentação do python dos tipos que já bem imbutidos d
 
     https://docs.python.org/pt-br/3/library/stdtypes.html
 
-No caso, os que vemos ver são os tipos imutáveis. São elas:
+No caso, os que vamos ver são os tipos imutáveis. São elas:
 
     str, int, float, bool
 
@@ -1322,7 +1322,7 @@ Além disso, o fato de ser imutável, uma vez atribuída um valor não podemos m
 
 Ou seja, o código acima retornará um erro.
 
-No caso, a forma correta de mudar algum valor atribuído em uma variável é criando uma outra varável da mesma e realizar o seguinte
+No caso, a forma correta de mudar algum valor atribuído em uma variável é criando uma outra variável da mesma e realizar o seguinte
 
     string = 'Leonardo Takashi Teramatsu'
     outra_variavel = f'{string[:3]}ABC{string[4:]}'

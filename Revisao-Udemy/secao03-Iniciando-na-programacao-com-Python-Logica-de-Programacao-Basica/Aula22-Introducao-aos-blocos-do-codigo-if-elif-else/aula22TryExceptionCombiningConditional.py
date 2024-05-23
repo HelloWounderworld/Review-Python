@@ -4,13 +4,12 @@ import os
 
 # Verificar o nome do sistema operacional
 # Na pratica aqui se usa tyr/Exception, colocando esse if dentro dele.
+
+file_path = ''
 if os.name == 'nt':
     print("Sistema Operacional: Windows")
-    # file_path = "c:\\Users\\leona\\Documents\\study-programming\\Review-Python\\Revisao-Udemy\\secao03-Iniciando-na-programacao-com-Python-Logica-de-Programacao-Basica\\Aula22-Introducao-aos-blocos-do-codigo-if-elif-else\\tryExceptionCombiningConditional.txt"
+    
     file_path = 'C:\\Users\\leona\\Documents\\study-programming\\Review-Python\\Revisao-Udemy\\secao03-Iniciando-na-programacao-com-Python-Logica-de-Programacao-Basica\\Aula22-Introducao-aos-blocos-do-codigo-if-elif-else\\TryExceptionCombiningConditional.txt'
-    # file_path = 'TryExceptionCombiningConditional.txt'
-    # file_path = "c:/Users/leona/Documents/study-programming/Review-Python/Revisao-Udemy/secao03-Iniciando-na-programacao-com-Python-Logica-de-Programacao-Basica/Aula22-Introducao-aos-blocos-do-codigo-if-elif-else/tryExceptionCombiningConditional.txt"
-    # file_path = "c:/Users/leona/Documents/study-programming/Review-Python/Revisao-Udemy/secao03-Iniciando-na-programacao-com-Python-Logica-de-Programacao-Basica/Aula22-Introducao-aos-blocos-do-codigo-if-elif-else/tryExceptionCombiningConditional.txt"
 
 elif os.name == 'posix':
     print("Sistema Operacional: Unix/Linux/MacOS")
