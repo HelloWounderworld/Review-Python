@@ -1,4 +1,8 @@
-# Generalize para n elevado a m somas possiveis.
+# Generalize para n elevado a m somas possiveis. - Nao da nao, ela depende da forma das somas anteriores
+
+# Determine a funcao T(n) do codigo abaixo
+
+# Por fim, determine o O(f(n)) sendo f(n) a funcao dominante do T(n).
 
 import time
 
@@ -22,5 +26,5 @@ def sumOfNByGaussMethodSquareTerms(n):
 
     return sumOfNTerms, end - start
 
-print('SumOfNSquareTerms is: %d. Time cost: %10.20f seconds'%sumOfNSquareTerms(10000000000))
-print('sumOfNByGaussMethodSquareTerms is: %d. Time cost: %10.20f seconds'%sumOfNByGaussMethodSquareTerms(10000000000))
+print('SumOfNSquareTerms is: %d. Time cost: %10.20f seconds'%sumOfNSquareTerms(1000000000))
+print('sumOfNByGaussMethodSquareTerms is: %d. Time cost: %10.20f seconds'%sumOfNByGaussMethodSquareTerms(1000000000))

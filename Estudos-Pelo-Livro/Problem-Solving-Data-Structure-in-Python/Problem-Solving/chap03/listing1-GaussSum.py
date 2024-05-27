@@ -1,5 +1,9 @@
 # Generalize para n elevado a m somas possiveis.
 
+# Determine a funcao T(n) do codigo abaixo
+
+# Por fim, determine o O(f(n)) sendo f(n) a funcao dominante do T(n).
+
 import time
 
 def sumOfN(n):
