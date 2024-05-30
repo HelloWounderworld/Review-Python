@@ -1,5 +1,5 @@
 import random
-import time
+# import time
 
 def randomListGenerator():
     randomlist = []
@@ -14,8 +14,6 @@ def randomListGenerator():
 
 def minimumNumberOn2(NumberList):
 
-    start = time.time()
-
     minimo = ''
 
     for i in range(0, len(NumberList)):
@@ -24,8 +22,6 @@ def minimumNumberOn2(NumberList):
             if minimo > NumberList[j]:
                 minimo = NumberList[j]
 
-    end = time.time()
+    return minimo
 
-    return minimo, end - start
-
-print('minimumNumberOn2 is: %d. Time cost: %10.20f seconds'%minimumNumberOn2(randomListGenerator()))
+# print('minimumNumberOn2 is: %d. Time cost: %10.20f seconds'%minimumNumberOn2(randomListGenerator()))

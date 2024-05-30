@@ -1,4 +1,4 @@
-import time
+# import time
 import random
 
 def generate_anagram(word):
@@ -11,7 +11,6 @@ base_word = 'a' * 100 + 'b' * 100 + 'c' * 100 + 'd' * 100 + 'e' * 100 + 'f' * 10
 anagrams = [generate_anagram(base_word) for _ in range(2)]
 
 def anagramSolution2(s1,s2):
-    start = time.time()
     alist1 = list(s1)
     alist2 = list(s2)
 
@@ -27,8 +26,7 @@ def anagramSolution2(s1,s2):
         else:
             matches = False
 
-    end = time.time()
-    return matches, end - start
+    return matches
 
 # print('is anagram: %s. Time cost: %10.20f seconds'%anagramSolution2('abcd','dcba'))
 # print('is anagram: %s. Time cost: %10.20f seconds'%anagramSolution2('python','typhon'))
@@ -38,4 +36,4 @@ def anagramSolution2(s1,s2):
 # print('is anagram: %s. Time cost: %10.20f seconds'%anagramSolution2('persol','soldier'))
 # print('is anagram: %s. Time cost: %10.20f seconds'%anagramSolution2('way','tea'))
 # print('is anagram: %s. Time cost: %10.20f seconds'%anagramSolution2('raa','rae'))
-print('is anagram: %s. Time cost: %10.20f seconds'%anagramSolution2(anagrams[0], anagrams[1]))
+# print('is anagram: %s. Time cost: %10.20f seconds'%anagramSolution2(anagrams[0], anagrams[1]))
