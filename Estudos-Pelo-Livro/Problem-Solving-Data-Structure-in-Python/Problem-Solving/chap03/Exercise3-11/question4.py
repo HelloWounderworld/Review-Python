@@ -1,0 +1,1 @@
+# Given a list of numbers in random order, write an algorithm that works in O(nlogn) to find the kth smallest number in the list.

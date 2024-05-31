@@ -1,6 +1,7 @@
 import timeit
 import importlib
 import functools
+import random
 
 def Timer(funcao_nome, modulo_nome, *args):
     if args == ():
@@ -69,10 +70,10 @@ def Timer(funcao_nome, modulo_nome, *args):
 # t4 = Timer("test4", "Exercise3-6.FourDifferentWayToGenerateAList")
 # print("list range ",timeit.timeit(t4, number=1000), "milliseconds")
 
-popZero = Timer("PopTestZero", "Exercise3-6.popMethodCalculateVelocity")
-print("Popzero ",timeit.timeit(popZero, number=100000), "milliseconds")
-popEnd = Timer("PopTestEnd", "Exercise3-6.popMethodCalculateVelocity")
-print("PopEnd ",timeit.timeit(popEnd, number=100000), "milliseconds")
+# popZero = Timer("PopTestZero", "Exercise3-6.popMethodCalculateVelocity")
+# print("Popzero ",timeit.timeit(popZero, number=100000), "milliseconds")
+# popEnd = Timer("PopTestEnd", "Exercise3-6.popMethodCalculateVelocity")
+# print("PopEnd ",timeit.timeit(popEnd, number=100000), "milliseconds")
 
 # t1 = Timer("test1()", "from __main__ import test1")
 # print("concat ",t1.timeit(number=1000), "milliseconds")
@@ -82,3 +83,61 @@ print("PopEnd ",timeit.timeit(popEnd, number=100000), "milliseconds")
 # print("comprehension ",t3.timeit(number=1000), "milliseconds")
 # t4 = Timer("test4()", "from __main__ import test4")
 # print("list range ",t4.timeit(number=1000), "milliseconds")
+
+# Exercise3.7
+# print()
+# print("Module Exercise3-7")
+# for i in range(10000,1000001,20000):
+#     valor = random.randrange(i)
+
+#     x = list(range(i))
+#     containLista = Timer("containsLista","Exercise3-7.DictionaryAndListCompare",x,valor)
+#     print("Value analyzed: ", valor, " Contain using list ",timeit.timeit(containLista, number=100000), "milliseconds")
+
+#     x = {j:None for j in range(i)}
+#     containDicionario = Timer("containsDictionary","Exercise3-7.DictionaryAndListCompare",x,valor)
+#     print("Value analyzed: ", valor, " Contain using Dictionary ",timeit.timeit(containDicionario, number=100000), "milliseconds")
+
+#     print()
+
+# Exercise3.10
+# print()
+# print("Module Exercise3-10")
+# twoForsIteraction = Timer("twoFors", "Exercise3-10.ListOfTest", 100)
+# print("Two fors interaction ",timeit.timeit(twoForsIteraction, number=1000), "milliseconds")
+# oneForIteraction = Timer("oneFor", "Exercise3-10.ListOfTest", 100)
+# print("One for interaction ",timeit.timeit(oneForIteraction, number=1000), "milliseconds")
+# threeForsIteraction = Timer("threeFors", "Exercise3-10.ListOfTest", 100)
+# print("Three fors interaction ",timeit.timeit(threeForsIteraction, number=1000), "milliseconds")
+# threeForsParallelIteraction = Timer("threeForsParallels", "Exercise3-10.ListOfTest", 100)
+# print("Three fors parallel interaction ",timeit.timeit(threeForsParallelIteraction, number=1000), "milliseconds")
+# whilePerformanceLoop = Timer("whilePerformance", "Exercise3-10.ListOfTest", 100)
+# print("While loop ",timeit.timeit(threeForsParallelIteraction, number=1000), "milliseconds")
+
+# Exercise3.11
+print()
+print("Module Exercise3-11")
+
+print()
+print("Question 1")
+x = list(range(100000))
+
+timeCost = 0
+for i in range(100000):
+    listIndexOperatorTest = Timer("listIndexOperator", "Exercise3-11.question1", x, random.randrange(1))
+
+    timeCost = timeCost + timeit.timeit(listIndexOperatorTest, number=1)
+
+print("Question 1 ",timeCost, "milliseconds")
+
+print()
+print("Question 2")
+
+print()
+print("Question 3")
+
+print()
+print("Question 4")
+
+print()
+print("Question 5")
