@@ -297,7 +297,52 @@ Link para leitura:
     https://hub.asimov.academy/tutorial/entendendo-o-uso-do-self-em-python/#:~:text=usado%20em%20Python.-,O%20que%20%C3%A9%20o%20self%20%3F,a%20inst%C3%A2ncia%20de%20uma%20classe.
 
 ## Aula 06 - Escopo da classe e de métodos da classe:
+Aqui está uma classe em Python que ilustra o conceito de escopo de classe e métodos de classe, explicando como os atributos e métodos são acessados e modificados:
 
+    class Veiculo:
+        # Atributo de classe (compartilhado por todas as instâncias)
+        numero_de_rodas = 4
+
+        def __init__(self, marca, modelo):
+            # Atributos de instância (específicos para cada instância)
+            self.marca = marca
+            self.modelo = modelo
+
+        def mostrar_detalhes(self):
+            # Método de instância que acessa tanto atributos de instância quanto de classe
+            return f"{self.marca} {self.modelo} tem {Veiculo.numero_de_rodas} rodas."
+
+        @classmethod
+        def mudar_numero_de_rodas(cls, novas_rodas):
+            # Método de classe que modifica um atributo de classe
+            cls.numero_de_rodas = novas_rodas
+
+    # Criando instâncias da classe Veiculo
+    carro1 = Veiculo("Toyota", "Corolla")
+    carro2 = Veiculo("Honda", "Civic")
+
+    # Acessando método de instância
+    print(carro1.mostrar_detalhes())  # Toyota Corolla tem 4 rodas.
+
+    # Modificando o atributo de classe usando método de classe
+    Veiculo.mudar_numero_de_rodas(6)
+
+    # Acessando o método de instância novamente para ver o efeito da mudança
+    print(carro1.mostrar_detalhes())  # Toyota Corolla tem 6 rodas.
+    print(carro2.mostrar_detalhes())  # Honda Civic tem 6 rodas.
+
+
+Explicação:
+
+- Atributos de Classe: numero_de_rodas é um atributo de classe, o que significa que ele é compartilhado por todas as instâncias da classe. Qualquer modificação neste atributo afetará todas as instâncias.
+
+- Atributos de Instância: marca e modelo são atributos de instância, definidos dentro do método __init__. Eles são específicos para cada instância criada.
+
+- Métodos de Instância: mostrar_detalhes é um método de instância que pode acessar atributos de instância usando self e atributos de classe diretamente pelo nome da classe.
+
+- Métodos de Classe: mudar_numero_de_rodas é um método de classe, indicado pelo decorador @classmethod. Ele modifica o atributo de classe numero_de_rodas. Métodos de classe recebem cls como o primeiro parâmetro, que se refere à própria classe, não a uma instância específica.
+
+Este exemplo demonstra como os atributos e métodos funcionam dentro do escopo de uma classe em Python, mostrando a interação entre atributos de classe e de instância e como eles podem ser manipulados.
 
 ## Aula 07 - Mantendo estados dentro da classe:
 
