@@ -5,16 +5,20 @@
 # internos para realizar várias ações.
 # Por convenção, usamos PascalCase para nomes de
 # classes.
-# string = 'Luiz'  # str
-# print(string.upper())
-# print(isinstance(string, str))
+string = 'Leonardo'  # str
+print(string.upper())
+print(string.capitalize())
+print(string.count)
+print(isinstance(string.count,int))
+print(isinstance(string.count,str))
+print(isinstance(string.count,float))
+print(isinstance(string, str))
 class Pessoa:
     ...
 
-
-p1 = Pessoa('Luiz', 'Otávio')
-p1.nome = 'Luiz'
-p1.sobrenome = 'Otávio'
+p1 = Pessoa('Leonardo', 'Teramatsu')
+p1.nome = 'Leonardo'
+p1.sobrenome = 'Teramatsu'
 
 p2 = Pessoa('Maria', 'Joana')
 p2.nome = 'Maria'

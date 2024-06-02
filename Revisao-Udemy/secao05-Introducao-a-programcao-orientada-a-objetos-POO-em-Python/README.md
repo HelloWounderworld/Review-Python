@@ -12,14 +12,292 @@ Seguir as seguintes referências de livros:
 - Patterns of Enterprise Application Architecture
 
 ## Aula 02 - class - Classes são moldes para criar novos objetos:
+Classes sao moldes para criar novos objetos.
+
+As classes geram novos objetos (instancias) que podem ter seus proprios atributos e metodos.
+
+Os objetos gerados pela classe podem usar seus dados internos para realizar varias acoes.
+
+Por convencao, usamos PascalCase para nomes de classes.
+
+Um exemplo disso e uma string
+
+    string = 'Leonardo'  # str
+    print(string.upper())
+    print(isinstance(string, str))
+
+Basicamente, a variavel que criamos "string" acima e que atribuimos, de fato, uma string, conseguimos ver que nela existem varios metodos (upper(), capitalize(), count, etc...)
+
+Bom, para criarmos uma classe de forma manual usamos a sintaxe "class" como seguinte
+
+    class Pessoa:
+        ...
+
+Dentro dela, colocamos "...", mas o usual e que coloquemos metodos getter e setters, os atributos, como no Java, e nela colocamos o os metodos do que queremos que essa classe faca.
+
+Uma vez criado uma classe, a maneira como a instanciamos seria da seguinte forma
+
+    class Pessoa:
+        ...
+
+    p1 = Pessoa()
+
+Diferente, nao? Em Java precisamos colocar o "new" antes da instanciacao de uma nova classe, mas em Python isso nao e necessario.
+
+Bom, assim como no Java, aqui a logica nao muda muito, quando se trata de definirmos novos atributos. E a maneira como iremos acessa-las e da seguinte forma
+
+    class Pessoa:
+        ...
+
+    p1 = Pessoa()
+    p1.nome = "Leonardo" # Setter
+    p1.sobrenome = "Teramatsu" # Setter
+    print(p1.nome) # Getter
+    print(p1.sobrenome) #Getter
+
+Ou a forma mais rapida de atribuimos, seria
+
+    class Pessoa:
+        ...
+
+    p1 = Pessoa("Leonardo", "Teramatsu")
+    print(p1.nome) # Getter
+    print(p1.sobrenome) #Getter
+
+Claro, ao rodarmos os codigos acima, sera fornecido um erro, pois nao definimos nada dentro da classe Pessoa ainda.
 
 ## Aula 03 -  Introdução ao método __init__ (inicializador de atributos):
+Bom, entendido a ideia geral de como funciona uma classe, para quem ja sabe Java, viu que possui bastante analogia.
+
+Agora, vamos partir para definir os atributos e permitir que tais atributos definidos sejam inicializados. Para isso, vamos precisar utilizar a sintaxe "__init__" da seguinte forma
+
+    class Pessoa:
+        def __init__(self, nome, sobrenome):
+            self.nome = nome
+            self.sobrenome = sobrenome
+
+No caso, o "self" aqui e o tal do "this", para quem aprendeu Java ou JavaScript. Ou seja, ela representa o escopo local onde mostra tudo o que foi definido localmente, neste caso, da classe. Em outras palavras, o "self" ela referencia ao objeto que esta sendo criado.
+
+Como podemos ver acima, ao utilizarmos a sintaxe "__init__", no primeiro parametro precisamos colocar o "self" e, em seguinte, os parametros dos atributos que queremos definir. Porem, no momento em que vc for instanciar a classe, Pessoa, vc nao precisa colocar nenhum valor que referencie ao "self". O Python, automaticamente, ele ja entende qual que tais valores sera referenciado pelo objeto usando o "self". Ou seja, da seguinte forma
+
+    class Pessoa:
+        def __init__(self, nome, sobrenome):
+            self.nome = nome
+            self.sobrenome = sobrenome
+
+    p1 = Pessoa("Leonardo", "Teramatsu")
+    print(p1.nome) # Getter
+    print(p1.sobrenome) #Getter
+
+Ou, tambem, vc poderia atribuir da seguinte forma
+
+    class Pessoa:
+        def __init__(self, nome, sobrenome):
+            self.nome = nome
+            self.sobrenome = sobrenome
+
+    p1 = Pessoa()
+    p1.nome = "Leonardo"
+    p1.sobrenome = "Teramatsu"
+    print(p1.nome) # Getter
+    print(p1.sobrenome) #Getter
+
+Podemos, tambem, utilizar o "__init__" independentemente dentro de uma classe, pois ela e um inicializador.
+
+Lembre-se, o metodo init sempre, mas sempre, retorna "None"!!! Ao criarmos uma classe e definirmos o inicializador dentro dela, provavelmente, aparecera de forma automatica o seguinte 
+
+    def __init__(self) -> None:
+        pass
+
+Basicamente, o Python esta dizendo literalmente que o init ela sempre retorna "None".
+
+Se por acaso fizermos o seguinte o que poderia acontecer?
+
+    class Carro:
+        def __init__(self):
+            self.nome = 'Fusca'
+
+Bom, basicamente, o nome do que foi feito acima se chama "Hard coded" (Algo que foi escrito diretamente no codigo), ou seja, nao importa qual seja qualquer outra variavel com qualquer outro nome, no atributo "nome" sera sempre o que foi definido manualmente acima.
+
+Bom, para evitarmos que ocorra o "hard coded", isso mostra o significado de ter que definirmos os parametros depois da self
+
+    class Carro:
+        def __init__(self, alguma_coisa='Sei la'):
+            self.nome = alguma_coisa
+
+    fusca = Carro()
+    print(fusca.nome)
+
+    celta = Carro()
+    print(celta.nome)
+
+Enfim, pontos importantes dessa aula foram
+
+- __init__: serve para inicializar os atributos
+
+- self: serve para referenciar o objeto local.
+
+Link para leitura:
+
+    https://stackoverflow.com/questions/625083/what-do-init-and-self-do-in-python
+    https://www.analyticsvidhya.com/blog/2024/02/all-about-init-in-python/#:~:text=The%20__init__%20method,necessary%20setup%20or%20initialization%20tasks.
+    https://www.geeksforgeeks.org/__init__-in-python/
+    https://www.shiksha.com/online-courses/articles/understanding-self-in-python/#:~:text=The%20use%20of%20%E2%80%9Cself%E2%80%9D%20in,and%20class%20variables%20or%20methods.
 
 ## Aula 04 - Métodos em instâncias de classes Python:
+Agora, vamos criar metodos dentro das classes.
+
+Nao ha muito segredo aqui, entao vale mais a pena vc verificar como se cria o metodo dentro de uma classe em Python na pratica
+
+    class Carro:
+        def __init__(self, nome):
+            self.nome = nome
+    
+    fusca = Carro()
+    fusca.nome = 'Fusca'
+
+Bom, vamos partir para a criacao de um metodo. Vamos criar o metodo chamado "acelerar"
+
+    class Carro:
+        def __init__(self, nome):
+            self.nome = nome
+
+        def acelerar(self):
+    
+    fusca = Carro()
+    fusca.nome = 'Fusca'
+
+Detalhe importante. Colocamos o parametro "self" dentro do metodo tbm. Isso para referenciar ao objeto que esta sendo criado. Ou seja, quem eu quero acelerar? O fusca. Assim, como se eu instanciar uma nova classe, celta, de qual carro eu quero que ela seja acelerado? Do celta.
+
+E isso, mesmo que dentro do metodo eu nao tenha passado nenhum outro parametro, para que a classe entenda que eu estou agindo sobre o objeto que foi criado o self e necessario sempre ser colocado como o primeiro parametro.
+
+No caso, o metodo, como comeco ficaria o seguinte
+
+    class Carro:
+        def __init__(self, nome):
+            self.nome = nome
+
+        def acelerar(self):
+            print(f'{self.nome} esta acelerando...')
+
+    fusca = Carro('Fusca')
+    print(fusca.nome)
+
+    celta = Carro(nome='Celta')
+    print(celta.nome)
+
+Dai, para conseguirmos utilizar esse metodo, nao muda muito com o Java e JavaScript. Ou seja, usando o "." para conseguirmos chamar
+
+    class Carro:
+        def __init__(self, nome):
+            self.nome = nome
+
+        def acelerar(self):
+            print(f'{self.nome} esta acelerando...')
+
+    fusca = Carro('Fusca')
+    print(fusca.nome)
+    fusca.acelerar()
+
+    celta = Carro(nome='Celta')
+    print(celta.nome)
+    celta.acelerar()
 
 ## Aula 05 - Entendendo self em classes Python:
+Bom, vamos entender melhor sobre o self em classes Python.
+
+Basicamente, o self ele e um this nas outras linguagens como Java e JavaScript.
+
+O self, em classe Python, ele e um nome adotado como convencao, pois se quisermos, podemos colocar um outro nome como seguinte
+
+    class Carro:
+        def __init__(blablabla, nome):
+            blablabla.nome = nome
+
+        def acelerar(blablabla):
+            print(f'{blablabla.nome} esta acelerando...')
+
+E mesmo assim, como a classe Python, considera o primeiro parametro como self, o parametro "blablabla" funcionara como self
+
+    class Carro:
+        def __init__(blablabla, nome):
+            blablabla.nome = nome
+
+        def acelerar(blablabla):
+            print(f'{blablabla.nome} esta acelerando...')
+
+    fusca = Carro('Fusca')
+    print(fusca.nome)
+    # print(fusca.acelerar())
+    fusca.acelerar()
+
+    celta = Carro(nome='Celta')
+    print(celta.nome)
+    celta.acelerar()
+
+E mais, todos os parametros selfs nao precisa ser o mesmo nome
+
+    class Carro:
+        def __init__(blablabla, nome):
+            blablabla.nome = nome
+
+        def acelerar(efg):
+            print(f'{efg.nome} esta acelerando...')
+
+    fusca = Carro('Fusca')
+    print(fusca.nome)
+    # print(fusca.acelerar())
+    fusca.acelerar()
+
+    celta = Carro(nome='Celta')
+    print(celta.nome)
+    celta.acelerar()
+
+Mesmo assim, por ser o primeiro parametro, ela continua funcionando da mesma forma. Porem, a unica diferenca e que estariamos criando dois selfs diferentes dentro da classe acima, ao colocarmos o primeiro parametro de forma diferente.
+
+Para entender melhor sobre self, primeiro entenda a classe da seguinte forma. A classe e como se fosse um molde de um cookie, tanto e que se fizermos algo como seguinte
+
+    class Carro:
+        def __init__(self, nome):
+            self.nome = nome
+
+        def acelerar(self):
+            print(f'{self.nome} esta acelerando...')
+
+    Carro.acelerar()
+
+nao ira acontecer nada, pois no e o mesmo que eu esteja querendo degustar o cookie, mas em vez de degustar o resultado do que foi colocado o igrediente eu estarei tentando degustar o molde, pelo fato de fazer "Carro.acelerar()".
+
+Ja, ao definirmos como o seguinte
+
+    class Carro:
+        def __init__(self, nome):
+            self.nome = nome
+
+        def acelerar(self):
+            print(f'{self.nome} esta acelerando...')
+
+    fusca = Carro('Fusca')
+    print(fusca.nome)
+    # print(fusca.acelerar())
+    fusca.acelerar()
+
+A variavel "fusca", pelo fato de eu ter instanciado a classe, Carro, ela sera o proprio cookie que foi criado a partir do molde, Carro. Ou seja, no momento em que eu estiver degustando dos sabores e das caracteristicas desse cookie, que sao os momentos em que eu estiver chamando algum metodo ou atributo que foi definido nela, eu estarei conseguindo degustar.
+
+Assim, o self, ela entra exatamente para apontar ao que esta sendo degustado, que e o cookie. Neste caso, as variaveis "fusca" e "celta" que nelas foram instanciado tais classes, Carro.
+
+Obs: Em teoria de categoria essa ideia e definido formalmente na linguagem matematica.
+
+Link para leitura:
+
+    https://www.shiksha.com/online-courses/articles/understanding-self-in-python/#:~:text=In%20Python%2C%20the%20term%20%E2%80%9Cself,as%20to%20create%20new%20members.
+    https://www.geeksforgeeks.org/self-in-python-class/
+    https://www.w3schools.com/python/gloss_python_self.asp
+    https://awari.com.br/como-funciona-o-self-no-python-guia-completo-para-iniciantes/#:~:text=O%20self%20%C3%A9%20uma%20palavra,de%20programa%C3%A7%C3%A3o%2C%20como%20o%20Java.
+    https://hub.asimov.academy/tutorial/entendendo-o-uso-do-self-em-python/#:~:text=usado%20em%20Python.-,O%20que%20%C3%A9%20o%20self%20%3F,a%20inst%C3%A2ncia%20de%20uma%20classe.
 
 ## Aula 06 - Escopo da classe e de métodos da classe:
+
 
 ## Aula 07 - Mantendo estados dentro da classe:
 
