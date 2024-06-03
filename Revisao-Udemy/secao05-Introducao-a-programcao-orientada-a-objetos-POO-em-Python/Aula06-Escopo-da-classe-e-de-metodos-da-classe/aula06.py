@@ -29,3 +29,35 @@ Veiculo.mudar_numero_de_rodas(6)
 # Acessando o método de instância novamente para ver o efeito da mudança
 print(carro1.mostrar_detalhes())  # Toyota Corolla tem 6 rodas.
 print(carro2.mostrar_detalhes())  # Honda Civic tem 6 rodas.
+
+class Animal:
+    # nome = 'Leao'
+    # print(variavel)
+
+    def __init__(self, nome):
+        self.nome = nome
+
+        # variavel = "Valor"
+        # print(variavel)
+
+    def acao(self):
+        # print(variavel)
+        return f'{self.nome} esta executando uma acao'
+    
+    def comendo(self, alimento):
+        # print(variavel)
+        return f'{self.nome} esta comendo {alimento}'
+    
+    def executar(self, *args, **kwargs):
+        return self.comendo(*args, **kwargs)
+
+# print(nome)
+# print(Animal.nome)
+leao = Animal(nome='Leao')
+print(leao.nome)
+# print(variavel)
+print(leao.acao())
+# leao.acao()
+# print(leao.comendo('Carne'))
+print(leao.executar('Carne'))
+# print(leao.comendo())

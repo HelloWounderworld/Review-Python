@@ -344,9 +344,447 @@ Explicação:
 
 Este exemplo demonstra como os atributos e métodos funcionam dentro do escopo de uma classe em Python, mostrando a interação entre atributos de classe e de instância e como eles podem ser manipulados.
 
+Bom, como podemos ver, as classes tambem possuem escopos, assim como, os metodos internos dessas classes tambem, possuem escopos.
+
+Ou seja, isso significa que eu nao poderia fazer algo do seguinte tipo
+
+    class Animal:
+        nome = 'Leao'
+    
+    print(nome)
+
+Porem, podemos pegar a tal variavel definida dentro dessa classe, sem a necessidade de instancia-la
+
+    class Animal:
+        nome = 'Leao'
+    
+    print(Animal.nome)
+
+Bom, agora, se definirmos algo do seguinte tipo
+
+    class Animal:
+        # nome = 'Leao'
+
+        def __init__(self, nome):
+            self.nome = nome
+
+    # print(nome)
+    print(Animal.nome)
+
+No caso, depois dessam, nao iremos conseguir mais rodar a variavel "nome", pois agora, ela se tornou um atributo para instancia. No caso, precisaria instanciar a classe como o seguinte
+
+    class Animal:
+        # nome = 'Leao'
+
+        def __init__(self, nome):
+            self.nome = nome
+
+    # print(nome)
+    # print(Animal.nome)
+    leao = Animal(nome='Leao')
+    print(leao.nome)
+
+Porem, como dissemos acima, se definirmos alguma variavel dentro desse def, como ela tem o seu proprio escopo interno, nao vamos conseguir acessa-lo por fora.
+
+    class Animal:
+        # nome = 'Leao'
+        # print(variavel)
+
+        def __init__(self, nome):
+            self.nome = nome
+
+            # variavel = "Valor"
+            # print(variavel)
+
+        def acao(self):
+            # print(variavel)
+            ...
+
+    # print(nome)
+    # print(Animal.nome)
+    leao = Animal(nome='Leao')
+    print(leao.nome)
+    # print(variavel)
+    # print(leao.acao())
+
+Ou seja, ao tentarmos acessar "variavel" por fora do metodo "def", nao sera possivel.
+
+Porem, o "self", como ela se refere ao escopo da classe, conseguimos, sim, acessar pelo outros metodos como seguinte
+
+    class Animal:
+        # nome = 'Leao'
+        # print(variavel)
+
+        def __init__(self, nome):
+            self.nome = nome
+
+            # variavel = "Valor"
+            # print(variavel)
+
+        def acao(self):
+            # print(variavel)
+            return f'{self.nome} esta executando uma acao'
+
+    # print(nome)
+    # print(Animal.nome)
+    leao = Animal(nome='Leao')
+    print(leao.nome)
+    # print(variavel)
+    print(leao.acao())
+
+Da mesma forma que, se eu definir um parametro dentro de um novo metodo dentro da classe, Animal, ao executar tal metodo, se nao passar algum valor, sera retornado um erro
+
+    class Animal:
+        # nome = 'Leao'
+        # print(variavel)
+
+        def __init__(self, nome):
+            self.nome = nome
+
+            # variavel = "Valor"
+            # print(variavel)
+
+        def acao(self):
+            # print(variavel)
+            return f'{self.nome} esta executando uma acao'
+        
+        def comendo(self, alimento):
+            # print(variavel)
+            return f'{self.nome} esta comendo {alimento}'
+
+    # print(nome)
+    # print(Animal.nome)
+    leao = Animal(nome='Leao')
+    print(leao.nome)
+    # print(variavel)
+    print(leao.acao())
+    # leao.acao()
+    print(leao.comendo('Carne'))
+    print(leao.comendo())
+
+Da mesma forma que utilizamos o self para atributos, podemos utilizar para os metodos que foram definidos dentro de uma classe, como seguinte
+
+    class Animal:
+        # nome = 'Leao'
+        # print(variavel)
+
+        def __init__(self, nome):
+            self.nome = nome
+
+            # variavel = "Valor"
+            # print(variavel)
+
+        def acao(self):
+            # print(variavel)
+            return f'{self.nome} esta executando uma acao'
+        
+        def comendo(self, alimento):
+            # print(variavel)
+            return f'{self.nome} esta comendo {alimento}'
+        
+        def executar(self, *args, **kwargs):
+            return self.comendo(*args, **kwargs)
+
+    # print(nome)
+    # print(Animal.nome)
+    leao = Animal(nome='Leao')
+    print(leao.nome)
+    # print(variavel)
+    print(leao.acao())
+    # leao.acao()
+    # print(leao.comendo('Carne'))
+    print(leao.executar('Carne'))
+    # print(leao.comendo())
+
+Note que, o metodo executar, ela esta cumprindo o papel de executar outros metodos dentro da classe, Animal. Ou seja, usando o self, podemos executar um metodo dentro de uma classe no outro metodo que foi criado dentro da mesma classe.
+
+Bom, resumindo, uma variavel dentro do escopo de um metodo dentro da classe, nao pode ser chamado por fora, a nao ser que ela esteja sendo atribuido pelo "self" no init. Assim como, o metodo definido dentro de uma classe pode ser executado por outro metodo definido dentro da mesma classe utilizando o "self". Ou seja, o "self" ela indica o escopo dentro da classe.
+
 ## Aula 07 - Mantendo estados dentro da classe:
+Bom, uma das caracteristicas muito legal de uma programacao orientada a objetos, seria que as suas instancias poderiam carregar os seus estados.
+
+No caso, como podemos ver no exemplo
+
+    class Camera:
+        def __init__(self, nome, filmando=False):
+            self.nome = nome
+            self.filmando = filmando
+
+        def filmar(self):
+            print(f'{self.nome} esta filmando...')
+            self.filmando = True
+
+    c1 = Camera('Canon')
+    c2 = Camera('Sony')
+
+    c1.filmar()
+    print(c1.filmando)
+    print(c2.filmando)
+
+Como podemos ver abaixo, no print(C1.filmando) e print(C2.filmando), podemos ver que e devolvido True e False, respectivamente. Ou seja, isso significa que o estado da instancia, filmando, foi guardado, depois que foi acionado o metodo, filmar, que muda o valor desse atributo de False para True e ela mantem mesmo depois disso.
+
+Bom, podemos melhorar mais ainda a qualidade desse metodo para conseguirmos verificar se a camera ja esta no estado de gravacao
+
+    class Camera:
+        def __init__(self, nome, filmando=False):
+            self.nome = nome
+            self.filmando = filmando
+
+        def filmar(self):
+            if self.filmando:
+                print(f'{self.nome} ja esta filmando...')
+                return
+
+            print(f'{self.nome} esta filmando...')
+            self.filmando = True
+
+    c1 = Camera('Canon')
+    c2 = Camera('Sony')
+
+    c1.filmar()
+    print(c1.filmando)
+    print(c2.filmando)
+
+Bom, como podemos ver, acima, testando ela, fica mais nitido ainda a caracteristica de que o estado de uma instancia estar sendo mantido.
+
+Agora, vamos acrscentar mais um metodo, fotografar. Nela, podemos aproveitar algumas condicoes que foi criado no metodo, filmar
+
+    class Camera:
+        def __init__(self, nome, filmando=False):
+            self.nome = nome
+            self.filmando = filmando
+
+        def filmar(self):
+            if self.filmando:
+                print(f'{self.nome} ja esta filmando...')
+                return
+
+            print(f'{self.nome} esta filmando...')
+            self.filmando = True
+
+        def fotografar(self):
+            if self.filmando:
+                print(f'{self.nome} nao pode fotografar filmando...')
+                return
+            
+            print(f'{self.nome} esta fotografando...')
+            self.filmando = True
+            
+    c1 = Camera('Canon')
+    c2 = Camera('Sony')
+
+    c1.filmar()
+    c1.filmar()
+    c1.fotografar()
+    print(c1.filmando)
+    print(c2.filmando)
+
+Bom, claro, depois de feito o metodo acima, falta criar um outro metodo que desative o modo de filmagem, entao vamos precisar criar o seguinte metodo
+
+    class Camera:
+        def __init__(self, nome, filmando=False):
+            self.nome = nome
+            self.filmando = filmando
+
+        def filmar(self):
+            if self.filmando:
+                print(f'{self.nome} ja esta filmando...')
+                return
+
+            print(f'{self.nome} esta filmando...')
+            self.filmando = True
+
+        def parar_filmar(self):
+            if not self.filmando:
+                print(f'{self.nome} nao esta filmando...')
+                return
+
+            print(f'{self.nome} esta parando de filmar...')
+            self.filmando = False
+
+        def fotografar(self):
+            if self.filmando:
+                print(f'{self.nome} nao pode fotografar filmando...')
+                return
+            
+            print(f'{self.nome} esta fotografando...')
+            self.filmando = True
+            
+    c1 = Camera('Canon')
+    c2 = Camera('Sony')
+
+    c1.filmar()
+    c1.filmar()
+    c1.fotografar()
+    c1.parar_filmar()
+    c1.fotografar()
+    # print(c1.filmando)
+    # print(c2.filmando)
+
+Bom, como podemos ver, conseguimos criar a funcionalidade basica de uma camera atraves de uma classe.
 
 ## Aula 08 - Atributos de classe:
+Vamos abordar mais ainda sobre o conceito de atributo de classe.
+
+Atributos de classe em Python são variáveis que são definidas dentro de uma classe, mas fora de qualquer método. Esses atributos são compartilhados por todas as instâncias da classe, o que significa que eles têm o mesmo valor para cada instância, a menos que explicitamente alterados. Atributos de classe são úteis para armazenar propriedades que devem ser as mesmas para todas as instâncias de uma classe.
+
+Bom, como podemos ver no nosso exemplo que criamos
+
+    class Pessoa:
+        atributo = 'valor'
+
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+        def get_ano_nascimento(self):
+            return 2024 - self.idade
+        
+    p1 = Pessoa('Joao', 35)
+    p2 = Pessoa('Helena', 12)
+
+    print(p1.get_ano_nascimento())
+    print(p2.get_ano_nascimento())
+
+A classe, Pessoa, que foi criado, nela, conseguimos definir o atributo chamado 'atributo'. E no metodo, get_ano_nascimento, temos um hard coder, 2024. Para esse hard coder, podemos criar uma constante fora da classe como seguinte
+
+    # Atributos e classe
+    ANO_ATUAL = 2024
+
+    class Pessoa:
+        atributo = 'valor'
+
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+        def get_ano_nascimento(self):
+            return ANO_ATUAL - self.idade
+        
+    p1 = Pessoa('Joao', 35)
+    p2 = Pessoa('Helena', 12)
+
+    print(p1.get_ano_nascimento())
+    print(p2.get_ano_nascimento())
+
+Mas, tambem, como uma alternativa pratica, podemos criar um atributo desse tipo dentro da classe tbm
+
+    # Atributos e classe
+    # ANO_ATUAL = 2024
+
+    class Pessoa:
+        # atributo = 'valor'
+        ano_atual = 2024
+
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+        def get_ano_nascimento(self):
+            return Pessoa.ano_atual - self.idade
+        
+    p1 = Pessoa('Joao', 35)
+    p2 = Pessoa('Helena', 12)
+
+    print(p1.get_ano_nascimento())
+    print(p2.get_ano_nascimento())
+
+Para acessarmos esse atributo, que esta valendo para todas as classes, existem duas formas:
+
+- Primeira: Pessoa.ano_atual
+
+- Segunda: self.ano_atual - Pode existir uma instancia, ano_atual, no init. Entao, para separarmos entre o que e atributo e instancia, melhor adotarmos a pratica acima para atributos, quando for acessar o seu valor.
+
+A primeira forma de acessarmos o atributo, ano_atual, dentro da classe, esta entre as boas praticas. Ja a segunda ela e um pouco perigosa, pois, dependendo do caso, fica sujeito a alteracao no processo de instanciacao externo.
+
+Como vimos na aula anterior, conseguimos acessar esse atributo dentro dessa classe sem a necessidade de instanciarmos a classe, Pessoa
+
+    # Atributos e classe
+    # ANO_ATUAL = 2024
+
+    class Pessoa:
+        # atributo = 'valor'
+        ano_atual = 2024
+
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+        def get_ano_nascimento(self):
+            return Pessoa.ano_atual - self.idade
+        
+    p1 = Pessoa('Joao', 35)
+    p2 = Pessoa('Helena', 12)
+
+    print(Pessoa.ano_atual)
+    print(p1.get_ano_nascimento())
+    print(p2.get_ano_nascimento())
+
+Porem, esse atributo que definimos dentro dessa classe, ela esta sujeita a alteracao, como seguinte
+
+    # Atributos e classe
+    # ANO_ATUAL = 2024
+
+    class Pessoa:
+        # atributo = 'valor'
+        ano_atual = 2024
+
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+        def get_ano_nascimento(self):
+            return Pessoa.ano_atual - self.idade
+        
+    p1 = Pessoa('Joao', 35)
+    p2 = Pessoa('Helena', 12)
+
+    print(Pessoa.ano_atual)
+    Pessoa.ano_atual = 1
+
+    print(p1.get_ano_nascimento())
+    print(p2.get_ano_nascimento())
+
+Mas qual o motivo disso ter ocorrido? Bom, o motivo disso e porque ela e o atributo da classe. Ou seja, um atributo que esta atrelado ao molde em si. Entao, quando vc mudar o valor dela, essa mudanca surtira para todas as instancias efetudadas.
+
+### Utilidades dos Atributos de Classe
+1. Valores Constantes: Atributos de classe são frequentemente usados para definir constantes que são relevantes para todas as instâncias da classe.
+
+2. Contadores ou Estatísticas: Eles podem ser usados para contar o número de instâncias de uma classe ou acumular valores que são relevantes em um nível de classe, como o total de todas as transações feitas em todas as instâncias de uma classe de conta bancária.
+
+3. Configurações Padrão: Atributos de classe podem ser usados para definir valores padrão que são compartilhados por todas as instâncias, como configurações padrão em aplicativos.
+
+4. Métodos de Fábrica: Eles podem ser usados em conjunto com métodos de classe para criar instâncias de uma maneira particular, baseada em parâmetros que são comuns a todas as instâncias.
+
+5. Dados Compartilhados: Eles permitem que dados sejam compartilhados entre todas as instâncias de uma classe, o que pode ser útil para implementar certos padrões de design como Singleton.
+
+### Exemplo de Atributo de Classe
+
+    class Carro:
+        numero_de_rodas = 4  # Atributo de classe
+
+        def __init__(self, marca, modelo):
+            self.marca = marca  # Atributo de instância
+            self.modelo = modelo  # Atributo de instância
+
+        def detalhes(self):
+            return f"{self.marca} {self.modelo} tem {Carro.numero_de_rodas} rodas."
+
+    # Acessando o atributo de classe diretamente pela classe
+    print(Carro.numero_de_rodas)  # Saída: 4
+
+    # Modificando o atributo de classe afeta todas as instâncias
+    Carro.numero_de_rodas = 6
+    carro1 = Carro("Toyota", "Corolla")
+    carro2 = Carro("Honda", "Civic")
+
+    print(carro1.detalhes())  # Saída: Toyota Corolla tem 6 rodas.
+    print(carro2.detalhes())  # Saída: Honda Civic tem 6 rodas.
+
+### Considerações
+Alterar um atributo de classe afeta todas as instâncias que acessam esse atributo através da classe. No entanto, se uma instância sobrescreve esse atributo (por exemplo, self.numero_de_rodas = 5), essa mudança será local para a instância.
+
+Atributos de classe são uma ferramenta poderosa para compartilhar dados e comportamentos entre todas as instâncias de uma classe, mas devem ser usados com cuidado para evitar comportamentos inesperados devido ao compartilhamento de estado.
 
 ## Aula 09 - __dict__ e vars para atributos de instância:
 
