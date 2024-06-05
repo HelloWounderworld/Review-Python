@@ -1,0 +1,74 @@
+[
+    {
+        "nome": "Leonardo Takashi",
+        "sobrenome": "Teramatsu",
+        "endereco": [
+            {
+                "rua": "Estou perdido",
+                "numero": 0
+            },
+            {
+                "rua": "Nesse mundo onde nao tenho lugar",
+                "numero": 234
+            }
+        ],
+        "altura": 180.5,
+        "numeros_preferidos": [
+            2,
+            3,
+            13,
+            17,
+            19,
+            23
+        ],
+        "dev": true
+    },
+    {
+        "nome": "Alan",
+        "sobrenome": "Turing",
+        "endereco": [
+            {
+                "rua": "Estou perdido",
+                "numero": 0
+            },
+            {
+                "rua": "Nesse mundo onde nao tenho lugar",
+                "numero": 234
+            }
+        ],
+        "altura": 180,
+        "numeros_preferidos": [
+            2,
+            3,
+            13,
+            17,
+            19,
+            23
+        ],
+        "dev": false
+    },
+    {
+        "nome": "Albert",
+        "sobrenome": "Einstein",
+        "endereco": [
+            {
+                "rua": "Estou perdido",
+                "numero": 0
+            },
+            {
+                "rua": "Nesse mundo onde nao tenho lugar",
+                "numero": 234
+            }
+        ],
+        "altura": 170,
+        "numeros_preferidos": [
+            2,
+            3,
+            13,
+            17,
+            19,
+            23
+        ],
+        "dev": false
+    }
+]

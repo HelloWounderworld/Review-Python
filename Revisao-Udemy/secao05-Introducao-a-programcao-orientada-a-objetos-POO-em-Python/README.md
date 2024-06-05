@@ -787,10 +787,186 @@ Alterar um atributo de classe afeta todas as instâncias que acessam esse atribu
 Atributos de classe são uma ferramenta poderosa para compartilhar dados e comportamentos entre todas as instâncias de uma classe, mas devem ser usados com cuidado para evitar comportamentos inesperados devido ao compartilhamento de estado.
 
 ## Aula 09 - __dict__ e vars para atributos de instância:
+Em Python, __dict__ e a função vars() são usados para acessar o dicionário de atributos de um objeto. Eles são úteis para inspeção, serialização e manipulação dinâmica de atributos de objetos.
 
-## Aula 10 - Exercício - Salve sua classe em JSON:
+O __dict__ mantem um objeto do tipo mapping.
 
-## Aula 11 - Solução - Exercício + if __name__ == '__main__':
+### Uso de __dict__:
+Como podemos ver abaixo, conseguimos manipular os atributos que foram instanciados, desde mudar o seu valor e, ate mesmo, deletar
+
+    class Pessoa:
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+    p1.nome = 'Eita'
+    print(p1.nome)
+
+    del p1.nome
+    print(p1.nome)
+
+Porem, esses atributos elas estao armazenados em algum lugar antes, quando tinha algum valor. Entoa, onde esses valores estavam salvos?
+
+Re: dentro do __dict__.
+
+O __dict__ é um atributo especial que armazena todos os atributos de um objeto em forma de dicionário. Cada chave do dicionário é o nome de um atributo e cada valor é o valor correspondente do atributo.
+
+    class Pessoa:
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+    p1.nome = 'Eita'
+    print(p1.nome)
+
+    del p1.nome
+    print(p1.nome)
+
+    p = Pessoa("João", 30)
+    print(p.__dict__)
+
+Tome cuidado que o __dict__ ele e editavel. Ou seja, podemos fazer algo do seguinte tipo
+
+    class Pessoa:
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+    p1.nome = 'Eita'
+    print(p1.nome)
+
+    del p1.nome
+    print(p1.nome)
+
+    p = Pessoa("João", 30)
+    print(p.__dict__)
+
+    p.__dict__['outra'] = 'coisa'
+    print(p.__dict__)
+
+Bom, o legal disso seria que usando o __dict__ conseguimos salvar tais dados armazenados numa classe instanciada em forma de JSON. E tbm, recuperar esse JSON e criar novamente os objetos das classes, como por exemplo
+
+    class Pessoa:
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+    p1.nome = 'Eita'
+    print(p1.nome)
+
+    del p1.nome
+    print(p1.nome)
+
+    p = Pessoa("João", 30)
+    print(p.__dict__)
+
+    p.__dict__['outra'] = 'coisa'
+    print(p.__dict__)
+
+    dados = {'nome': 'Helena', 'idade': 12}
+    p1 = Pessoa(**dados)
+    print(p1.__dict__)
+
+Ou seja, desenpacotamento do dicionario.
+
+Ou seja, podemos usar esse __dict__ para salvar dados ou retorna-los, via banco de dados que sera feito mais pela frente em MySQL. Claro, podemos realizar a mesma coisa para qualquer outro banco de dados nao relacional tbm.
+
+### Uso de vars():
+vars() é uma função integrada que retorna o __dict__ de um objeto. Se nenhum argumento for fornecido, vars() atuará como locals().
+
+print(vars(p))
+
+### Utilidades:
+- 1. Inspeção de Objeto: __dict__ e vars() podem ser usados para inspecionar os atributos de um objeto em tempo de execução, o que é útil para debugging e logging.
+
+- 2. Serialização: Facilitam a serialização de objetos para formatos como JSON, permitindo converter facilmente os atributos de um objeto em um dicionário antes de serializar.
+
+- 3. Manipulação Dinâmica: Permitem a manipulação dinâmica de atributos. Por exemplo, você pode adicionar, modificar ou remover atributos de um objeto em tempo de execução.
+
+- 4. Cópia de Atributos: Podem ser usados para copiar atributos de um objeto para outro dinamicamente.
+
+- 5. Reflexão e Metaprogramação: São úteis em técnicas avançadas de programação onde o código precisa manipular informações sobre si mesmo.
+
+### Considerações:
+- __dict__ só está disponível em objetos que têm um dicionário de atributos, o que não inclui objetos criados a partir de classes definidas com __slots__ ou alguns tipos embutidos como listas e tuplas.
+
+- vars() pode ser usado em qualquer objeto que suporte __dict__. Se o objeto não suportar __dict__, vars() lançará um TypeError.
+
+Essas ferramentas são poderosas para manipulação dinâmica de objetos e introspecção em Python, facilitando a programação reflexiva e dinâmica.
+
+## Aula 10 e 11 - Exercício e Solução - Salve sua classe em JSON + if __name__ == '__main__':
+Na aula 87 da secao 04, foi ensinado o conceito de salvar e recuperar os dados em JSON.
+
+Recomendo o estudante revisar o conceito e aplicar nessa aula.
+
+Em Python, a variável especial __name__ é usada para determinar se um script está sendo executado como o programa principal ou está sendo importado como um módulo em outro script. O valor de __name__ é definido automaticamente pelo Python da seguinte forma:
+
+- Se o script está sendo executado diretamente pelo Python (ou seja, não está sendo importado), __name__ é definido como '__main__'.
+
+- Se o script está sendo importado de outro script, __name__ é definido como o nome do módulo sob o qual ele está sendo executado.
+
+### Utilidades de __name__ == '__main__':
+- 1. Controle de Execução: Permite que um script tenha partes que sejam executadas apenas quando o script é executado diretamente, e não quando é importado como um módulo. Isso é útil para testes ou quando o script também pode ser usado como um módulo.
+
+- 2. Testes e Debugging: Facilita a escrita de código de teste no mesmo arquivo que o código principal, permitindo que os testes sejam executados apenas quando o arquivo é executado diretamente.
+
+- 3. Organização do Código: Ajuda a manter o código limpo e organizado, separando a funcionalidade do módulo da lógica de execução.
+
+Exemplo de Uso:
+
+    def func():
+        print("Função sendo executada")
+
+    if __name__ == '__main__':
+        print("Executando como o programa principal")
+        func()
+
+Usar __name__ == '__main__' é uma prática comum em Python para facilitar a reutilização de código e a escrita de scripts que são tanto executáveis quanto importáveis como módulos, sem alterar seu comportamento quando são importados.
+
+### Cenarios para comparar:
+Vamos considerar um cenário onde temos dois arquivos Python: main.py e module.py. O arquivo module.py contém uma função que queremos usar tanto diretamente quanto importada em outro script. Usaremos __name__ para controlar como o código é executado dependendo de como o script é chamado.
+
+No arquivo, moduleAula1011.py
+
+    def print_message():
+        print("Esta função foi chamada de module.py")
+
+    if __name__ == '__main__':
+        print("module.py está sendo executado diretamente")
+        print_message()
+    else:
+        print("module.py foi importado")
+
+No arquivo, mainAula1011.py
+
+    import module
+
+    def main():
+        print("Esta é a função main de main.py")
+        module.print_message()
+
+    if __name__ == '__main__':
+        main()
+
+#### Cenário 1: Executando module.py diretamente
+Quando você executa module.py diretamente usando python module.py, a saída será:
+
+    module.py está sendo executado diretamente
+    Esta função foi chamada de module.py
+
+Neste caso, __name__ em module.py é '__main__', então o bloco de código dentro do if __name__ == '__main__': é executado.
+
+#### Cenário 2: Importando module.py de main.py
+Quando você executa main.py diretamente usando python main.py, a saída será:
+
+    module.py foi importado
+    Esta é a função main de main.py
+    Esta função foi chamada de module.py
+
+Aqui, module.py é importado, então __name__ em module.py não é '__main__', mas sim 'module'. Isso significa que o bloco if __name__ == '__main__': em module.py não é executado, mas a função print_message() ainda é acessível e usada em main.py.
+
+#### Conclusão
+Este exemplo mostra claramente como __name__ ajuda a controlar o comportamento do script dependendo de ele ser o ponto de entrada principal ou ser importado como um módulo. Isso permite que o mesmo arquivo funcione tanto como um script independente quanto como um módulo reutilizável em outros scripts, sem interferir na lógica de outros programas que o importam.
 
 ## Aula 12 - Curiosidades sobre convenções de nomes:
 Como você viu na aula anterior, usamos certas convenções para nomes de variáveis, funções, classes e assim por diante. Essas convenções tem um nome que podemos usar para nos referir ao modo como estamos nomeando determinados objetos em nosso programa: PascalCase, camelCase e snake_case.
@@ -804,8 +980,222 @@ snake_case - este é o padrão usado em Python para definir qualquer coisa que n
 Os padrões usados em Python são: snake_case para qualquer coisa e PascalCase para classes.
 
 ## Aula 13 - Métodos de classe (@classmethod) + factories methods (métodos fábrica):
+Lembra quando discutimos sobre atributo de classe?
+
+    class Pessoa:
+        ano = 2024 # atributo de classe
+
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+        def metodo_de_classe(self):
+            print('Howdy!')
+
+Para acessarmos esse atributo de classe, nao precisamos instanciar a classe Pessoa, bastaria acessar como se fosse um metodo
+
+    print(Pessoa.ano)
+
+Agora, para o metodo, metodo_de_classe, que criamos, nao funciona da mesma coisa. Ou seja, usando o seguinte
+
+    Pessoa.metodo_de_classe()
+
+Isso ira nos fornecer um erro... Pois, precisariamos passar algum argumento como self, que nesse caso, seria uma classe que foi instanciado
+
+    Pessoa.metodo_de_classe(p1)
+
+Porem, ao usarmos @classmethod, conseguimos criar um metodo dentro da classe, Pessoa, sem a necessidade de passarmos o 'self' como parametro, mas, sim, a propria classe, 'cls', e conseguimos chamar o metodo sem a necessidade de instanciarmos a classe
+
+    class Pessoa:
+        ano = 2024 # atributo de classe
+
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+        def metodo_de_classe(self):
+            print('Howdy!')
+
+        @classmethod
+        def metodo_de_classe_sem_self(cls):
+            print('Hello!')
+
+    Pessoa.metodo_de_classe(p1)
+    Pessoa.metodo_de_classe_sem_self()
+
+Mas, ai, qual a utilidade desse @classmethod??? Seria para fabricar metodos, factories methods. Ou seja, um metodo que cria um outro objeto de pessoa. Como podemos ver no exemplo seguinte
+
+    class Pessoa:
+        ano = 2024 # atributo de classe
+
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+        def metodo_de_classe(self):
+            print('Howdy!')
+
+        @classmethod
+        def metodo_de_classe_sem_self(cls):
+            print('Hello!')
+
+        @classmethod
+        def criar_com_50_anos(cls, nome):
+            return cls(nome, 50)
+
+No exemplo acima, suponhamos que tenhamos um conjunto de pessoas que toda elas tenham 50 anos. Entao, o metodo, criar_com_50_anos, funciona para conseguirmos instanciar uma nova classe, mas com esse valor hard coder, 50. Nesse metodo, criar_com_50_anos, conseguimos ver que esta sendo retornado o cls, que e a propria classe, Pessoa, de forma oculta.
+
+    class Pessoa:
+        ano = 2024 # atributo de classe
+
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+        def metodo_de_classe(self):
+            print('Howdy!')
+
+        @classmethod
+        def metodo_de_classe_sem_self(cls):
+            print('Hello!')
+
+        @classmethod
+        def criar_com_50_anos(cls, nome):
+            return cls(nome, 50)
+
+    p2 = Pessoa.criar_com_50_anos('Miyami')
+    print(p2.nome)
+    print(p2.idade)
+
+Ou seja, isso que e o factories methods, que e um metodo que cria novos objetos com alguma logica.
+
+Lembrando que nao temos o self dentro desses @classmethod. Entao, vc nao conseguiria dizer 'self.nome' ou 'self.idade' em si. Ou seja, pensa @classmethod e como se fosse um molde ou uma extensao de molde de uma classe.
+
+### @classmethod:
+Em Python, o decorador @classmethod é usado para definir um método da classe que pode ser chamado diretamente na classe, sem a necessidade de criar uma instância dela. Este método recebe o primeiro parâmetro como cls, que representa a própria classe, ao invés de self, que representa uma instância da classe.
+
+#### Utilidades de @classmethod:
+
+- Acesso a Atributos de Classe: Permite modificar ou acessar variáveis que são específicas da classe, não de instâncias individuais.
+
+- Fábrica de Instâncias (Factory Methods): Frequentemente usado para criar métodos de fábrica. Um método de fábrica é um método que retorna objetos da classe, mas não necessariamente usando o construtor diretamente.
+
+Exemplo de Uso de @classmethod
+
+    class Pessoa:
+        especie = "Homo sapiens"
+
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+
+        @classmethod
+        def criar_bebe(cls, nome):
+            return cls(nome, 0)
+
+        @classmethod
+        def mudar_especie(cls, nova_especie):
+            cls.especie = nova_especie
+
+No exemplo acima:
+
+- criar_bebe é um método de fábrica que cria uma nova instância da classe Pessoa com idade 0.
+
+- mudar_especie é um método que altera o atributo de classe especie.
+
+#### Utilidades dos Factory Methods:
+- 1. Simplificação da Criação de Instâncias: Podem oferecer uma maneira mais intuitiva ou simplificada de criar instâncias, especialmente quando a criação envolve lógica complexa.
+
+- 2. Nomeação de Construtores Alternativos: Permitem que você tenha múltiplos "construtores" com nomes claros que podem inicializar a classe de maneiras diferentes.
+
+- 3. Encapsulamento de Lógica de Instanciação: Encapsula a lógica de criação de instâncias dentro da classe, mantendo o código externo mais limpo e simples.
+
+Exemplo de Factory Method
+
+    class Carro:
+        def __init__(self, marca, modelo):
+            self.marca = marca
+            self.modelo = modelo
+
+        @classmethod
+        def com_ano_modelo(cls, marca, modelo, ano):
+            carro = cls(marca, modelo)
+            carro.ano = ano
+            return carro
+
+No exemplo acima, com_ano_modelo é um factory method que não só cria uma instância de Carro, mas também adiciona um atributo adicional ano à instância.
+
+Em resumo, @classmethod e factory methods são ferramentas poderosas em Python para gerenciar como as instâncias são criadas e como a lógica relacionada à classe é manipulada.
+
+### O que nao tem em @classmethod que tem na forma comum de instanciar uma classe?
+Suponha que temos uma classe Empregado que precisa de um método para criar um empregado a partir de uma string que contém o nome e o salário separados por hífen. Isso é um exemplo clássico de um factory method, onde a lógica de criação da instância é um pouco mais complexa do que apenas passar argumentos diretamente para o construtor.
+
+    class Empregado:
+        def __init__(self, nome, salario):
+            self.nome = nome
+            self.salario = salario
+
+        @classmethod
+        def de_string(cls, dados_str):
+            nome, salario = dados_str.split('-')
+            return cls(nome, float(salario))
+
+    # Instanciação comum
+    emp1 = Empregado("João", 5000.00)
+
+    # Instanciação usando @classmethod
+    emp2 = Empregado.de_string("Maria-7000.00")
+
+    print(emp1.nome, emp1.salario)  # Saída: João 5000.0
+    print(emp2.nome, emp2.salario)  # Saída: Maria 7000.0
+
+A instanciação comum de uma classe é mais vantajosa quando a criação do objeto é direta e não requer lógica adicional para configurar o objeto. Isso é particularmente útil quando os valores necessários para criar um objeto são simples e podem ser passados diretamente para o construtor sem necessidade de pré-processamento ou configuração complexa.
+
+#### Exemplo Prático: Classe Ponto
+Considere uma classe Ponto que representa um ponto em um sistema de coordenadas bidimensional. A criação de um ponto é direta, onde apenas as coordenadas x e y são necessárias.
+
+    class Ponto:
+        def __init__(self, x, y):
+            self.x = x
+            self.y = y
+
+        def __repr__(self):
+            return f"Ponto({self.x}, {self.y})"
+
+    # Instanciação comum
+    p1 = Ponto(3, 4)
+    p2 = Ponto(5, 6)
+
+    print(p1)  # Saída: Ponto(3, 4)
+    print(p2)  # Saída: Ponto(5, 6)
+
+##### Vantagens da Instanciação Comum Neste Caso
+- 1. Simplicidade: A criação de um objeto Ponto é muito simples e direta. Os valores de x e y são passados diretamente ao construtor sem necessidade de manipulação adicional.
+
+- 2. Clareza: A instanciação comum torna o código fácil de entender. Quando você vê Ponto(3, 4), é imediatamente claro que um ponto está sendo criado com coordenadas x=3 e y=4.
+
+- 3. Performance: Embora a diferença seja geralmente mínima, a instanciação comum evita o overhead adicional de processamento que pode acompanhar um método de classe que manipula dados antes de criar uma instância.
+
+- 4. Menos Código: Não há necessidade de definir um método de classe adicional se a lógica de criação do objeto não exigir isso. Menos código significa menos manutenção e menor chance de bugs.
+
+##### Contexto onde @classmethod seria menos útil
+No caso da classe Ponto, um @classmethod seria menos útil a menos que houvesse uma necessidade específica de criar pontos de uma maneira não convencional que exigisse algum tipo de cálculo ou configuração especial antes da criação do objeto. Por exemplo, se precisássemos de um método para criar um ponto que sempre esteja a uma certa distância de outro ponto, poderíamos considerar um @classmethod. No entanto, para a criação básica de pontos, a instanciação comum é mais direta e adequada.
+
+Este exemplo mostra como a instanciação comum pode ser a escolha ideal para situações em que a criação de objetos é direta e não envolve lógica complexa.
+
+#### Diferenças entre @classmethod e Instanciação Comum
+- 1. Flexibilidade na Criação: O método de_string permite uma forma alternativa de criar uma instância da classe Empregado, processando uma string para extrair os dados necessários. Isso não é possível com a instanciação comum, a menos que essa lógica seja colocada fora da classe.
+
+- 2. Encapsulamento de Lógica Específica: O @classmethod encapsula a lógica de conversão de uma string para uma instância dentro da classe. Isso mantém o código que usa a classe Empregado mais limpo e focado, sem se preocupar com os detalhes de como os dados são processados.
+
+- 3. Uso de cls em vez de self: O @classmethod usa cls para acessar a classe e criar uma instância. Isso significa que ele opera com a classe em si, não com uma instância da classe. Em contraste, métodos regulares que usam self operam em instâncias específicas da classe.
+
+- 4. Herança e Polimorfismo: Se Empregado fosse uma classe base para outras classes, de_string ainda retornaria uma instância da classe que foi chamada, graças ao uso de cls. Isso é útil em situações de herança, onde subclasses podem querer herdar ou modificar o comportamento do factory method.
+
+Este exemplo ilustra como @classmethod pode ser usado para adicionar métodos de criação alternativos que encapsulam lógica específica, proporcionando flexibilidade e mantendo o código organizado.
 
 ## Aula 14 - @staticmethod (métodos estáticos) são inúteis em Python =):
+
 
 ## Aula 15 - method vs @classmethod vs @staticmethod:
 
