@@ -1195,15 +1195,334 @@ Este exemplo mostra como a instanciação comum pode ser a escolha ideal para si
 Este exemplo ilustra como @classmethod pode ser usado para adicionar métodos de criação alternativos que encapsulam lógica específica, proporcionando flexibilidade e mantendo o código organizado.
 
 ## Aula 14 - @staticmethod (métodos estáticos) são inúteis em Python =):
+O decorador @staticmethod em Python é usado para definir um método dentro de uma classe que não opera sobre uma instância da classe nem modifica o estado da classe. Esse método não recebe o primeiro parâmetro automático self (referência à instância) ou cls (referência à classe), que são comuns em métodos de instância e métodos de classe, respectivamente.
 
+### Utilidades do @staticmethod:
+- 1. Organização de Código: Permite agrupar funções que têm relevância lógica com uma classe, mas que não precisam acessar ou modificar dados da instância ou da classe.
+
+- 2. Reuso de Código: Facilita a reutilização de métodos, pois eles podem ser chamados tanto a partir da classe quanto de suas instâncias, sem a necessidade de criar um objeto.
+
+- 3. Desacoplamento: Como os métodos estáticos não dependem do estado de uma instância ou da classe, eles promovem um menor acoplamento entre o comportamento do método e os dados da classe/instância.
+
+Obs: Desacoplamento em programação é o processo de projetar sistemas de modo que os componentes individuais sejam o mais independentes possível uns dos outros. Isso significa que mudanças em um componente têm impacto mínimo ou nenhum sobre outros componentes. O desacoplamento facilita a manutenção, o teste, a atualização e a reutilização do código, tornando o sistema mais flexível e robusto. Ele é alcançado através de práticas como o uso de interfaces, injeção de dependências, e padrões de design que promovem a separação de preocupações. Lei de Demeter (Clean Code).
+
+### Exemplo de Uso de @staticmethod:
+
+    class Matematica:
+        @staticmethod
+        def somar(x, y):
+            return x + y
+
+    # Chamando o método estático
+    resultado = Matematica.somar(5, 3)
+    print(resultado)  # Saída: 8
+
+Neste exemplo, somar é um método estático que realiza uma operação de soma. Ele pode ser chamado diretamente através da classe sem a necessidade de criar uma instância.
+
+### Considerações:
+- Quando Usar: Use @staticmethod quando precisar de uma função que não modifica nem acessa variáveis da classe ou instâncias, mas que logicamente pertence à classe.
+
+- Limitações: Métodos estáticos não podem acessar ou modificar o estado da classe ou das instâncias, o que pode ser uma limitação se tal acesso for necessário.
+
+Em resumo, @staticmethod é útil para funções utilitárias ou auxiliares que se relacionam com a classe, mas que operam de forma independente de qualquer estado específico da classe ou de suas instâncias.
+
+### Razões pelas quais @staticmethod pode ser visto como menos útil:
+- 1. Sem Acesso ao Estado: Métodos estáticos não podem acessar ou modificar o estado da classe ou das instâncias. Se a funcionalidade requer acesso a esses dados, @staticmethod não seria apropriado.
+
+- 2. Desacoplamento Excessivo: Embora o desacoplamento seja geralmente uma vantagem, em alguns casos, pode-se argumentar que um método estático é tão desacoplado que poderia simplesmente ser uma função fora da classe, não havendo necessidade de estar dentro da classe.
+
+- 3. Alternativas Disponíveis: Em muitos casos, @classmethod pode ser mais apropriado se você precisar de acesso ao estado da classe. @classmethod permite acessar e modificar o estado da classe, o que pode ser mais útil para métodos que devem operar com esses dados.
+
+- 4. Coesão: A coesão refere-se a quão bem os componentes de um módulo (ou classe) estão relacionados. Métodos estáticos, ao não operarem sobre o estado da classe, podem levar a uma coesão mais baixa, pois eles não estão trabalhando diretamente com os dados ou comportamentos que definem a classe.
+
+### Exemplo de onde o uso de @staticmethod torna a melhor escolha para o seu uso:
+Um exemplo prático onde @staticmethod é a melhor escolha envolve uma classe que realiza cálculos ou operações que são logicamente relacionadas à classe, mas que não necessitam acessar ou modificar o estado da classe ou de suas instâncias. Um exemplo comum pode ser uma classe que lida com operações matemáticas.
+
+Suponha que você tenha uma classe que fornece utilitários matemáticos, como calcular a área de diferentes formas geométricas. Estas são operações puras que não dependem de nenhum estado específico da classe ou de suas instâncias.
+
+    class Matematica:
+        @staticmethod
+        def area_circulo(raio):
+            return 3.14159 * raio * raio
+
+        @staticmethod
+        def area_retangulo(largura, altura):
+            return largura * altura
+
+    # Uso dos métodos estáticos
+    print("Área do Círculo:", Matematica.area_circulo(5))
+    print("Área do Retângulo:", Matematica.area_retangulo(4, 5))
+
+Quando você está construindo uma base axiomática matemática ou qualquer tipo de funcionalidade que envolva cálculos ou operações puras que não dependem do estado de uma instância ou da classe em si, o uso de @staticmethod é frequentemente a melhor escolha. Isso se deve a várias razões:
+
+- 1. Independência de Estado: Métodos estáticos não acessam ou modificam o estado da instância ou da classe, o que é ideal para funções matemáticas que dependem apenas dos argumentos fornecidos e seguem princípios axiomáticos ou teoremas.
+
+- 2. Reutilização e Acesso Fácil: Você pode chamar um método estático diretamente na classe sem precisar criar uma instância. Isso é muito prático para funções matemáticas que você deseja acessar frequentemente de diferentes partes do seu programa.
+
+- 3. Organização Lógica: Agrupar funções matemáticas relacionadas dentro de uma classe usando @staticmethod ajuda a manter o código organizado e logicamente estruturado. Isso facilita a manutenção e o entendimento do código, especialmente em contextos onde múltiplas operações matemáticas estão sendo utilizadas.
+
+- 4. Coesão: Manter operações matemáticas como métodos estáticos em uma classe relevante (como uma classe Matematica ou Calculadora) mantém o código coeso e focado, com todas as operações relacionadas agrupadas em um único local.
+
+Exemplo bem esdruxulo e informal de uma classe que define os axiomas dos numeros reais
+
+    class NumerosReais:
+        @staticmethod
+        def adicionar(x, y):
+            return x + y
+
+        @staticmethod
+        def subtrair(x, y):
+            return x - y
+
+        @staticmethod
+        def multiplicar(x, y):
+            return x * y
+
+        @staticmethod
+        def dividir(x, y):
+            if y == 0:
+                raise ValueError("Não é possível dividir por zero.")
+            return x / y
+
+    # Uso dos métodos estáticos
+    print("Adição:", NumerosReais.adicionar(5, 3))
+    print("Subtração:", NumerosReais.subtrair(5, 3))
+    print("Multiplicação:", NumerosReais.multiplicar(5, 3))
+    print("Divisão:", NumerosReais.dividir(5, 3))
+
+Bom, em resumo, os melhores momentos em que se utiliza @staticmethod, seriam em situacoes em que voce esteja definindo, postulando ou axiomatixando algo como uma linha de partida independente. Ao lembrar de definicoes matematicas, axiomas, postulados fisicos, etc... Algo dessas naturezas, percebemos que elas nao dependem de nenhum outro conceito e a partir delas que se iniciam toda a construcao.
 
 ## Aula 15 - method vs @classmethod vs @staticmethod:
+Bom, vamos resumir os tres conceitos que vimos ate agora.
+
+- method: self, metodo de instancia - Qualquer metodo que eu definir dentro da classe que necessite utilizar o self sera um metodo de instancia.
+
+- @classmethod: cls, metodo de classe - Eu nao tenho acesso ao self dentro desse metodo. Metodo de classe ele recebe a classe, cls. Note que, a forma como construimos a classe dentro desse metodo e o mesmo.
+
+- @staticmethod: metodo (nao self, nao cls) - Nao tem acesso ao self e nem a classe, cls. E uma funcao, apenas.
 
 ## Aula 16 - @property - um getter no modo Pythônico:
+Quem conhece Java, provavelmente, ira sacar rapidamente que tem haver com o getter e o setter.
+
+Sim, os conceitos fundamentais de getters e setters em Python usando @property e em Java são os mesmos. Ambos são utilizados para encapsular o acesso aos dados de uma classe, permitindo que a classe controle como esses dados são acessados e modificados, e para incluir lógica de validação ou transformação dos dados quando necessário.
+
+O decorador @property em Python é usado para criar propriedades em uma classe, permitindo que você controle o acesso aos atributos de uma classe de maneira mais sofisticada. Ele transforma um método de uma classe em um atributo "getter", que pode ser acessado como se fosse um atributo normal, mas na verdade é um método sendo executado.
+
+Suponhamos o seguinte cenario da seguinte classe
+
+    class Caneta:
+        def __init__(self, cor):
+            self.cor = cor
+
+    caneta = Caneta('Azul')
+    print(caneta.cor)
+    print(caneta.cor)
+    print(caneta.cor)
+    print(caneta.cor)
+    print(caneta.cor)
+
+Bom, se, por acaso, o nome do atributo, self.cor, tiver que ser mudado, da forma que o atributo esta sendo requisitado acima, tornaria extremamente trabalhoso para mudar todos os nomes.
+
+    self.cor -> self.tinta # agora tu vai ter que mudar todos os prints, caneta.cor para caneta.tinta
+
+Basicamente, para evitarmos que isso ocorra, podemos utilizar @property para encapsularmos e, com isso, criar o um getter que devolve o atributo. Dai, a vantagem disso seria que se, por acaso, tiver a necessidade de mudar o nome de um atributo, self.cor, sera necessario que vc mude somente dentro das classes e tudo continuara normal.
+
+Como uma regra pratica e sempre recomendavel que vc encapsule aquelas linguagens de programacao mais enraizado, de modo que torne as alteracoes e melhorias mais faceis. As linguagens de programacao de infra, classe, banco de dados, etc... sera sempre de boa pratica que elas estejam todas encapsuladas assim separando os codigos de regra de negocio com codigo de nivel raiz.
+
+Como uma aplicacao do @property, seguimos com o seguinte melhoria abaixo na classe, Caneta
+
+    class Caneta:
+        def __init__(self, cor):
+            self.cor = cor
+
+        def get_cor(self):
+            return self.cor
+
+    caneta = Caneta('Azul')
+    print(caneta.get_cor())
+    print(caneta.get_cor())
+    print(caneta.get_cor())
+    print(caneta.get_cor())
+    print(caneta.get_cor())
+
+Com a forma acima, conseguimos proteger o atributo "self.cor", podemos controlar a sua transparencia tbm usando private, protected, public, etc... Porem, so com o encapsulamento acima, conseguimos adicionar uma camada na protecao. Se bem que, em Python, a ideia de proteger um atributo nao e muito relevante.
+
+Agora, sem o uso do @property, a forma de encapsulamento mostrada acima e um getter.
+
+Vamos utilizar, agora, o @property para implementar o getter de uma forma mais sofisticada
+
+    class Caneta:
+        def __init__(self, cor):
+            self.tinta = cor
+
+        @property
+        def cor(self):
+            return 'QUALQUER COISA'
+
+    caneta = Caneta('Azul')
+    print(caneta.cor)
+    print(caneta.cor)
+    print(caneta.cor)
+    print(caneta.cor)
+    print(caneta.cor)
+
+Note que, utilizando o @property, conseguimos criar um getter, sem a necessidade de, ao chamarmos o metodo, cor, da forma como se fosse um metodo, como foi feito antes, print(caneta.get_cor()). Ou seja, print(caneta.cor), estamos chamando o ".cor" como se fosse um atributo, mas, na verdade, ela e um metodo. No caso, o @property, nos permite que consigamos chamar tal metodo como se fosse um atributo.
+
+No caso, isso cabe no mesmo cenario de se mudarmos o nome do atributo raiz que esta dentro da classe
+
+    class Caneta:
+        def __init__(self, cor):
+            self.tinta = cor
+
+        @property
+        def cor(self):
+            return self.tinta
+
+    caneta = Caneta('Azul')
+    print(caneta.cor)
+    print(caneta.cor)
+    print(caneta.cor)
+    print(caneta.cor)
+    print(caneta.cor)
+
+### Funcionalidades do @property:
+- 1. Encapsulamento: Permite esconder a implementação interna de um atributo, expondo apenas uma interface através de getters e setters.
+
+- 2. Validação de Dados: Permite adicionar lógica de validação ao definir um valor.
+
+- 3. Cálculo Dinâmico: Permite que o valor de um atributo seja calculado dinamicamente, em vez de ser armazenado.
+
+Seguir o seguinte exemplo
+
+    class Circulo:
+        def __init__(self, raio):
+            self._raio = raio
+
+        @property
+        def raio(self):
+            return self._raio
+
+        @raio.setter
+        def raio(self, valor):
+            if valor < 0:
+                raise ValueError("O raio não pode ser negativo")
+            self._raio = valor
+
+        @property
+        def area(self):
+            return 3.14159 * self._raio ** 2
+
+    # Uso da classe
+    circulo = Circulo(5)
+    print(circulo.raio)  # Saída: 5
+    print(circulo.area)  # Saída: 78.53975
+
+    circulo.raio = 10
+    print(circulo.raio)  # Saída: 10
+    print(circulo.area)  # Saída: 314.159
+
+    # Tentativa de definir um raio negativo
+    try:
+        circulo.raio = -5
+    except ValueError as e:
+        print(e)  # Saída: O raio não pode ser negativo
+
+- @property é usado para definir o método raio como um getter para o atributo _raio.
+
+- @raio.setter define um método para definir o valor do _raio, incluindo uma verificação para garantir que o raio não seja negativo.
+
+- A propriedade area é um exemplo de cálculo dinâmico, onde a área do círculo é calculada sempre que é acessada, usando o valor atual do raio.
+
+Este exemplo ilustra como @property pode ser usado para adicionar validação e cálculo dinâmico, melhorando a segurança e a flexibilidade do código.
+
+### O que seria um codigo Pythonico?
+O termo "Pythonic" refere-se a uma filosofia de programação em Python que enfatiza a legibilidade, a simplicidade e a clareza do código. Ser "Pythonic" não é apenas sobre escrever código que funcione, mas sobre escrever código que se alinha com os princípios de design da linguagem Python, tornando-o fácil de entender e manter. Aqui estão alguns aspectos centrais do que torna um código Pythonic:
+
+#### Seguir o Zen de Python
+O Zen de Python, acessível através do comando import this no interpretador Python, é uma coleção de 19 "afirmações" que capturam a filosofia da linguagem. Algumas das mais destacadas incluem:
+
+- "Bonito é melhor que feio."
+
+- "Explícito é melhor que implícito."
+
+- "Simples é melhor que complexo."
+
+- "Deve haver uma — e preferencialmente só uma — maneira óbvia de fazer algo."
+
+#### Utilizar recursos específicos da linguagem
+Python oferece várias construções e recursos que não são encontrados em outras linguagens, ou que são mais elegantes em Python. Usar esses recursos de maneira eficaz é considerado Pythonic. Exemplos incluem:
+
+- Compreensões de lista, dicionário e conjunto.
+
+- Geradores e iteradores.
+
+- Decoradores.
+
+- Uso de with para gerenciamento de contexto.
+
+####  Escrever código legível e conciso
+Python valoriza a legibilidade do código. Isso significa evitar linhas excessivamente longas, usar nomes de variáveis e funções descritivos, e evitar construções complicadas quando uma solução simples e direta está disponível.
+
+#### Seguir as convenções de estilo PEP 8
+PEP 8 é o guia de estilo para Python que oferece convenções sobre como formatar código Python. Isso inclui diretrizes sobre nomes de variáveis, tamanho de linha, uso de espaços em branco e muito mais. Seguir o PEP 8 ajuda a manter o código Python uniforme e legível.
+
+#### Aproveitar as funcionalidades de alto nível
+Python é uma linguagem de alto nível com muitas abstrações embutidas, como manipulação automática de memória (garbage collection), tipos de dados dinâmicos e uma extensa biblioteca padrão. Usar essas funcionalidades plenamente é parte de escrever código Pythonic.
+
+#### Preferir a simplicidade e a elegância
+Pythonic code often involves finding the most straightforward solution to a problem, which not only works but also minimizes future code maintenance.
+
+#### Exemplo de código não Pythonic vs Pythonic
+Não Pythonic:
+
+    result = []
+    for i in range(len(some_list)):
+        if some_list[i] > 0:
+            result.append(some_list[i] * 2)
+
+Pythonic:
+
+    result = [x * 2 for x in some_list if x > 0]
+
+O exemplo Pythonic usa uma compreensão de lista, que é mais concisa, mais fácil de ler e mais "Pythonic".
+
+Em resumo, escrever de maneira Pythonic significa adotar as convenções e filosofias da linguagem Python para produzir código que não apenas funcione bem, mas que também seja limpo, legível e eficiente.
 
 ## Aula 17 - @property + @setter - getter e setter no modo Pythônico:
+O decorador @setter em Python é usado em conjunto com o decorador @property para criar um "setter" que permite definir o valor de um atributo com controle adicional. Essencialmente, ele permite encapsular a lógica de atribuição de valores a um atributo, adicionando validações ou operações adicionais durante esse processo.
+
+Aqui esta um exemplo basico de como @setter e usado
+
+    class Pessoa:
+        def __init__(self, nome):
+            self._nome = nome
+
+        @property
+        def nome(self):
+            return self._nome
+
+        @nome.setter
+        def nome(self, valor):
+            if not isinstance(valor, str):
+                raise ValueError("O nome deve ser uma string")
+            self._nome = valor
+
+No exemplo acima:
+
+- @property é usado para definir um método getter para o atributo nome.
+
+- @nome.setter define o método setter correspondente que permite modificar o valor do atributo _nome. Antes de atribuir o valor, ele verifica se o valor é uma string. Se não for, ele levanta uma exceção ValueError.
+
+Essa abordagem de usar @property com @setter é útil para:
+
+- Validação de dados: Garantir que os dados estejam corretos antes de serem atribuídos a um atributo.
+
+- Encapsulamento: Esconder a representação interna enquanto expõe uma interface para passar e receber valores, permitindo mudanças na implementação interna sem afetar os usuários da classe.
+
+- Controle adicional: Executar código adicional durante a atribuição de valores, como limpeza de dados ou transformação.
 
 ## Aula 18 - Encapsulamento (modificadores de acesso: public, _protected, __private):
+
 
 ## Aula 19 - Relações entre classes: associação, agregação e composição:
 

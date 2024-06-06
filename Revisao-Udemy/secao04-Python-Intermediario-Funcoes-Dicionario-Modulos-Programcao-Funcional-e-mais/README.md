@@ -371,6 +371,8 @@ Mas, agora, suponhamos que tal valor exibido pelo "x+y" queremos que tal valor s
 Ou seja, a sintaxe "return", como o nome disse, ele retorna algum valor. E isso só pode ser executado dentro da função e que é uma sintaxe que serve para parar a execução de uma função. Ou seja, podemos criar uma função, donde combinado com condicionais, exista um conjunto de return. Quando acionado o return dentro de uma função, mesmo havendo outros códigos posteriores, ela não será mais executada. A função para exatamente nela.
 
 ## Aula 08 - (Parte 1) e (Parte 2) *args para quantidade de argumentos não nomeados variáveis:
+- args- *args permite passar um número variável de argumentos posicionais para uma função. - Dentro da função, args é acessado como uma tupla
+
 Agora, uma pergunta. Note que, a função print() podemos colocar quantos argumentos finitos que quisermos que ela é exibida no console ao ser executada
 
     print(1)
@@ -1485,6 +1487,12 @@ Obs: É considerado como uma má prática a seguinte forma de função lambda
 
 ## Aula 32 - Empacotamento e desempacotamento de dicionários + *args e **kwargs:
 Nessa aula, vamos aprender sobre empacotamento e desempacotamento de dicionários.
+
+- args- *args permite passar um número variável de argumentos posicionais para uma função. - Dentro da função, args é acessado como uma tupla.
+
+- kwargs- **kwargs permite passar um número variável de argumentos de palavra-chave (nomeados) para uma função.- Dentro da função, kwargs é acessado como um dicionário.
+
+Combinando args e kwargsVocê pode usar ambos em uma função para aceitar qualquer combinação de argumentos posicionais e nomeados.
 
 No caso, o que é empacotamento e desempacotamento de dicionários? Seria o seguinte
 
