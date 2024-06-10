@@ -1622,9 +1622,12 @@ A associação é uma relação entre duas classes onde os objetos de uma classe
 #### Definição Matemática:
 Associação pode ser vista como uma relação binária $\mathcal{R}$ entre dois conjuntos $\mathcal{A}$ e $\mathcal{B}$, onde $\mathcal{A}$ e $\mathcal{B}$ representam diferentes tipos de objetos (classes). Matematicamente, isso é expresso como:
 
-$\R\subseteq\mathcal{A}\times\mathcal{B}$
+$\mathcal{R}\subseteq\mathcal{A}\times\mathcal{B}$
 
-Cada par ordenado $\left(a,b\right)\in\R$ indica o objeto $\mathcal{a}$ da classe $\mathcal{A}$ está associado ao objeto $\mathcal{b}$ da classe $\mathcal{B}$.
+Cada par ordenado $\left(a,b\right)\in\mathcal{R}$ indica o objeto $\mathcal{a}$ da classe $\mathcal{A}$ está associado ao objeto $\mathcal{b}$ da classe $\mathcal{B}$.
+
+#### Exemplo:
+Se $\mathcal{A}$ é um conjunto de professores e $\mathcal{B}$ é um conjunto de departamentos, uma relação de associação $\mathcal{R}$ pode representar quais professores trabalham em quais departamentos.
 
 #### Exemplos de Associação Simples
 Vamos considerar um exemplo simples de uma biblioteca e seus livros:
@@ -1728,6 +1731,13 @@ A agregação é um tipo de associação que representa uma relação "tem-um" o
 Na programação orientada a objetos (POO), as relações entre classes descrevem como objetos de diferentes classes interagem e dependem uns dos outros. Existem três tipos principais de relações: associação, agregação e composição. Cada tipo define um nível diferente de dependência entre as classes.
 
 Neste topico iremos abordar sobre a relacao de Agregacao.
+
+#### Definição Matemática:
+A agregação é um tipo especial de associação que também pode ser representada como uma relação binária, mas com a característica adicional de que os elementos de um conjunto (partes) podem existir independentemente do conjunto agregador (todo). Isso pode ser representado por uma função parcial:
+
+$f:\mathcal{B}\longrightarrow\mathcal{A}$
+
+onde $\mathcal{B}$ é o conjunto de partes e $\mathcal{A}$ é o conjunto de todos. A função $f$ não é necessariamente total, significando que nem todos os elementos de $\mathcal{B}$ precisam estar mapeados para elementos em $\mathcal{A}$.
 
 #### Caracteristicas da Agregacao
 - Independência: As partes (objetos contidos) podem existir independentemente do todo (objeto contêiner).
