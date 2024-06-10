@@ -7,6 +7,8 @@
 # um atributo que referencia outro objeto.
 # A associação não especifica como um objeto controla
 # o ciclo de vida de outro objeto.
+# Basicamente, a relacao de associacao usa-se getter e setter, para suspeitarmos se esta sendo ou nao associado
+# junto com uma outra classe.
 class Escritor:
     def __init__(self, nome) -> None:
         self.nome = nome
