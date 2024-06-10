@@ -1619,6 +1619,13 @@ Neste topico iremos abordar sobre a relacao de Associacao.
 ### Associação
 A associação é uma relação entre duas classes onde os objetos de uma classe se relacionam com os objetos de outra, mas ambos podem existir independentemente. É a forma mais básica de relação que simplesmente indica que uma classe conhece a outra.
 
+#### Definição Matemática:
+Associação pode ser vista como uma relação binária $\R$ entre dois conjuntos $\A$ e $\B$, onde $\A$ e $\B$ representam diferentes tipos de objetos (classes). Matematicamente, isso é expresso como:
+
+$\R\subseteq\A\times\B$
+
+Cada par ordenado $\left(a,b\right)\in\R$ indica o objeto $\a$ da classe $\A$ está associado ao objeto $\b$ da classe $\B$.
+
 #### Exemplos de Associação Simples
 Vamos considerar um exemplo simples de uma biblioteca e seus livros:
 
