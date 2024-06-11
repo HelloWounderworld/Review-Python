@@ -2020,6 +2020,30 @@ $\mathcal{B}\subseteq\mathcal{A}$
 
 Aqui, $\mathcal{B}$ é a superclasse e $\mathcal{A}$ é a subclasse. Esta relação de subconjunto indica que $\mathcal{A}$ herda todos os elementos de $\mathcal{B}$, e pode adicionar ou modificar elementos adicionais.
 
+Isso significa que a herenca e um conjunto minimo, ou seja, um conjunto onde possui todos os elementos necessarios e suficientes para as suas subclasses.
+
+Obs: conjunto minimal $\neq$ conjunto minimo. Ou seja, no conjunto minimal, que seria a intersecao nao vazia de todas as possiveis subclasses que possuem caracteristicas em comum, mas que tal processo de refinamento, os elementos resultantes dentro do conjunto minimal, por mais que sejam necessarios, nao necessariamente sao o suficientes. Entao, pelo menos, conseguimos dizer que conjunto minimal $\subseteq$ conjunto minimo.
+
+#### Conjunto Minimal
+Em matemática, um conjunto minimal em um contexto de interseção é o conjunto que contém exatamente os elementos comuns a todos os conjuntos em um determinado sistema de conjuntos. Este é o menor conjunto possível que ainda retém os elementos comuns a todos os conjuntos considerados. Em termos de herança em POO, isso seria análogo a identificar os atributos e métodos que são absolutamente comuns a todas as subclasses derivadas de uma superclasse, assumindo que estamos considerando todas as subclasses possíveis.
+
+#### Conjunto Mínimo
+Um conjunto mínimo pode ser entendido como o conjunto que contém os elementos necessários e suficientes para definir uma certa propriedade ou condição. No contexto da herança em POO, a superclasse pode ser vista como um conjunto mínimo para as subclasses, pois fornece os elementos essenciais (atributos e métodos) que as subclasses herdam e podem estender. Não necessariamente é o conjunto mais pequeno em termos de interseção de todos os conjuntos possíveis, mas é o conjunto base necessário para a funcionalidade das subclasses.
+
+#### Aplicação em POO
+Quando modelamos herança em POO:
+
+- A superclasse fornece um conjunto de características (atributos e métodos) que são essenciais e comuns para as subclasses. Este conjunto pode ser considerado "mínimo" no sentido de que fornece a base necessária sobre a qual as subclasses são construídas.
+
+- As subclasses podem adicionar mais características além das fornecidas pela superclasse. Portanto, cada subclasse pode ser vista como um conjunto que inclui o conjunto da superclasse (conjunto mínimo) mais quaisquer elementos adicionais específicos da subclasse.
+
+#### Diferença Chave
+A diferença chave entre "conjunto minimal" e "conjunto mínimo" no contexto de herança em POO é que:
+
+- Conjunto minimal implicaria a interseção de todos os conjuntos de características de todas as subclasses possíveis, resultando nos elementos absolutamente comuns a todas.
+
+- Conjunto mínimo na superclasse refere-se ao conjunto de características necessárias e suficientes que todas as subclasses herdarão e sobre as quais podem construir.
+
 #### Função de Herança
 Podemos também definir uma função de herança $f$ que mapeia cada classe para sua superclasse direta, se houver:
 
@@ -2083,8 +2107,10 @@ Composição é um princípio de design onde uma classe inclui instâncias de ou
 #### Conclusão
 A escolha entre herança e composição depende do problema específico que você está tentando resolver. A herança é útil para estabelecer uma relação taxonômica (hierárquica) entre classes, enquanto a composição é útil para construir classes que são feitas de componentes intercambiáveis. Em muitos casos, a composição é considerada mais flexível e é recomendada como a abordagem de design preferida para a maioria das situações na POO.
 
-## Aula 24 - Tipos Heranças - Python Orientado a Objetos:
+## Aula 24 - Tipos Heranças - Python Orientado a Objetos - Herança Simples:
 Na teoria das categorias, a ideia de "herança" como conhecida na programação orientada a objetos (POO) não é um conceito diretamente aplicável, pois a teoria das categorias lida com objetos e morfismos em um contexto matemático muito mais abstrato. No entanto, podemos traçar paralelos entre alguns conceitos de teoria das categorias e tipos de herança em POO.
+
+Em Python ja existe, naturalmente, uma superclasse de todas as classes que e o object. Que e simplesmente uma classe que nao tem nada. E tupo um subconjunto de todos os conjuntos... Vazio.
 
 ### Tipos de Herança em Programação Orientada a Objetos:
 1. Herança Simples: Uma classe herda diretamente de uma única superclasse. Este é o tipo mais comum de herança, amplamente suportado em muitas linguagens de programação como Java, C#, e Python.
@@ -2107,106 +2133,390 @@ Embora a teoria das categorias não trate diretamente de herança como em POO, a
 ### Conclusão:
 Na prática da programação orientada a objetos, os tipos de herança mais comumente usados são a herança simples e a herança múltipla. A teoria das categorias, embora forneça uma estrutura matemática rica para pensar sobre estruturas e transformações, não se aplica diretamente aos conceitos de herança em POO, mas oferece uma linguagem para descrever abstrações de alto nível que podem ser úteis em design de software complexo e teoria de tipos.
 
-## Aula 15 - (Parte 1) super e a sobreposição de membros em Python Orientado a Objetos:
+### Exemplos para cada tipo de Herança listado acima:
+Aqui estão exemplos de código em Python para ilustrar os diferentes tipos de herança mencionados:
 
-## Aula 16 - (Parte 1) super e a sobreposição de membros em Python Orientado a Objetos:
+#### Herança Simples
+Herança simples ocorre quando uma subclasse herda diretamente de uma única superclasse.
 
-## Aula 17 - Teoria - Herança múltipla - Python Orientado a Objetos:
+    class Animal:
+        def __init__(self, nome):
+            self.nome = nome
 
-## Aula 18 - Herança múltipla - Python Orientado a Objetos:
+        def falar(self):
+            return "Som genérico de animal"
 
-## Aula 19 - (Parte 1) Mixins, Abstração e a união de tudo até aqui:
+    class Cachorro(Animal):
+        def falar(self):
+            return "Au au!"
 
-## Aula 20 - (Parte 2) Log, LogFileMixin, LogPrintMixin e a união de tudo até aqui:
+    # Uso
+    animal = Animal("Bicho")
+    cachorro = Cachorro("Rex")
+    print(animal.falar())  # Saída: Som genérico de animal
+    print(cachorro.falar())  # Saída: Au au!
 
-## Aula 21 - (Parte 3) LogFileMixin e a união de tudo até aqui:
+#### Herança Múltipla
+Herança múltipla ocorre quando uma subclasse herda de mais de uma superclasse.
 
-## Aula 22 - (Parte 4) Eletrônico, Smartphone com Mixin e a união de tudo até aqui:
+    class Terrestre:
+        def caminhar(self):
+            return "Caminhando..."
 
-## Aula 23 - Classes abstratas - Abstract Base Class (abc) - Python Orientado a Objetos:
+    class Aquatico:
+        def nadar(self):
+            return "Nadando..."
 
-## Aula 24 - abstractmethod para qualquer método já decorado (property e setter):
+    class Anfibio(Terrestre, Aquatico):
+        pass
 
-## Aula 25 - Teoria: polimorfismo, assinatura de métodos e Liskov Substitution Principle:
+    # Uso
+    sapo = Anfibio()
+    print(sapo.caminhar())  # Saída: Caminhando...
+    print(sapo.nadar())  # Saída: Nadando...
 
-## Aula 26 - Na prática: polimorfismo, assinatura de métodos e Liskov Substitution Principle:
+#### Herança Multinível
+Herança multinível ocorre quando uma subclasse herda de uma superclasse, que por sua vez também é uma subclasse de outra superclasse.
 
-## Aula 27 - Criando Exceptions em Python Orientado a Objetos (Exceções):
+    class Veiculo:
+        def descricao(self):
+            return "Veículo genérico"
 
-## Aula 28 - Levantando e tratando suas Exceptions (Exceções):
+    class Carro(Veiculo):
+        def descricao(self):
+            return "Carro"
 
-## Aula 29 - Notas das exceptions em Python 3.11+ (add_notes, __notes__):
+    class Sedan(Carro):
+        def descricao(self):
+            return "Sedan"
 
-## Aula 30 - Teoria: python Special Methods, Magic Methods ou Dunder Methods:
+    # Uso
+    veiculo = Veiculo()
+    carro = Carro()
+    sedan = Sedan()
+    print(veiculo.descricao())  # Saída: Veículo genérico
+    print(carro.descricao())  # Saída: Carro
+    print(sedan.descricao())  # Saída: Sedan
 
-## Aula 31 - Python Dunder Methods __repr__ e __str__:
+#### Herança Hierárquica
+Herança hierárquica ocorre quando várias subclasses herdam de uma única superclasse.
 
-## Aula 32 - Exemplo de uso de dunder methods (métodos mágicos):
+    class Veiculo:
+        def descricao(self):
+            return "Veículo genérico"
 
-## Aula 33 - __new__ e __init__ em classes Python:
+    class Carro(Veiculo):
+        def descricao(self):
+            return "Carro"
 
-## Aula 34 - Context Manager com classes - Criando e Usando gerenciadores de contexto:
+    class Motocicleta(Veiculo):
+        def descricao(self):
+            return "Motocicleta"
 
-## Aula 35 - Exceptions em context manager com classes:
+    # Uso
+    veiculo = Veiculo()
+    carro = Carro()
+    motocicleta = Motocicleta()
+    print(veiculo.descricao())  # Saída: Veículo genérico
+    print(carro.descricao())  # Saída: Carro
+    print(motocicleta.descricao())  # Saída: Motocicleta
 
-## Aula 36 - Context Manager com contextlib.contextmanager:
+### Herança Simples
+A herança simples é um dos conceitos fundamentais da programação orientada a objetos (POO). Ela permite que uma classe derive ou herde propriedades (atributos) e comportamentos (métodos) de outra classe. Na herança simples, uma classe herda diretamente de apenas uma superclasse.
 
-## Aula 37 - Funções decoradoras e decoradores com classes:
+#### Conceitos Básicos
+- Superclasse (Classe Base ou Classe Pai): É a classe cujas propriedades e métodos são herdados por outra classe.
 
-## Aula 38 - Funções decoradoras e decoradores com métodos:
+- Subclasse (Classe Derivada ou Classe Filha): É a classe que herda propriedades e métodos de outra classe.
 
-## Aula 39 - Método especial __call__:
+#### Vantagens da Herança Simples
+1. Reutilização de Código: Permite que novas classes reutilizem código de classes já existentes sem reescrevê-lo.
 
-## Aula 40 - Classes decoradoras (Decorator classes):
+2. Organização do Código: Facilita a organização e manutenção do código ao agrupar comportamentos comuns em uma classe base.
 
-## Aula 41 - Teoria: metaclasses são o tipo das classes:
+3. Extensibilidade: Novas funcionalidades podem ser adicionadas facilmente através de subclasses.
 
-## Aula 42 - __new__ de uma metaclass cria e retorna a classe em si:
+4. Hierarquia de Classes: Estabelece uma relação natural entre classes mais gerais (superclasses) e classes mais específicas (subclasses).
 
-## Aula 43 - __call__ de uma metaclass cria e retorna a instância da classe:
+#### Como Funciona
+Quando uma classe herda de outra, ela automaticamente incorpora todos os atributos e métodos da classe base. A subclasse pode então:
 
-## Aula 44 - dir e help + DocStrings de uma linha (Documentação):
+- Utilizar os métodos herdados diretamente.
 
-## Aula 45 - DocStrings de várias linhas (Documentação):
+- Modificar (sobrescrever) os métodos herdados.
 
-## Aula 46 - DocStrings em funções (Documentação):
+- Adicionar novos métodos e atributos próprios.
 
-## Aula 47 - DocStrings em class (Documentação):
+#### Detalhes Importantes
+- Construtor da Superclasse: Subclasses em Python não herdam o construtor da superclasse automaticamente. Se você definir um construtor na subclasse (__init__), você precisa chamar explicitamente o construtor da superclasse usando super().__init__() se necessário.
 
-## Aula 48 - Teoria: enum.Enum (Enumerações):
+- Sobrescrita de Métodos: A subclasse pode modificar o comportamento de um método herdado. Isso é conhecido como sobrescrita de método (method overriding).
 
-## Aula 49 - Código: enum.Enum (Enumerações):
+- Polimorfismo: A herança permite o polimorfismo, onde o mesmo método pode ter várias implementações diferentes em diferentes subclasses.
 
-## Aula 50 - Exercício com Abstração, Herança, Encapsulamento e Polimorfismo:
+#### Conclusão
+A herança simples é uma ferramenta poderosa em POO que facilita a reutilização de código, a extensibilidade e a manutenção do software. Ao entender e aplicar corretamente a herança, os desenvolvedores podem criar sistemas mais robustos e flexíveis, mantendo o código organizado e eficiente.
 
-## Aula 51 - Solução - Criando a classe abstrata Conta:
+## Aula 25 e 26 - (Parte 1 e 2) super e a sobreposição de membros em Python Orientado a Objetos:
+Em Python, o uso de super() e a sobreposição de membros são conceitos fundamentais em programação orientada a objetos (POO), especialmente quando se trata de herança e polimorfismo.
 
-## Aula 52 - Solução - Criando a classe ContaPoupanca:
+### super() em Python
+O super() é uma função integrada que retorna um objeto proxy temporário que permite o acesso a métodos da superclasse de uma classe. Isso é particularmente útil em herança, onde uma subclasse precisa chamar um método da sua superclasse.
 
-## Aula 53 - Solução - Criando a classe ContaCorrente:
+#### Propósitos do super():
+- Evitar o uso direto do nome da superclasse: Isso aumenta a manutenibilidade do código e evita problemas se a hierarquia de herança mudar.
 
-## Aula 54 - DICA Extra: tipagem, linters e settings.json do VS Code:
+- Permitir chamadas de método múltiplas: Em herança múltipla, super() gerencia a ordem em que os métodos das superclasses são chamados, utilizando o método de resolução de ordem de classe (MRO).
 
-## Aula 55 - Solução - Criando a classe Pessoa:
+#### Exemplo de Uso de super():
 
-## Aula 56 - Solução - Criando a classe Cliente:
+    class Animal:
+        def __init__(self, nome):
+            self.nome = nome
 
-## Aula 57 - Solução - Criando a classe Banco (Parte 1):
+    class Cachorro(Animal):
+        def __init__(self, nome, raca):
+            super().__init__(nome)  # Chama o construtor da classe Animal
+            self.raca = raca
 
-## Aula 58 - Solução - Criando a classe Banco (Parte 2):
+    # Instanciando um objeto Cachorro
+    dog = Cachorro("Rex", "Labrador")
+    print(dog.nome)  # Saída: Rex
+    print(dog.raca)  # Saída: Labrador
 
-## Aula 59 - dataclasses - O que são dataclasses?:
+### Sobreposição de Membros (Method Overriding)
+A sobreposição de membros ocorre quando uma subclasse redefine um método que já existe na superclasse. Isso permite que a subclasse forneça uma implementação específica de um método que é mais apropriada para ela, mesmo que já tenha sido definido na superclasse.
 
-## Aula 60 - dataclasses com métodos, property e setter:
+#### Propósitos da Sobreposição:
+- Especializar comportamento: Modificar ou estender o comportamento de métodos herdados para se adequar às necessidades específicas da subclasse.
 
-## Aula 61 - __init__ e __post_init__ em dataclasses:
+- Implementar polimorfismo: Permite que diferentes classes derivadas tenham implementações distintas para o mesmo método, o que é uma característica central do polimorfismo.
 
-## Aula 62 - Configurações do decorator dataclass:
+#### Exemplo de Sobreposição de Membros:
 
-## Aula 63 - asdict e astuple em dataclasses:
+    class Animal:
+        def falar(self):
+            return "Som genérico de animal"
 
-## Aula 64 - Valores padrão, field e fields em dataclasses:
+    class Cachorro(Animal):
+        def falar(self):
+            return "Au au!"
 
-## Aula 65 - namedtuple - tuplas imutáveis com nomes para valores:
+    class Gato(Animal):
+        def falar(self):
+            return "Miau!"
 
-## Aula 66 - Criando sua própria lista com Iterable, Iterator e Sequence (collections.abc):
+    # Instanciando objetos
+    animal = Animal()
+    dog = Cachorro()
+    cat = Gato()
+
+    print(animal.falar())  # Saída: Som genérico de animal
+    print(dog.falar())     # Saída: Au au!
+    print(cat.falar())     # Saída: Miau!
+
+### Conclusão
+O uso de super() e a sobreposição de membros são técnicas essenciais em POO que permitem a reutilização de código e a especialização de comportamento em subclasses. super() facilita a chamada de métodos da superclasse sem referenciar explicitamente seu nome, o que é crucial para manter o código flexível e fácil de manter. A sobreposição de membros, por outro lado, é uma forma de polimorfismo que permite que diferentes classes derivadas respondam de maneira diferente ao mesmo método. Ambos são fundamentais para escrever código claro, eficiente e reutilizável em Python.
+
+## Aula 27 - Teoria - Herança múltipla - Python Orientado a Objetos:
+
+### Herança múltipla
+Herança múltipla é um recurso da programação orientada a objetos (POO) que permite que uma classe derive ou herde características (atributos e métodos) de mais de uma superclasse. Python é uma das linguagens de programação que suporta herança múltipla, o que permite a criação de designs flexíveis e poderosos, mas também exige cuidado para evitar complicações como o problema do diamante.
+
+#### Vantagens da Herança Múltipla
+1. Flexibilidade: Permite combinar funcionalidades de várias superclasses em uma única classe.
+
+2. Reutilização de Código: Facilita a reutilização de código ao permitir que classes herdem métodos e atributos de múltiplas superclasses.
+
+#### Desafios da Herança Múltipla
+1. Complexidade: A herança múltipla pode tornar o código mais complexo e difícil de entender, especialmente se a hierarquia de herança for profunda ou não for bem planejada.
+
+2. Problema do Diamante: Ocorre quando duas superclasses de uma classe derivada têm uma mesma superclasse comum. Isso pode levar a ambiguidades sobre qual método da superclasse deve ser herdados se ambos modificarem o mesmo método.
+
+#### Método de Resolução de Ordem de Classe (MRO)
+Python utiliza um algoritmo chamado C3 Linearization (ou MRO - Method Resolution Order) para definir a ordem na qual as superclasses são visitadas ao buscar métodos. Isso resolve ambiguidades e define uma ordem clara de execução dos métodos, o que é crucial em sistemas com herança múltipla.
+
+#### Exemplo de Herança Múltipla em Python
+Vamos considerar um exemplo onde uma classe Anfibio herda de duas superclasses, Terrestre e Aquatico.
+
+    class Terrestre:
+        def caminhar(self):
+            return "Caminhando na terra"
+
+    class Aquatico:
+        def nadar(self):
+            return "Nadando na água"
+
+    class Anfibio(Terrestre, Aquatico):
+        def mover(self):
+            return f"{self.caminhar()} e {self.nadar()}"
+
+    # Criando uma instância de Anfibio
+    sapo = Anfibio()
+    print(sapo.mover())  # Saída: Caminhando na terra e Nadando na água
+
+#### Problema do diamante:
+O problema do diamante é um desafio comum em linguagens de programação que suportam herança múltipla, como Python. Esse problema ocorre quando uma classe herda de duas ou mais superclasses que, por sua vez, compartilham uma mesma superclasse comum. Isso pode criar ambiguidades e complicações na ordem em que os métodos são herdados e executados, especialmente se essas superclasses modificarem o mesmo método de maneiras diferentes.
+
+##### Estrutura do Problema do Diamante
+Imagine a seguinte hierarquia de classes:
+
+         A
+        / \
+       B   C
+        \ /
+         D
+
+- Classe A: Classe base com um método m().
+
+- Classe B e Classe C: Ambas subclasses de A e ambas sobrescrevem o método m().
+
+- Classe D: Subclasse que herda de B e C.
+
+Aqui está o dilema: Se D instancia um método m(), qual versão do método deve ser usada? A versão de B, C, ou a original de A?
+
+##### Como Python Resolve o Problema do Diamante
+Python utiliza um método chamado C3 Linearization (também conhecido como MRO - Method Resolution Order) para resolver esse problema. O MRO é um algoritmo que cria uma lista linear de classes usando as seguintes regras:
+
+1. Prioridade Local: Uma classe sempre tem prioridade sobre suas superclasses.
+
+2. Prioridade da Esquerda para a Direita: Se uma classe herda de múltiplas classes, a ordem de herança (da esquerda para a direita) determina a prioridade.
+
+3. Primeiro a Profundidade: O MRO visita primeiro as superclasses antes de mover para o próximo nível de herança.
+
+##### Exemplo em Python
+Vamos criar um exemplo para ilustrar como Python resolve o problema do diamante:
+
+    class A:
+        def m(self):
+            print("m de A")
+
+    class B(A):
+        def m(self):
+            print("m de B")
+
+    class C(A):
+        def m(self):
+            print("m de C")
+
+    class D(B, C):
+        pass
+
+    d = D()
+    d.m()
+
+Neste exemplo, quando você chama d.m(), Python usará o MRO para determinar que o método m() de B deve ser usado, porque B vem antes de C na lista de herança de D.
+
+Você pode verificar a ordem MRO de uma classe usando o método mro():
+
+    print(D.mro())
+    # Saída: [<class '__main__.D'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.A'>, <class 'object'>]
+
+##### Conclusão
+O problema do diamante pode tornar a herança múltipla complexa e difícil de gerenciar. No entanto, Python fornece uma solução robusta através do MRO, que garante uma ordem clara e previsível de execução dos métodos. Isso ajuda a evitar ambiguidades e garante que o comportamento das subclasses seja consistente e previsível. É importante entender e planejar cuidadosamente a hierarquia de classes ao usar herança múltipla para evitar complicações inesperadas.
+
+#### Considerações Importantes
+- Uso de super(): Em herança múltipla, super() é usado para chamar métodos da próxima classe na ordem MRO, não necessariamente da "superclasse direta".
+
+- Design Cuidadoso: Devido à complexidade potencial, a herança múltipla deve ser usada com cautela. É importante planejar a hierarquia de classes para evitar ambiguidades e manter o código gerenciável.
+
+#### Conclusão
+Herança múltipla oferece poderosas capacidades de design em Python, permitindo que classes combinem e estendam comportamentos de múltiplas superclasses. No entanto, requer um entendimento claro de como Python resolve a ordem de resolução de métodos e um design cuidadoso para evitar problemas comuns como o problema do diamante. Quando usado adequadamente, pode ser uma ferramenta valiosa para criar sistemas flexíveis e reutilizáveis.
+
+## Aula 28 - Herança múltipla - Python Orientado a Objetos:
+
+## Aula 29 - (Parte 1) Mixins, Abstração e a união de tudo até aqui:
+
+## Aula 30 - (Parte 2) Log, LogFileMixin, LogPrintMixin e a união de tudo até aqui:
+
+## Aula 31 - (Parte 3) LogFileMixin e a união de tudo até aqui:
+
+## Aula 32 - (Parte 4) Eletrônico, Smartphone com Mixin e a união de tudo até aqui:
+
+## Aula 33 - Classes abstratas - Abstract Base Class (abc) - Python Orientado a Objetos:
+
+## Aula 34 - abstractmethod para qualquer método já decorado (property e setter):
+
+## Aula 35 - Teoria: polimorfismo, assinatura de métodos e Liskov Substitution Principle:
+
+## Aula 36 - Na prática: polimorfismo, assinatura de métodos e Liskov Substitution Principle:
+
+## Aula 37 - Criando Exceptions em Python Orientado a Objetos (Exceções):
+
+## Aula 38 - Levantando e tratando suas Exceptions (Exceções):
+
+## Aula 39 - Notas das exceptions em Python 3.11+ (add_notes, __notes__):
+
+## Aula 40 - Teoria: python Special Methods, Magic Methods ou Dunder Methods:
+
+## Aula 41 - Python Dunder Methods __repr__ e __str__:
+
+## Aula 42 - Exemplo de uso de dunder methods (métodos mágicos):
+
+## Aula 43 - __new__ e __init__ em classes Python:
+
+## Aula 44 - Context Manager com classes - Criando e Usando gerenciadores de contexto:
+
+## Aula 45 - Exceptions em context manager com classes:
+
+## Aula 46 - Context Manager com contextlib.contextmanager:
+
+## Aula 47 - Funções decoradoras e decoradores com classes:
+
+## Aula 48 - Funções decoradoras e decoradores com métodos:
+
+## Aula 49 - Método especial __call__:
+
+## Aula 50 - Classes decoradoras (Decorator classes):
+
+## Aula 51 - Teoria: metaclasses são o tipo das classes:
+
+## Aula 52 - __new__ de uma metaclass cria e retorna a classe em si:
+
+## Aula 53 - __call__ de uma metaclass cria e retorna a instância da classe:
+
+## Aula 54 - dir e help + DocStrings de uma linha (Documentação):
+
+## Aula 55 - DocStrings de várias linhas (Documentação):
+
+## Aula 56 - DocStrings em funções (Documentação):
+
+## Aula 57 - DocStrings em class (Documentação):
+
+## Aula 58 - Teoria: enum.Enum (Enumerações):
+
+## Aula 59 - Código: enum.Enum (Enumerações):
+
+## Aula 60 - Exercício com Abstração, Herança, Encapsulamento e Polimorfismo:
+
+## Aula 61 - Solução - Criando a classe abstrata Conta:
+
+## Aula 62 - Solução - Criando a classe ContaPoupanca:
+
+## Aula 63 - Solução - Criando a classe ContaCorrente:
+
+## Aula 64 - DICA Extra: tipagem, linters e settings.json do VS Code:
+
+## Aula 65 - Solução - Criando a classe Pessoa:
+
+## Aula 66 - Solução - Criando a classe Cliente:
+
+## Aula 67 - Solução - Criando a classe Banco (Parte 1):
+
+## Aula 68 - Solução - Criando a classe Banco (Parte 2):
+
+## Aula 69 - dataclasses - O que são dataclasses?:
+
+## Aula 70 - dataclasses com métodos, property e setter:
+
+## Aula 71 - __init__ e __post_init__ em dataclasses:
+
+## Aula 72 - Configurações do decorator dataclass:
+
+## Aula 73 - asdict e astuple em dataclasses:
+
+## Aula 74 - Valores padrão, field e fields em dataclasses:
+
+## Aula 75 - namedtuple - tuplas imutáveis com nomes para valores:
+
+## Aula 76 - Criando sua própria lista com Iterable, Iterator e Sequence (collections.abc):
