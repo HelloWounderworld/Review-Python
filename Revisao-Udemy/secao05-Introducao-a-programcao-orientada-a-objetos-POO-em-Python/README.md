@@ -2318,7 +2318,7 @@ A sobreposição de membros ocorre quando uma subclasse redefine um método que 
 ### Conclusão
 O uso de super() e a sobreposição de membros são técnicas essenciais em POO que permitem a reutilização de código e a especialização de comportamento em subclasses. super() facilita a chamada de métodos da superclasse sem referenciar explicitamente seu nome, o que é crucial para manter o código flexível e fácil de manter. A sobreposição de membros, por outro lado, é uma forma de polimorfismo que permite que diferentes classes derivadas respondam de maneira diferente ao mesmo método. Ambos são fundamentais para escrever código claro, eficiente e reutilizável em Python.
 
-## Aula 27 - Teoria - Herança múltipla - Python Orientado a Objetos:
+## Aula 27 e 28 - Teoria e Pratica - Herança múltipla - Python Orientado a Objetos:
 
 ### Herança múltipla
 Herança múltipla é um recurso da programação orientada a objetos (POO) que permite que uma classe derive ou herde características (atributos e métodos) de mais de uma superclasse. Python é uma das linguagens de programação que suporta herança múltipla, o que permite a criação de designs flexíveis e poderosos, mas também exige cuidado para evitar complicações como o problema do diamante.
@@ -2413,7 +2413,9 @@ Você pode verificar a ordem MRO de uma classe usando o método mro():
     # Saída: [<class '__main__.D'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.A'>, <class 'object'>]
 
 ##### Conclusão
-O problema do diamante pode tornar a herança múltipla complexa e difícil de gerenciar. No entanto, Python fornece uma solução robusta através do MRO, que garante uma ordem clara e previsível de execução dos métodos. Isso ajuda a evitar ambiguidades e garante que o comportamento das subclasses seja consistente e previsível. É importante entender e planejar cuidadosamente a hierarquia de classes ao usar herança múltipla para evitar complicações inesperadas.
+O problema do diamante pode tornar a herança múltipla complexa e difícil de gerenciar. No entanto, Python fornece uma solução robusta através do MRO, que garante uma ordem clara e previsível de execução dos métodos. Isso ajuda a evitar ambiguidades e garante que o comportamento das subclasses seja consistente e previsível. É importante entender e planejar cuidadosamente a hierarquia de classes ao usar herança múltipla para evitar complicações inesperadas. Isso nao significa que o problema do Diamante seja, necessariamente, um problema. Mas, sim, depende da forma como ela e utilizada.
+
+Portanto, o problema do diamante em Python é mais uma questão de como a herança múltipla é implementada e gerenciada do que um problema inerente. Com o entendimento correto do MRO e o uso adequado de super(), os desenvolvedores podem aproveitar os benefícios da herança múltipla sem enfrentar os desafios comuns associados a ela em outras linguagens que não possuem tais mecanismos de resolução.
 
 #### Considerações Importantes
 - Uso de super(): Em herança múltipla, super() é usado para chamar métodos da próxima classe na ordem MRO, não necessariamente da "superclasse direta".
@@ -2422,8 +2424,6 @@ O problema do diamante pode tornar a herança múltipla complexa e difícil de g
 
 #### Conclusão
 Herança múltipla oferece poderosas capacidades de design em Python, permitindo que classes combinem e estendam comportamentos de múltiplas superclasses. No entanto, requer um entendimento claro de como Python resolve a ordem de resolução de métodos e um design cuidadoso para evitar problemas comuns como o problema do diamante. Quando usado adequadamente, pode ser uma ferramenta valiosa para criar sistemas flexíveis e reutilizáveis.
-
-## Aula 28 - Herança múltipla - Python Orientado a Objetos:
 
 ## Aula 29 - (Parte 1) Mixins, Abstração e a união de tudo até aqui:
 
@@ -2434,6 +2434,71 @@ Herança múltipla oferece poderosas capacidades de design em Python, permitindo
 ## Aula 32 - (Parte 4) Eletrônico, Smartphone com Mixin e a união de tudo até aqui:
 
 ## Aula 33 - Classes abstratas - Abstract Base Class (abc) - Python Orientado a Objetos:
+
+### Classes abstratas
+Classes abstratas em Python são uma ferramenta fundamental na programação orientada a objetos, especialmente quando se deseja criar uma base de classe que defina um modelo para outras classes, mas que por si só não deve ser instanciada. Em Python, classes abstratas são implementadas com a ajuda do módulo abc (Abstract Base Classes).
+
+#### O que são Classes Abstratas?
+Uma classe abstrata é uma classe que não pode ser instanciada por conta própria e é destinada apenas a servir como uma classe base para outras classes. Classes abstratas são usadas para definir interfaces quando há um grupo de métodos relacionados que as subclasses devem implementar. Elas promovem um design limpo e permitem a reutilização de código.
+
+#### Por que usar Classes Abstratas?
+- Definir um Contrato para Subclasses: Classes abstratas permitem que você defina métodos que devem ser criados pelas subclasses, garantindo assim uma interface consistente.
+
+- Prevenir a Instanciação: Evitam a criação de objetos de classes que são concebidas apenas para serem base de outras classes.
+
+- Organização do Código: Facilitam a organização do código e a manutenção, pois centralizam e padronizam comportamentos comuns.
+
+#### Como Implementar Classes Abstratas em Python
+Para criar uma classe abstrata em Python, você precisa importar ABC e abstractmethod do módulo abc.
+
+    from abc import ABC, abstractmethod
+
+    class Animal(ABC):
+        @abstractmethod
+        def falar(self):
+            pass
+
+Neste exemplo, Animal é uma classe abstrata porque herda de ABC, uma classe auxiliar do módulo abc que facilita a criação de classes abstratas. O método falar é decorado com @abstractmethod, o que significa que qualquer subclasse de Animal deve implementar o método falar.
+
+#### Exemplo Completo
+
+    from abc import ABC, abstractmethod
+
+    class Animal(ABC):
+        def __init__(self, nome):
+            self.nome = nome
+
+        @abstractmethod
+        def falar(self):
+            pass
+
+    class Cachorro(Animal):
+        def falar(self):
+            return f"{self.nome} diz: Au au!"
+
+    class Gato(Animal):
+        def falar(self):
+            return f"{self.nome} diz: Miau!"
+
+    # Instanciando objetos
+    # animal = Animal("Bicho")  # Isso resultará em erro, pois Animal é abstrato
+    dog = Cachorro("Rex")
+    cat = Gato("Whiskers")
+
+    print(dog.falar())  # Saída: Rex diz: Au au!
+    print(cat.falar())  # Saída: Whiskers diz: Miau!
+
+Neste exemplo, tentar instanciar Animal diretamente resultará em um erro, pois é uma classe abstrata. As subclasses Cachorro e Gato implementam o método falar, conforme exigido pela classe base abstrata.
+
+#### Considerações Importantes
+- Métodos Abstratos: Podem ter uma implementação na classe abstrata, mas ainda assim, as subclasses são obrigadas a sobrescrever esses métodos.
+
+- Múltiplos Métodos Abstratos: Uma classe abstrata pode ter vários métodos abstratos.
+
+- Subclasses de Subclasses: Se uma subclasse não implementar todos os métodos abstratos, ela também será considerada uma classe abstrata.
+
+#### Conclusão
+Classes abstratas são uma parte essencial da programação orientada a objetos em Python, proporcionando uma estrutura robusta para o código. Elas forçam um contrato nas subclasses, garantindo que certos métodos sejam implementados, o que é crucial para manter a integridade e a previsibilidade do comportamento das classes em projetos complexos.
 
 ## Aula 34 - abstractmethod para qualquer método já decorado (property e setter):
 
