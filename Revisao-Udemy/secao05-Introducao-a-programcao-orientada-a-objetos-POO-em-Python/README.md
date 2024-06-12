@@ -2425,6 +2425,12 @@ Portanto, o problema do diamante em Python é mais uma questão de como a heran�
 #### Conclusão
 Herança múltipla oferece poderosas capacidades de design em Python, permitindo que classes combinem e estendam comportamentos de múltiplas superclasses. No entanto, requer um entendimento claro de como Python resolve a ordem de resolução de métodos e um design cuidadoso para evitar problemas comuns como o problema do diamante. Quando usado adequadamente, pode ser uma ferramenta valiosa para criar sistemas flexíveis e reutilizáveis.
 
+Seguir link para leitura:
+
+    https://en.wikipedia.org/wiki/C3_linearization
+
+    2401.12740v1.pdf
+
 ## Aula 29 - (Parte 1) Mixins, Abstração e a união de tudo até aqui:
 
 ## Aula 30 - (Parte 2) Log, LogFileMixin, LogPrintMixin e a união de tudo até aqui:
