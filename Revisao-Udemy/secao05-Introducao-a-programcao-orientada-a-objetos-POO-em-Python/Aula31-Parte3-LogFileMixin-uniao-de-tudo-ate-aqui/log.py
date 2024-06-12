@@ -3,6 +3,7 @@
 from pathlib import Path
 
 LOG_FILE = Path(__file__).parent / 'log.txt'
+print(LOG_FILE)
 
 
 class Log:
