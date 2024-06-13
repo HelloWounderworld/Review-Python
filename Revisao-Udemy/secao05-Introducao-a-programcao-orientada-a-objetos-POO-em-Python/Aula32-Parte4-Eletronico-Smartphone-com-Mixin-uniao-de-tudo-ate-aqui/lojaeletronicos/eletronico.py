@@ -20,12 +20,15 @@ class Smartphone(Eletronico, LogFileMixin):
         super().ligar()
 
         if self._ligado:
-            msg = f'{self._nome} está ligado'
+            msg = f'{self._nome} esta ligado'
             self.log_success(msg)
 
     def desligar(self):
         super().desligar()
 
         if not self._ligado:
-            msg = f'{self._nome} está desligado'
+            msg = f'{self._nome} esta desligado'
             self.log_error(msg)
+
+help(LogFileMixin)
+print(LogFileMixin.mro())

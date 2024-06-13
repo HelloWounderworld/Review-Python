@@ -5,3 +5,6 @@ iphone = Smartphone('iPhone')
 
 galaxy_s.ligar()
 iphone.desligar()
+
+galaxy_s.desligar()
+iphone.ligar()
