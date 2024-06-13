@@ -4,3 +4,6 @@ Aplicacao esta rodando.
 Aplicacao esta finalizando.
 Aplicacao esta rodando.
 Aplicacao esta finalizando.
+qualquer coisa  (LogFileMixin)
+qualquer coisa  (LogFileMixin)
+qualquer coisa  (LogFileMixin)
