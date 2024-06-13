@@ -2493,7 +2493,7 @@ Neste exemplo, Vehicle é uma classe abstrata que define um método abstrato dri
 #### Conclusão
 Mixins e abstração são técnicas poderosas em Python para organizar e reutilizar código de maneira eficiente e modular. Mixins permitem a adição de funcionalidades específicas a classes de forma flexível, enquanto a abstração ajuda a esconder detalhes complexos e expor apenas o necessário, garantindo que as subclasses implementem funcionalidades essenciais definidas em classes abstratas. Ambas as técnicas são fundamentais para criar aplicações robustas e manuteníveis.
 
-## Aula 30 - (Parte 2) Log, LogFileMixin, LogPrintMixin e a união de tudo até aqui:
+## Aula 30, 31 e 32 - (Parte 2, 3 e 4) Log, LogFileMixin, LogPrintMixin e a união de tudo até aqui:
 
 ### Log, LogFileMixin, e LogPrintMixin em Python
 Em Python, mixins podem ser usados para adicionar funcionalidades de log a classes de maneira modular. LogFileMixin e LogPrintMixin são dois exemplos de mixins que podem ser usados para adicionar capacidades de log a uma classe, seja escrevendo em um arquivo ou imprimindo na saída padrão, respectivamente.
@@ -2555,11 +2555,7 @@ Aqui está como você pode usar a classe Application para logar mensagens tanto 
 #### Conclusão
 Este exemplo ilustra como mixins podem ser usados para adicionar funcionalidades de maneira modular e flexível em Python. Mixins como LogFileMixin e LogPrintMixin permitem que você adicione capacidades de log a qualquer classe de maneira simples e reutilizável, promovendo a separação de preocupações e melhorando a manutenibilidade do código.
 
-## Aula 31 - (Parte 3) LogFileMixin e a união de tudo até aqui:
-
-## Aula 32 - (Parte 4) Eletrônico, Smartphone com Mixin e a união de tudo até aqui:
-
-## Aula 33 - Classes abstratas - Abstract Base Class (abc) - Python Orientado a Objetos:
+## Aula 33 e 34 - Classes abstratas - Abstract Base Class (abc) - Python Orientado a Objetos - abstractmethod para qualquer método já decorado (property e setter):
 
 ### Classes abstratas
 Classes abstratas em Python são uma ferramenta fundamental na programação orientada a objetos, especialmente quando se deseja criar uma base de classe que defina um modelo para outras classes, mas que por si só não deve ser instanciada. Em Python, classes abstratas são implementadas com a ajuda do módulo abc (Abstract Base Classes).
@@ -2626,7 +2622,42 @@ Neste exemplo, tentar instanciar Animal diretamente resultará em um erro, pois 
 #### Conclusão
 Classes abstratas são uma parte essencial da programação orientada a objetos em Python, proporcionando uma estrutura robusta para o código. Elas forçam um contrato nas subclasses, garantindo que certos métodos sejam implementados, o que é crucial para manter a integridade e a previsibilidade do comportamento das classes em projetos complexos.
 
-## Aula 34 - abstractmethod para qualquer método já decorado (property e setter):
+### Classes abstratas no sentido da Teoria de Tipos:
+Na teoria dos tipos, uma classe abstrata pode ser entendida como um tipo abstrato. Um tipo abstrato é um tipo que não pode ser instanciado diretamente, mas serve como um modelo ou contrato para os tipos derivados (subtipos). Esses subtipos devem implementar ou concretizar as especificações definidas pelo tipo abstrato.
+
+#### Definição Formal em Teoria dos Tipos
+1. Tipo Abstrato 1: Um tipo que define uma coleção de operações (métodos) sem implementá-las. Este tipo não pode ser instanciado por si só. Ele apenas especifica um conjunto de operações que todos os subtipos concretos devem implementar.
+
+2. Subtipos (S1, S2, ...): Tipos que herdam do tipo abstrato T e fornecem implementações específicas para as operações definidas por T. Esses são os tipos que podem ser instanciados e usados em programas.
+
+#### Exemplo
+Suponha que temos um tipo abstrato Animal que define a operação emitirSom. Animal por si só não pode ser instanciado porque não sabemos como um animal genérico emite som. No entanto, podemos ter subtipos como Cachorro e Gato que são concretizações de Animal:
+
+- Animal (Tipo Abstrato):
+
+    - Operações: emitirSom()
+
+- Cachorro (Subtipo de Animal):
+
+    - Implementa emitirSom() para retornar "Au au!"
+
+- Gato (Subtipo de Animal):
+
+    - Implementa emitirSom() para retornar "Miau!"
+
+#### Propriedades Importantes
+- Encapsulamento: O tipo abstrato encapsula o comportamento esperado dos seus subtipos, definindo uma interface comum sem detalhar a implementação.
+
+- Polimorfismo: Objetos de diferentes subtipos do mesmo tipo abstrato podem ser usados de forma intercambiável em um programa, desde que o programa interaja com eles através da interface definida pelo tipo abstrato.
+
+- Reutilização e Extensibilidade: Novos subtipos podem ser criados a partir do tipo abstrato sem alterar o código existente que usa o tipo abstrato, facilitando a extensão e a manutenção do sistema.
+
+#### Conclusão
+Essa abordagem na teoria dos tipos ajuda a garantir que os sistemas sejam construídos de forma modular e extensível, com partes do sistema dependendo apenas de interfaces bem definidas, e não de implementações específicas.
+
+Seguir link para leitura:
+
+    https://docs.python.org/3/library/abc.html
 
 ## Aula 35 e 36 - Teoria e Pratica: polimorfismo, assinatura de métodos e Liskov Substitution Principle:
 
